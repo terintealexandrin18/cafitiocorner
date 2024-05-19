@@ -15,7 +15,7 @@
     
         {% block corecss %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
             <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
     
@@ -36,6 +36,69 @@
       </head>
   <body>
     <header class="container-fluid fixed-top">
+        <div class="row">
+
+            <!-- Logo-->
+            <div class="col-12 col-lg-4 my-auto py-2 py-lg-0 text-center text-lg-left">
+            <a href="{ url 'home' }" class="nav-link"><h2 class="text-black my-0"><strong>Cafitio</strong> Corner</h2></a>
+            </div>
+
+            <!-- Searching bar-->
+            <div class="col-12 col-lg-4 my-auto py-2 py-lg-0">
+                <form method="GET" action="">
+                    <div class="input-grup w-100">
+                        <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search...">
+                        <div class="input-grup-append">
+                            <button class="form-control btn-lg" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Account -->
+            <div class="col-12 col-lg-4 my-auto py-2 py-lg-0">
+                <ul class="list-inline list-unstyled text-center text-lg-right">
+                    <li class="list-inline-item dropdown">
+                        <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <div><i class="fas fa-user fa-lg"></i></div>
+                                <p>My Account</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="user-options">
+                            {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}                                   
+                                <a href="" class="dropdown-item">Product Management</a>
+                                {% endif %}
+                                <a href="" class="dropdown-item">My Profile</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            [% else %]
+                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>   
+                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="{% if grand_total %}text-info alert alert-info{% else %}text-black{% endif %} nav-link" href="">
+                            <div class="text-center">
+                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                <p>
+                                    {% if grand_total %}
+                                        ${{ grand_total | floatformat:2 }}
+                                    {% else %}
+                                        $0.00
+                                    {% endif %}        
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>    
     </header>
     
     {% if messages %}
