@@ -1,0 +1,111 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url('/media/coffee-mugs-and-bens-background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #555;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    padding-top: 164px;
+}
+
+.shop-now-button {
+    background: black;
+    color: white;
+    min-width: 260px;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
+}
+
+.header {
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.header .nav-link, 
+.header .navbar-brand, 
+.header .input-group .form-control, 
+.header .input-group .btn {
+    color: black;
+}
+
+.header .nav-link:hover, 
+.header .navbar-brand:hover, 
+.header .input-group .form-control:hover, 
+.header .input-group .btn:hover {
+    color: #222;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #222;
+    text-decoration: underline;
+}
+
+/* Default cart icon styling */
+.cart-empty {
+    color: black;
+}
+
+/* Cart icon when it has items */
+.cart-filled {
+    color: green;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}

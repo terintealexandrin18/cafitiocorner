@@ -3,24 +3,32 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-
-            </div>
+<div class="container-fluid header-container">
+    <div class="row">
+        <div class="col-12 text-center my-5">
+            <h1 class="text-white">Please check the items available on limited edition or offer.</h1>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 mb-4 text-center">
+            <div class="card">
+                <img src="{% static 'images/special_offer.jpg' %}" class="card-img-top" alt="Special Offer">
+            </div>
+            <a href="#" class="btn btn-black btn-lg shop-now-button mt-3">View Special Offers</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div calss="col-7 col-md-6 my-auto">
-                <h1>Fuel Your Day, Brew Your Way!</h1>
-                <div class="my-5">
-                    <a href="" class="btn-lg">Shop now</a>
-                </div>
+<div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-12 col-md-6 text-center">
+            <h1 class="display-4 text-white">Fuel Your Day, Brew Your Way!</h1>
+            <div class="my-5">
+                <a href="" class="btn btn-black btn-lg shop-now-button">Shop now</a>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
