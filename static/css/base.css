@@ -55,6 +55,17 @@ body {
     color: #222;
 }
 
+.header .nav-link i {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.header .nav-link p {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
 .text-white {
     color: white !important;
 }
@@ -90,22 +101,65 @@ a:focus {
     color: green;
 }
 
+.navbar-nav .nav-item .nav-link {
+    color: black !important;
+    margin: 5px 0; /* Adding margin to each nav link */
+    text-align: center; /* Centering text and icon */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #222 !important;
+}
+
+.navbar-collapse {
+    padding-left: 20px; /* Adding padding to the left for better alignment */
+    padding-right: 20px; /* Adding padding to the right for better alignment */
+}
+
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;
     }
 }
 
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
+@media (max-width: 991px) {
+    .navbar-collapse {
+        flex-direction: column;
     }
 
-    .header-container {
-        padding-top: 164px;
+    .navbar-nav {
+        align-items: flex-start;
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .navbar-nav.ml-auto {
+        margin-left: 0 !important;
+    }
+
+    .order-3.order-lg-2 {
+        order: 3 !important;
+    }
+
+    .order-2.order-lg-3 {
+        order: 2 !important;
+    }
+
+    .header .row + .row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Add margins to search bar on small screens */
+    #searchBar {
+        margin: 10px 0 0 10px; /* Add margin to top and bottom */
     }
 }
