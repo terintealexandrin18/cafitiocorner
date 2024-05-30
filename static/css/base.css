@@ -91,20 +91,18 @@ a:focus {
     text-decoration: underline;
 }
 
-/* Default cart icon styling */
 .cart-empty {
     color: black;
 }
 
-/* Cart icon when it has items */
 .cart-filled {
     color: green;
 }
 
 .navbar-nav .nav-item .nav-link {
     color: black !important;
-    margin: 5px 0; /* Adding margin to each nav link */
-    text-align: center; /* Centering text and icon */
+    margin: 5px 0; 
+    text-align: center; 
 }
 
 .navbar-nav .nav-item .nav-link:hover {
@@ -112,8 +110,8 @@ a:focus {
 }
 
 .navbar-collapse {
-    padding-left: 20px; /* Adding padding to the left for better alignment */
-    padding-right: 20px; /* Adding padding to the right for better alignment */
+    padding-left: 20px; 
+    padding-right: 20px;
 }
 
 @media (min-width: 1200px) {
@@ -158,8 +156,14 @@ a:focus {
         justify-content: center;
     }
 
-    /* Add margins to search bar on small screens */
     #searchBar {
-        margin: 10px 0 0 10px; /* Add margin to top and bottom */
+        margin: 10px 5px 10px 8px; 
     }
+}
+
+.navbar .form-inline {
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
