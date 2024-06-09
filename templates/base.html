@@ -2,154 +2,155 @@
 
 <!doctype html>
 <html lang="en">
-    <head>
+<head>
 
-        {% block meta %}
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        {% endblock %}
-    
-        {% block extra_meta %}
-        {% endblock %}
-    
-        {% block corecss %}
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap">
-            <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        {% endblock %}
-    
-        {% block extra_css %}
-        {% endblock %}
-    
-        {% block corejs %}
-            <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        {% endblock %}
-    
-        {% block extra_js %}
-        {% endblock %}
-    
-        <title>Cafitio Corner {% block extra_title %}{% endblock %}</title>
-      </head>
-  <body>
-    <header class="container-fluid fixed-top-desktop-only header">
-        <div class="row align-items-center justify-content-center">
-            <!-- Logo -->
-            <div class="col-12 text-center my-auto py-2 py-lg-0">
-                <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="my-0 logo-font"><strong>Cafitio</strong> Corner</h2>
-                </a>
-            </div>
+    {% block meta %}
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% endblock %}
+
+    {% block extra_meta %}
+    {% endblock %}
+
+    {% block corecss %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block corejs %}
+        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+
+    <title>Cafitio Corner {% block extra_title %}{% endblock %}</title>
+</head>
+<body>
+<header class="container-fluid fixed-top-desktop-only header">
+    <div class="row align-items-center justify-content-center">
+        <!-- Logo -->
+        <div class="col-12 text-center my-auto py-2 py-lg-0">
+            <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                <h2 class="my-0 logo-font"><strong>Cafitio</strong> Corner</h2>
+            </a>
         </div>
-        <div class="row align-items-center justify-content-between">
-            <!-- Icons and Navigation -->
-            <div class="col-12 my-auto py-2 py-lg-0">
-                <nav class="navbar navbar-expand-lg navbar-light p-0 justify-content-between">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#searchBar" aria-controls="searchBar" aria-expanded="false" aria-label="Toggle search">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <a class="nav-link d-inline d-lg-none" href="#"><i class="fas fa-user"></i></a>
-                    <a class="nav-link d-inline d-lg-none" href="#"><i class="fas fa-shopping-cart"></i></a>
-                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'products' %}"><i class="fas fa-shopping-cart"></i><br> Shop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-info-circle"></i><br> About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-envelope"></i><br> Contact Us</a>
-                            </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0 mx-auto d-none d-lg-flex">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                        <ul class="navbar-nav ml-auto">
-                            <!-- User Account -->
-                            <li class="nav-item dropdown d-none d-lg-inline">
-                                <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <div class="text-center">
-                                        <i class="fas fa-user fa-lg"></i>
-                                        <p>My Account</p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                                    {% if request.user.is_authenticated %}
-                                        {% if request.user.is_superuser %}
-                                            <a href="" class="dropdown-item">Product Management</a>
-                                        {% endif %}
-                                        <a href="" class="dropdown-item">My Profile</a>
-                                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                                    {% else %}
-                                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                                    {% endif %}
+    </div>
+    <div class="row align-items-center justify-content-between">
+        <!-- Icons and Navigation -->
+        <div class="col-12 my-auto py-2 py-lg-0">
+            <nav class="navbar navbar-expand-lg navbar-light p-0 justify-content-between">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#searchBar" aria-controls="searchBar" aria-expanded="false" aria-label="Toggle search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a class="nav-link d-inline d-lg-none" href="#"><i class="fas fa-user"></i></a>
+                <a class="nav-link d-inline d-lg-none" href="#"><i class="fas fa-shopping-cart"></i></a>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'products' %}"><i class="fas fa-shopping-cart"></i><br> Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-info-circle"></i><br> About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-envelope"></i><br> Contact Us</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0 mx-auto d-none d-lg-flex" method="GET" action="{% url 'products' %}">
+                        <input class="form-control border-black rounded-0 mr-sm-2" type="search" name="q" placeholder="Search...">
+                        <button class="btn btn-black" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <ul class="navbar-nav ml-auto">
+                        <!-- User Account -->
+                        <li class="nav-item dropdown d-none d-lg-inline">
+                            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center">
+                                    <i class="fas fa-user fa-lg"></i>
+                                    <p>My Account</p>
                                 </div>
-                            </li>
-                            <!-- Cart Icon -->
-                            <li class="nav-item d-none d-lg-inline">
-                                <a class="nav-link" href="#">
-                                    <div class="text-center">
-                                        <i class="fas fa-shopping-bag fa-lg {% if grand_total %}cart-filled{% else %}cart-empty{% endif %}"></i>
-                                        <p>
-                                            {% if grand_total %}
-                                                ${{ grand_total|floatformat:2 }}
-                                            {% else %}
-                                                $0.00
-                                            {% endif %}
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+                            </a>
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                {% if request.user.is_authenticated %}
+                                    {% if request.user.is_superuser %}
+                                        <a href="" class="dropdown-item">Product Management</a>
+                                    {% endif %}
+                                    <a href="" class="dropdown-item">My Profile</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                {% else %}
+                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                        <!-- Cart Icon -->
+                        <li class="nav-item d-none d-lg-inline">
+                            <a class="nav-link" href="#">
+                                <div class="text-center">
+                                    <i class="fas fa-shopping-bag fa-lg {% if grand_total %}cart-filled{% else %}cart-empty{% endif %}"></i>
+                                    <p>
+                                        {% if grand_total %}
+                                            ${{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                            $0.00
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul> 
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row align-items-center d-lg-none">
+        <!-- Search Bar -->
+        <div class="col-12 my-auto py-2 py-lg-0 collapse" id="searchBar">
+            <form method="GET" action="{% url 'products' %}">
+                <div class="input-group w-100">
+                    <input class="form-control border-black rounded-0" type="text" name="q" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button class="btn btn-black" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                </nav>
-            </div>
+                </div>
+            </form>
         </div>
-        <div class="row align-items-center d-lg-none">
-            <!-- Search Bar for Mobile -->
-            <div class="col-12 my-auto py-2 py-lg-0 collapse" id="searchBar">
-                <form method="GET" action="">
-                    <div class="input-group w-100">
-                        <input class="form-control border-black rounded-0" type="text" name="q" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button class="btn btn-black" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </header>
-    
-    
-    
-    {% if messages %}
-
-        <div class="message-container">
-        
-        </div>
-
-    {% endif %}
-    
-    {% block page_header %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %} 
-    
-    {% block postloadjs %}
-    {% endblock %}
+    </div>
+</header>
 
 
-  </body>
+
+{% if messages %}
+
+    <div class="message-container">
+    
+    </div>
+
+{% endif %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block postloadjs %}
+{% endblock %}
+
+</body>
 </html>
