@@ -6,7 +6,7 @@
 <div class="container-fluid header-container">
     <div class="row">
         <div class="col-12 text-center my-5">
-            <h1 class="text-white">Please check the items available on limited edition or offer.</h1>
+            <h1 class="text-white">Please check the Food & Bites category!</h1>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -14,7 +14,7 @@
             <div class="card">
                 <img src="{% static 'images/special_offer.jpg' %}" class="card-img-top" alt="Special Offer">
             </div>
-            <a href="#" class="btn btn-black btn-lg shop-now-button mt-3">View Special Offers</a>
+            <a href="{% url 'products' %}" class="btn btn-black btn-lg shop-now-button mt-3">View Special Offers</a>
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@
         <div class="col-12 col-md-6 text-center">
             <h1 class="display-4 text-white">Fuel Your Day, Brew Your Way!</h1>
             <div class="my-5">
-                <a href="" class="btn btn-black btn-lg shop-now-button">Shop now</a>
+                <a href="{% url 'products' %}" class="btn btn-black btn-lg shop-now-button">Shop now</a>
             </div>
         </div>
     </div>
