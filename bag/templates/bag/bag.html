@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="overlay"></div>
+<div class="container-fluid position-relative">
+    <div class="row">
+        <div class="col text-center">
+            <h1>Shopping Bag</h1>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col">
+                {% if bag_items %}
+                <div class="table-responsive rounded">              
+                </div>
+                {% else %}
+                <p class="lead mb-5">Your bag is empty.</p>
+                <a href="{% url 'products' %}" class="btn btn-black btn-lg shop-now-button">
+                    <i class="fas fa-chevron-left"></i>
+                    <span class="text-uppercase">Keep Shopping</span>
+                </a>
+            {% endif %}
+
+            </div>
+
+        </div>
+    
+
+
+
+</div>
+{% endblock %}
