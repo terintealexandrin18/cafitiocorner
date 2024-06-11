@@ -115,6 +115,12 @@ a:focus {
     padding-right: 20px;
 }
 
+/* Sorting dropdown */
+
+#sort-selector {
+    width: auto;
+}
+
 /* Button to scroll up */
 
 .btt-button {
@@ -126,6 +132,7 @@ a:focus {
     background-color: #fff;
     border-radius: 50%;
     display: flex;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -219,6 +226,13 @@ a:focus {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
+}
+
+.product-image {
+    max-height: 650px;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
 }
 
 .card {
