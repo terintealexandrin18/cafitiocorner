@@ -103,9 +103,9 @@
                                     <i class="fas fa-shopping-bag fa-lg {% if grand_total %}cart-filled{% else %}cart-empty{% endif %}"></i>
                                     <p>
                                         {% if grand_total %}
-                                            ${{ grand_total|floatformat:2 }}
+                                            £{{ grand_total|floatformat:2 }}
                                         {% else %}
-                                            $0.00
+                                            £0.00
                                         {% endif %}
                                     </p>
                                 </div>
