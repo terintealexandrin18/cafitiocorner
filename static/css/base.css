@@ -148,6 +148,13 @@ a:focus {
     color: #222;
 }
 
+/* Btn for add to bag */
+
+.btn-bag {
+    background: brown;
+    color: white;
+    min-width: 200px;
+}
 /* Page overlay */
 
 .overlay {
