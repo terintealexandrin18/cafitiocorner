@@ -158,6 +158,12 @@ a:focus {
     color: #222;
 }
 
+.btn-outline-black {
+    background: white;
+    color: black !important; 
+    border: 1px solid black;
+}
+
 /* Btn for add to bag */
 
 .btn-bag {
