@@ -171,6 +171,11 @@ a:focus {
     color: white;
     min-width: 200px;
 }
+
+.secure-btn {
+    border: 1px solid black;
+}
+
 /* Page overlay */
 
 .overlay {
@@ -312,6 +317,10 @@ a:focus {
     max-width: 100%;
     object-fit: contain;
     margin: 0 auto;
+}
+
+.img-fluid {
+    max-width: 70%;
 }
 
 .card {
