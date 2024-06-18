@@ -5,6 +5,7 @@ from products.models import Product
 
 import json
 import time
+import stripe
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -34,9 +35,10 @@ class StripeWH_Handler:
             intent.latest_charge
         )
 
-        billing_details = stripe_charge.billing_details
+        billing_details = stripe_charge.billing_details # updated
         shipping_details = intent.shipping
-        grand_total = round(stripe_charge.amount / 100, 2)
+        grand_total = round(stripe_charge.amount / 100, 2) # updated
+
 
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
@@ -55,7 +57,7 @@ class StripeWH_Handler:
                     postcode__iexact=shipping_details.address.postal_code,
                     city__iexact=shipping_details.address.city,
                     street_address__iexact=shipping_details.address.line1,
-                    county__iexact=shipping_details.address.county,
+                    state__iexact=shipping_details.address.state,
                     grand_total=grand_total,
                     original_bag=bag,
                     stripe_pid=pid,
@@ -80,7 +82,7 @@ class StripeWH_Handler:
                     postcode=shipping_details.address.postal_code,
                     city=shipping_details.address.city,
                     street_address=shipping_details.address.line1,
-                    county=shipping_details.address.county,
+                    state=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,
                 )

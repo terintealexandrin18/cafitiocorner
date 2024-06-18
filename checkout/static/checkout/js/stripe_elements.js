@@ -20,6 +20,7 @@ var style = {
             color: '#aab7c4'
         }
     },
+    
     invalid: {
         color: '#dc3545',
         iconColor: '#dc3545'
@@ -76,7 +77,7 @@ form.addEventListener('submit', function(ev) {
                         line1: $.trim(form.street_address.value),
                         city: $.trim(form.city.value),
                         country: $.trim(form.country.value),
-                        state: $.trim(form.county.value),
+                        state: $.trim(form.state.value),
                     }
                 }
             },
@@ -88,7 +89,7 @@ form.addEventListener('submit', function(ev) {
                     city: $.trim(form.city.value),
                     country: $.trim(form.country.value),
                     postal_code: $.trim(form.postcode.value),
-                    state: $.trim(form.county.value),
+                    state: $.trim(form.state.value),
                 }
             },
         }).then(function(result) {
