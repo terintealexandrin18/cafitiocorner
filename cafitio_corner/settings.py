@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-)6^k__haqj$q4q!-8g1vhfn46ajrklh+ccftu*@!&wy5xh(-+#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-terintealex-cafitiocorn-2tugvhkvhii.ws-eu114.gitpod.io']
+ALLOWED_HOSTS = ['8000-terintealex-cafitiocorn-bxorgs2uthj.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -65,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'cafitio_corner.urls'
