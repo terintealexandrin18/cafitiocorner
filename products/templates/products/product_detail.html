@@ -40,17 +40,13 @@
                         </a>
                     </p>
                     {% endif %}
-                    {% if most_frequent_rating %}
-                        {% if most_frequent_rating == 1 %}
-                            <small class="text-muted">😀 Happy</small>
-                        {% elif most_frequent_rating == 2 %}
-                            <small class="text-muted">😐 Neutral</small>
-                        {% elif most_frequent_rating == 3 %}
-                            <small class="text-muted">☹️ Sad</small>
+                    <small class="text-muted">
+                        {% if average_rating %}
+                        <i class="fas fa-star mr-1"></i>{{ average_rating|floatformat:1 }} / 5
+                        {% else %}
+                        No Rating
                         {% endif %}
-                    {% else %}
-                        <small class="text-muted">No Rating</small>
-                    {% endif %}
+                    </small>
                     {% if request.user.is_superuser %}
                         <small class="ml-3">
                             <a href="{% url 'edit_product' product.id %}">Edit</a> | 
@@ -105,64 +101,55 @@
             </div>
         </div>
 
-        <!-- Reviews and Ratings Section -->
-        <div class="row mt-5">
-            <div class="col-12 col-md-8 offset-md-2">
-                <h2 class="text-center">Review and Rating</h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4>Leave Rating: 1-5</h4>
-                        <form method="post" action="{% url 'product_detail' product.id %}">
-                            {% csrf_token %}
-                            {{ form.rating }}
-                            <button type="submit" class="btn btn-primary mt-3">Submit Rating</button>
-                        </form>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                <h2 class="text-center">Leave Rating:</h2>
+                <form class="form" action="{% url 'add_rating' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="radio" id="rating1" name="rating" value="1">
+                        <label for="rating1">😠</label>
+                        <input type="radio" id="rating2" name="rating" value="2">
+                        <label for="rating2">😐</label>
+                        <input type="radio" id="rating3" name="rating" value="3">
+                        <label for="rating3">😃</label>
                     </div>
-                    <div class="col-md-6">
-                        <h4>Leave a Review</h4>
-                        <form method="post" action="{% url 'product_detail' product.id %}">
-                            {% csrf_token %}
-                            {{ form.comment }}
-                            <button type="submit" class="btn btn-primary mt-3">Submit Review</button>
-                        </form>
+                    <button type="submit" class="btn btn-primary" id="submitRating">Submit Rating</button>
+                </form>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <h2 class="text-center">Leave a Review</h2>
+                <form class="form" action="{% url 'add_review' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea class="form-control" name="comment" rows="3" placeholder="Write your review here..."></textarea>
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
             </div>
         </div>
 
-        <!-- Display Reviews -->
-        <div class="row mt-5">
-            <div class="col-12 col-md-8 offset-md-2">
-                <h2>Reviews</h2>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-8 offset-lg-2">
+                <h3 class="text-center">Reviews</h3>
                 {% for review in reviews %}
-                    <div class="review mb-3">
-                        <p><strong>{{ review.user.username }}</strong> rated this product {% if review.rating == 1 %}😀{% elif review.rating == 2 %}😐{% elif review.rating == 3 %}☹️{% endif %}</p>
+                    <div class="review">
+                        <p><strong>{{ review.user.username }}</strong></p>
                         <p>{{ review.comment }}</p>
-                        <p><em>{{ review.created_at }}</em></p>
-                        {% if review.user == request.user %}
-                            <a href="{% url 'edit_review' review.id %}" class="edit-review-link" data-review-id="{{ review.id }}">Edit</a> |
+                        <p><small>{{ review.created_at }}</small></p>
+                        {% if request.user == review.user %}
+                            <a href="{% url 'edit_review' review.id %}" class="edit-review-link">Edit</a> |
                             <a href="{% url 'delete_review' review.id %}" class="text-danger">Delete</a>
-
-                            <!-- Edit Review Form -->
-                            <div class="edit-review-form" id="edit-review-form-{{ review.id }}" style="display:none;">
-                                <form method="post" action="{% url 'edit_review' review.id %}">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <label for="id_rating">Rating:</label>
-                                        <input type="number" name="rating" value="{{ review.rating }}" min="1" max="3" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="id_comment">Comment:</label>
-                                        <textarea name="comment" class="form-control">{{ review.comment }}</textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Update Review</button>
-                                </form>
-                            </div>
                         {% endif %}
                     </div>
+                {% empty %}
+                    <p>No reviews yet.</p>
                 {% endfor %}
             </div>
         </div>
+
+        <div id="user-has-rated" data-has-rated="{% if user_rating %}true{% else %}false{% endif %}"></div>
+
     </div>
 {% endblock %}
 
@@ -170,19 +157,23 @@
 {{ block.super }}
 {% include 'includes/quantity_input_script.html' %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.edit-review-link').forEach(function(link) {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                var reviewId = this.getAttribute('data-review-id');
-                var form = document.getElementById('edit-review-form-' + reviewId);
-                if (form.style.display === 'none') {
-                    form.style.display = 'block';
-                } else {
-                    form.style.display = 'none';
-                }
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    const ratingRadios = document.querySelectorAll('input[name="rating"]');
+    const submitRatingButton = document.getElementById('submitRating');
+
+    ratingRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            submitRatingButton.disabled = false;
         });
     });
+
+    // Disable rating form if the user has already rated
+    if (document.getElementById('user-has-rated').dataset.hasRated === 'true') {
+        ratingRadios.forEach(radio => {
+            radio.disabled = true;
+        });
+        submitRatingButton.disabled = true;
+    }
+});
 </script>
 {% endblock %}

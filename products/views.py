@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q, Count
+from django.db.models import Q, Count, Avg
 from django.db.models.functions import Lower
 
 from .models import Product, Category, Review
@@ -56,35 +56,25 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+
 def product_detail(request, product_id):
     """ A view to show individual product details """
     product = get_object_or_404(Product, pk=product_id)
-    reviews = Review.objects.filter(product=product)
+    reviews = product.reviews.filter(status='approved')
+    average_rating = product.reviews.aggregate(average=Avg('rating'))['average'] or 0
 
-    # Calculate the most frequent rating
-    rating_counts = reviews.values('rating').annotate(count=Count('rating')).order_by('-count', 'rating')
-    most_frequent_rating = rating_counts[0]['rating'] if rating_counts else None
-
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.product = product
-            review.user = request.user
-            review.save()
-            messages.success(request, 'Review submitted successfully.')
-            return redirect('product_detail', product_id=product.id)
-    else:
-        form = ReviewForm()
+    user_rating = None
+    if request.user.is_authenticated:
+        user_rating = Review.objects.filter(product=product, user=request.user).first()
 
     context = {
         'product': product,
         'reviews': reviews,
-        'form': form,
-        'most_frequent_rating': most_frequent_rating,
+        'average_rating': average_rating,
+        'user_rating': user_rating,
     }
-
     return render(request, 'products/product_detail.html', context)
+
 
 @login_required
 def add_product(request):
@@ -151,39 +141,54 @@ def delete_product(request, product_id):
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
 
+
+@login_required
+def add_rating(request, product_id):
+    """ Add a rating to a product """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        rating = request.POST.get('rating')
+        Review.objects.create(product=product, user=request.user, rating=rating, status='approved')
+        messages.success(request, 'Rating submitted successfully.')
+    return redirect('product_detail', product_id=product_id)
+
+
+@login_required
+def add_review(request, product_id):
+    """ Add a review to a product """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        comment = request.POST.get('comment')
+        Review.objects.create(product=product, user=request.user, comment=comment, status='pending')
+        messages.success(request, 'Review submitted successfully. It will be visible once approved.')
+    return redirect('product_detail', product_id=product_id)
+
+
 @login_required
 def edit_review(request, review_id):
     """ Edit a review """
-    review = get_object_or_404(Review, id=review_id)
+    review = get_object_or_404(Review, pk=review_id)
     if request.user != review.user:
-        messages.error(request, 'You are not authorized to edit this review.')
+        messages.error(request, "You do not have permission to edit this review.")
         return redirect('product_detail', product_id=review.product.id)
-
     if request.method == 'POST':
-        form = ReviewForm(request.POST, instance=review)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Review updated successfully.')
-            return redirect('product_detail', product_id=review.product.id)
-    else:
-        form = ReviewForm(instance=review)
-
-    context = {
-        'form': form,
-        'review': review,
-    }
-
+        comment = request.POST.get('comment')
+        review.comment = comment
+        review.status = 'pending'  
+        review.save()
+        messages.success(request, 'Review updated successfully. It will be visible once approved.')
+        return redirect('product_detail', product_id=review.product.id)
+    context = {'review': review}
     return render(request, 'products/edit_review.html', context)
+
 
 @login_required
 def delete_review(request, review_id):
     """ Delete a review """
-    review = get_object_or_404(Review, id=review_id)
+    review = get_object_or_404(Review, pk=review_id)
     if request.user != review.user:
-        messages.error(request, 'You are not authorized to delete this review.')
+        messages.error(request, "You do not have permission to delete this review.")
         return redirect('product_detail', product_id=review.product.id)
-
-    product_id = review.product.id
     review.delete()
     messages.success(request, 'Review deleted successfully.')
-    return redirect('product_detail', product_id=product_id)
+    return redirect('product_detail', product_id=review.product.id)
