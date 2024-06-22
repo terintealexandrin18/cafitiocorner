@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.db.models.functions import Lower
 
-from .models import Product, Category
-from .forms import ProductForm
+from .models import Product, Category, Review
+from .forms import ProductForm, ReviewForm
 
 # Create your views here.
-
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
@@ -35,12 +34,10 @@ def all_products(request):
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
 
-
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
-
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -61,15 +58,33 @@ def all_products(request):
 
 def product_detail(request, product_id):
     """ A view to show individual product details """
-
     product = get_object_or_404(Product, pk=product_id)
+    reviews = Review.objects.filter(product=product)
+
+    # Calculate the most frequent rating
+    rating_counts = reviews.values('rating').annotate(count=Count('rating')).order_by('-count', 'rating')
+    most_frequent_rating = rating_counts[0]['rating'] if rating_counts else None
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product
+            review.user = request.user
+            review.save()
+            messages.success(request, 'Review submitted successfully.')
+            return redirect('product_detail', product_id=product.id)
+    else:
+        form = ReviewForm()
 
     context = {
         'product': product,
+        'reviews': reviews,
+        'form': form,
+        'most_frequent_rating': most_frequent_rating,
     }
 
     return render(request, 'products/product_detail.html', context)
-
 
 @login_required
 def add_product(request):
@@ -95,7 +110,6 @@ def add_product(request):
     }
 
     return render(request, template, context)
-
 
 @login_required
 def edit_product(request, product_id):
@@ -125,7 +139,6 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
-
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
@@ -137,3 +150,40 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+@login_required
+def edit_review(request, review_id):
+    """ Edit a review """
+    review = get_object_or_404(Review, id=review_id)
+    if request.user != review.user:
+        messages.error(request, 'You are not authorized to edit this review.')
+        return redirect('product_detail', product_id=review.product.id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Review updated successfully.')
+            return redirect('product_detail', product_id=review.product.id)
+    else:
+        form = ReviewForm(instance=review)
+
+    context = {
+        'form': form,
+        'review': review,
+    }
+
+    return render(request, 'products/edit_review.html', context)
+
+@login_required
+def delete_review(request, review_id):
+    """ Delete a review """
+    review = get_object_or_404(Review, id=review_id)
+    if request.user != review.user:
+        messages.error(request, 'You are not authorized to delete this review.')
+        return redirect('product_detail', product_id=review.product.id)
+
+    product_id = review.product.id
+    review.delete()
+    messages.success(request, 'Review deleted successfully.')
+    return redirect('product_detail', product_id=product_id)

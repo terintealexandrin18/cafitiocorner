@@ -40,10 +40,16 @@
                         </a>
                     </p>
                     {% endif %}
-                    {% if product.rating %}
-                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                    {% if most_frequent_rating %}
+                        {% if most_frequent_rating == 1 %}
+                            <small class="text-muted">😀 Happy</small>
+                        {% elif most_frequent_rating == 2 %}
+                            <small class="text-muted">😐 Neutral</small>
+                        {% elif most_frequent_rating == 3 %}
+                            <small class="text-muted">☹️ Sad</small>
+                        {% endif %}
                     {% else %}
-                    <small class="text-muted">No Rating</small>
+                        <small class="text-muted">No Rating</small>
                     {% endif %}
                     {% if request.user.is_superuser %}
                         <small class="ml-3">
@@ -98,9 +104,85 @@
                 </div>
             </div>
         </div>
+
+        <!-- Reviews and Ratings Section -->
+        <div class="row mt-5">
+            <div class="col-12 col-md-8 offset-md-2">
+                <h2 class="text-center">Review and Rating</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Leave Rating: 1-5</h4>
+                        <form method="post" action="{% url 'product_detail' product.id %}">
+                            {% csrf_token %}
+                            {{ form.rating }}
+                            <button type="submit" class="btn btn-primary mt-3">Submit Rating</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Leave a Review</h4>
+                        <form method="post" action="{% url 'product_detail' product.id %}">
+                            {% csrf_token %}
+                            {{ form.comment }}
+                            <button type="submit" class="btn btn-primary mt-3">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display Reviews -->
+        <div class="row mt-5">
+            <div class="col-12 col-md-8 offset-md-2">
+                <h2>Reviews</h2>
+                {% for review in reviews %}
+                    <div class="review mb-3">
+                        <p><strong>{{ review.user.username }}</strong> rated this product {% if review.rating == 1 %}😀{% elif review.rating == 2 %}😐{% elif review.rating == 3 %}☹️{% endif %}</p>
+                        <p>{{ review.comment }}</p>
+                        <p><em>{{ review.created_at }}</em></p>
+                        {% if review.user == request.user %}
+                            <a href="{% url 'edit_review' review.id %}" class="edit-review-link" data-review-id="{{ review.id }}">Edit</a> |
+                            <a href="{% url 'delete_review' review.id %}" class="text-danger">Delete</a>
+
+                            <!-- Edit Review Form -->
+                            <div class="edit-review-form" id="edit-review-form-{{ review.id }}" style="display:none;">
+                                <form method="post" action="{% url 'edit_review' review.id %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="id_rating">Rating:</label>
+                                        <input type="number" name="rating" value="{{ review.rating }}" min="1" max="3" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_comment">Comment:</label>
+                                        <textarea name="comment" class="form-control">{{ review.comment }}</textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Update Review</button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
 {% include 'includes/quantity_input_script.html' %}
- {% endblock %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.edit-review-link').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                var reviewId = this.getAttribute('data-review-id');
+                var form = document.getElementById('edit-review-form-' + reviewId);
+                if (form.style.display === 'none') {
+                    form.style.display = 'block';
+                } else {
+                    form.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
