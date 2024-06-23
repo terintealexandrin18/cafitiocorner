@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'profiles',
 
     # Other
-    'crispy_forms'
+    'crispy_forms',
+    'django_countries',
 
 ]
 

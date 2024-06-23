@@ -3,6 +3,8 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
+from django_countries.fields import CountryField
+
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
@@ -61,6 +63,9 @@ class StripeWH_Handler:
         shipping_details = intent.shipping
         grand_total = round(stripe_charge.amount / 100, 2)
 
+        # Ensure country codes are in two-character format
+        shipping_details.address.country = CountryField().to_python(shipping_details.address.country)
+        billing_details.address.country = CountryField().to_python(billing_details.address.country)
 
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
