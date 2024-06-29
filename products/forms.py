@@ -1,5 +1,6 @@
 from django import forms
 from .widgets import CustomClearableFileInput
+from django.core.exceptions import ValidationError
 from .models import Product, Category, Review
 
 
@@ -8,6 +9,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
        model = Product
        fields = '__all__'
+       exclude = ['rating']
     
     image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
 
@@ -28,3 +30,13 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'comment': forms.Textarea(attrs={'rows': 4}),
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        rating = cleaned_data.get('rating')
+        comment = cleaned_data.get('comment')
+
+        if not rating and not comment:
+            raise forms.ValidationError("At least one of the fields (rating or comment) must be filled.")
+
+        return cleaned_data

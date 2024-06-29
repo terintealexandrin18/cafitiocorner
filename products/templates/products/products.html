@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
+{% load my_filters %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
 
 {% block content %}
     <div class="overlay"></div>
@@ -90,24 +96,15 @@
                                                 </a>
                                             </p>
                                             {% endif %}
-                                            <small class="text-muted">
-                                                <span>Rating:</span>
-                                                {% if product.rating %}
-                                                    {% if product.rating >= 4.5 %}
-                                                        <span class="emoji-rating">😍</span>
-                                                    {% elif product.rating >= 3.5 %}
-                                                        <span class="emoji-rating">😃</span>
-                                                    {% elif product.rating >= 2.5 %}
-                                                        <span class="emoji-rating">🙂</span>
-                                                    {% elif product.rating >= 1.5 %}
-                                                        <span class="emoji-rating">😐</span>
-                                                    {% else %}
-                                                        <span class="emoji-rating">😠</span>
-                                                    {% endif %}
-                                                {% else %}
-                                                    <small class="text-muted">No Rating</small>
-                                                {% endif %}
-                                            </small>
+                                            <div class="d-inline-block star-rating">
+                                                {% for i in product.average_rating|default:0|to_list %}
+                                                <span class="star">★</span>
+                                                {% endfor %}
+                                                {% for i in product.average_rating|default:0|add:1|to_list:5 %}
+                                                <span class="star">☆</span>
+                                                {% endfor %}
+                                                <small class="text-muted">({{ product.average_rating|default:"No Rating" }})</small>
+                                            </div>
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
                                                     <a href="{% url 'edit_product' product.id %}">Edit</a> |

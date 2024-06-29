@@ -2,6 +2,9 @@
 {% load static %}
 {% load my_filters %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="overlay"></div>
@@ -42,9 +45,15 @@
                     </a>
                 </p>
                 {% endif %}
-                <small class="text-muted">
-                    No Rating
-                </small>
+                <div class="d-inline-block star-rating">
+                    {% for i in average_rating|default:0|to_list %}
+                    <span class="star">★</span>
+                    {% endfor %}
+                    {% for i in 1|add:average_rating|to_list:5 %}
+                    <span class="star">☆</span>
+                    {% endfor %}
+                    <small class="text-muted">({{ average_rating|default:"No Rating" }})</small>
+                </div>
                 {% if request.user.is_superuser %}
                 <small class="ml-3">
                     <a href="{% url 'edit_product' product.id %}">Edit</a> |
@@ -132,8 +141,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="comment">Your Review:</label>
-                                <textarea id="comment" name="comment" class="form-control" required></textarea>
+                                <textarea id="comment" name="comment" class="form-control"></textarea>
                             </div>
+                            {% if review_form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ review_form.non_field_errors }}
+                            </div>
+                            {% endif %}
                             <button type="submit" class="btn btn-primary">Submit Review</button>
                         </form>
                     </div>
@@ -158,7 +172,7 @@
                                 {% endfor %}
                             </div>
                             <p>{{ review.comment }}</p>
-                            <small class="text-muted">{{ review.created_at|date:"d F Y, h:i A" }}</small> <!-- Correct Local Time -->
+                            <small class="text-muted">{{ review.created_at|date:"d F Y, h:i A" }}</small>
                             {% if review.user == request.user %}
                                 <div class="review-actions">
                                     <button type="button" onclick="toggleEditForm('{{ review.id }}')" class="btn btn-link">Edit</button>
@@ -204,54 +218,9 @@
 </div>
 {% endblock %}
 
+
 {% block postloadjs %}
-{{ block.super }}
-{% include 'includes/quantity_input_script.html' %}
-
-<script>
-    function toggleEditForm(reviewId) {
-        var x = document.getElementById("editForm" + reviewId);
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        function initializeStarRating(container) {
-            const stars = container.querySelectorAll('.star');
-            const ratingInputs = container.querySelectorAll('input[type="radio"]');
-
-            stars.forEach((star, index) => {
-                star.addEventListener('mouseover', () => {
-                    for (let i = 0; i < stars.length; i++) {
-                        stars[i].style.color = i <= index ? '#c9c2b2' : '#94857b';
-                    }
-                });
-
-                star.addEventListener('click', () => {
-                    for (let i = 0; i < stars.length; i++) {
-                        stars[i].style.color = i <= index ? 'gold' : '#94857b';
-                        ratingInputs[i].checked = i <= index;
-                    }
-                });
-            });
-
-            container.addEventListener('mouseleave', () => {
-                const checkedIndex = Array.from(ratingInputs).findIndex(input => input.checked);
-                for (let i = 0; i < stars.length; i++) {
-                    stars[i].style.color = i <= checkedIndex ? 'gold' : '#94857b';
-                }
-            });
-        }
-
-        const ratingContainers = document.querySelectorAll('.rating-container');
-        ratingContainers.forEach(container => {
-            initializeStarRating(container);
-        });
-    });
-</script>
-
-
+    {{ block.super }}
+    {% include 'includes/quantity_input_script.html' %}
+    <script src="{% static 'products/js/reviews.js' %}"></script>
 {% endblock %}
