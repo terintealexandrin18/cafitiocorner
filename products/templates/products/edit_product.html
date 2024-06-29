@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
 {% block content %}
 
 <div class="overlay"></div>
@@ -18,8 +22,24 @@
             <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
-                    {% if field.name != 'image' %}
+                    {% if field.name != 'image' and field.name != 'rating' %}
                         {{ field | as_crispy_field }}
+                    {% elif field.name == 'rating' %}
+                        <div class="form-group">
+                            <label for="id_rating">Rating:</label>
+                            <div class="form-group rating-container edit-rating-container form-control border-black h-auto d-flex justify-content-start">
+                                <input type="radio" id="rating1" name="rating" value="1" {% if field.value == 1 %}checked{% endif %}>
+                                <label for="rating1" class="emoji-label">😠</label>
+                                <input type="radio" id="rating2" name="rating" value="2" {% if field.value == 2 %}checked{% endif %}>
+                                <label for="rating2" class="emoji-label">😐</label>
+                                <input type="radio" id="rating3" name="rating" value="3" {% if field.value == 3 %}checked{% endif %}>
+                                <label for="rating3" class="emoji-label">🙂</label>
+                                <input type="radio" id="rating4" name="rating" value="4" {% if field.value == 4 %}checked{% endif %}>
+                                <label for="rating4" class="emoji-label">😃</label>
+                                <input type="radio" id="rating5" name="rating" value="5" {% if field.value == 5 %}checked{% endif %}>
+                                <label for="rating5" class="emoji-label">😍</label>
+                            </div>
+                        </div>
                     {% else %}
                         {{ field }}
                     {% endif %}

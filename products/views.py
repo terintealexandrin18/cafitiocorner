@@ -1,13 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q, Count, Avg
-from django.db.models.functions import Lower
-
+from django.db.models import Q, Avg
 from .models import Product, Category, Review
 from .forms import ProductForm, ReviewForm
-
-# Create your views here.
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
@@ -19,7 +15,6 @@ def all_products(request):
     direction = None
 
     if request.GET:
-
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -33,7 +28,7 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-
+            
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -48,39 +43,49 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)
 
 
 def product_detail(request, product_id):
-    """ A view to show individual product details """
     product = get_object_or_404(Product, pk=product_id)
-    reviews = product.reviews.filter(status='approved')
-    average_rating = product.reviews.aggregate(average=Avg('rating'))['average'] or 0
+    reviews = product.reviews.all()  # Assuming reviews are approved and can be shown directly
+    new_review = None
 
-    user_rating = None
-    if request.user.is_authenticated:
-        user_rating = Review.objects.filter(product=product, user=request.user).first()
+    if request.method == 'POST' and 'submit_review' in request.POST:
+        review_form = ReviewForm(data=request.POST)
+        if review_form.is_valid():
+            new_review = review_form.save(commit=False)
+            new_review.product = product
+            new_review.user = request.user
+            new_review.save()
+            messages.success(request, 'Review successfully added!')
+            return redirect('product_detail', product_id=product_id)
+    else:
+        review_form = ReviewForm()
 
     context = {
         'product': product,
         'reviews': reviews,
-        'average_rating': average_rating,
-        'user_rating': user_rating,
+        'review_form': review_form,
+        'new_review': new_review,
     }
-    return render(request, 'products/product_detail.html', context)
 
+    return render(request, 'products/product_detail.html', context)
 
 @login_required
 def add_product(request):
     """ Add a product to the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owner can do that')
+        messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -101,11 +106,12 @@ def add_product(request):
 
     return render(request, template, context)
 
+
 @login_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owner can do that')
+        messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -129,13 +135,14 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owner can do that')
+        messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
@@ -143,52 +150,42 @@ def delete_product(request, product_id):
 
 
 @login_required
-def add_rating(request, product_id):
-    """ Add a rating to a product """
+def submit_review(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
-        rating = request.POST.get('rating')
-        Review.objects.create(product=product, user=request.user, rating=rating, status='approved')
-        messages.success(request, 'Rating submitted successfully.')
-    return redirect('product_detail', product_id=product_id)
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product
+            review.user = request.user
+            review.save()
+            messages.success(request, "Review submitted successfully!")
+            return redirect('product_detail', product_id=product.id)
+    else:
+        form = ReviewForm()
+    # If not POST or form is not valid, redirect or render a response
+    return redirect('product_detail', product_id=product.id)
 
-
-@login_required
-def add_review(request, product_id):
-    """ Add a review to a product """
-    product = get_object_or_404(Product, pk=product_id)
-    if request.method == 'POST':
-        comment = request.POST.get('comment')
-        Review.objects.create(product=product, user=request.user, comment=comment, status='pending')
-        messages.success(request, 'Review submitted successfully. It will be visible once approved.')
-    return redirect('product_detail', product_id=product_id)
 
 
 @login_required
 def edit_review(request, review_id):
-    """ Edit a review """
-    review = get_object_or_404(Review, pk=review_id)
-    if request.user != review.user:
-        messages.error(request, "You do not have permission to edit this review.")
-        return redirect('product_detail', product_id=review.product.id)
+    review = get_object_or_404(Review, id=review_id, user=request.user)
     if request.method == 'POST':
-        comment = request.POST.get('comment')
-        review.comment = comment
-        review.status = 'pending'  
-        review.save()
-        messages.success(request, 'Review updated successfully. It will be visible once approved.')
-        return redirect('product_detail', product_id=review.product.id)
-    context = {'review': review}
-    return render(request, 'products/edit_review.html', context)
-
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Review updated successfully!')
+            return redirect('product_detail', product_id=review.product.id)
+    else:
+        form = ReviewForm(instance=review)
+    # The form processing can be passed back to product_detail or handled here as per your design.
+    return redirect('product_detail', product_id=review.product.id)
 
 @login_required
 def delete_review(request, review_id):
-    """ Delete a review """
-    review = get_object_or_404(Review, pk=review_id)
-    if request.user != review.user:
-        messages.error(request, "You do not have permission to delete this review.")
-        return redirect('product_detail', product_id=review.product.id)
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    product_id = review.product.id
     review.delete()
-    messages.success(request, 'Review deleted successfully.')
-    return redirect('product_detail', product_id=review.product.id)
+    messages.success(request, 'Review deleted successfully!')
+    return redirect('product_detail', product_id=product_id)

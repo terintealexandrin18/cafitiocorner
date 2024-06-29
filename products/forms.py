@@ -6,8 +6,8 @@ from .models import Product, Category, Review
 class ProductForm(forms.ModelForm):
 
     class Meta:
-        model = Product
-        fields = '__all__'
+       model = Product
+       fields = '__all__'
     
     image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
 
@@ -25,3 +25,6 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['rating', 'comment']
+        widgets = {
+            'comment': forms.Textarea(attrs={'rows': 4}),
+        }
