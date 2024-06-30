@@ -106,3 +106,14 @@
     border-top: 2px solid #000;
     margin: 0 auto 20px;
 }
+
+/* Pagination */
+
+.pagination-container {
+    display: inline-block;
+    text-align: center;
+}
+
+.pagination-container a {
+    margin: 0 5px;
+}

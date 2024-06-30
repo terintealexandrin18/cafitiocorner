@@ -2,13 +2,15 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Avg
+from django.core.paginator import Paginator
 from .models import Product, Category, Review
 from .forms import ProductForm, ReviewForm
+from django.db.models.functions import Lower
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
-    products = Product.objects.all()
+    products = Product.objects.all().annotate(avg_rating=Avg('reviews__rating'))
     query = None
     categories = None
     sort = None
@@ -48,27 +50,23 @@ def all_products(request):
         reviews = product.reviews.all()
         average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
         product.average_rating = round(average_rating)
+        product.filled_stars = range(int(product.average_rating))
+        product.empty_stars = range(5 - int(product.average_rating))
+
+    # Pagination
+    paginator = Paginator(products, 8)  # Show 8 products per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     current_sorting = f'{sort}_{direction}'
 
     context = {
-        'products': products,
+        'products': page_obj,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
-    }
-
-    return render(request, 'products/products.html', context)
-
-def product_list(request):
-    products = Product.objects.all().annotate(avg_rating=Avg('reviews__rating'))
-
-    for product in products:
-        product.filled_stars = int(product.avg_rating or 0)
-        product.empty_stars = 5 - product.filled_stars
-
-    context = {
-        'products': products,
+        'sort': sort,
+        'direction': direction,
     }
 
     return render(request, 'products/products.html', context)
