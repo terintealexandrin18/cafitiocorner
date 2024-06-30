@@ -1,9 +1,12 @@
 function toggleEditForm(reviewId) {
     var x = document.getElementById("editForm" + reviewId);
+    var reviewActions = x.closest('.review-item').querySelector('.review-actions');
     if (x.style.display === "none") {
         x.style.display = "block";
+        reviewActions.style.display = "none";
     } else {
         x.style.display = "none";
+        reviewActions.style.display = "block";
     }
 }
 

@@ -1,57 +1,39 @@
-<!-- about/templates/about/about.html -->
 {% extends "base.html" %}
 {% load static %}
 
 {% block extra_css %}
-<style>
-    .about-image {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 20px;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'about/css/about.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container position-relative">
+<div class="container position-relative about-section">
     <div class="row">
-        <div class="col text-center my-1">
+        <div class="col text-center my-4">
             <h1>About Us</h1>
         </div>
     </div>
     <div class="row">
         <!-- Photo on the left -->
-        <div class="col-lg-6">
-            <div class="image-container my-5">
-                <img src="{% static 'about/images/morningcoffee.jpg' %}" alt="Morning Coffee" class="img-fluid about-image" aria-label="Morning Coffee" />
+        <div class="col-lg-5 mb-4">
+            <div class="image-container">
+                <img src="{{ MEDIA_URL }}coffeedark.jpg" alt="Morning Coffee" class="img-fluid about-image" aria-label="Morning Coffee" />
             </div>
         </div>
-        <div class="col-lg-6">
-            <p>Welcome to Cafitio Corner, your one-stop destination for all things coffee. Our mission is to connect coffee enthusiasts with the highest quality beans, brews, and equipment to elevate your coffee journey.</p>
+        <div class="col-lg-7 about-text">
+            <p>Welcome to Cafitio Corner, your go-to destination for premium coffee, machines, and accessories. Our mission is to provide high-quality beans, brews, and equipment to elevate your coffee experience.</p>
             <h2>Our Story</h2>
-            <p>Founded in 2024, Cafitio Corner began with a simple idea: to make exceptional coffee accessible to everyone. Inspired by travels to coffee-growing regions, our founders Alex and Jordan created a space for coffee lovers to discover and enjoy the best beans and brewing methods.</p>
+            <p>Founded in 2024, Cafitio Corner was born out of a passion for exceptional coffee. Inspired by our travels to coffee-growing regions, we created a space for coffee lovers to discover and enjoy the finest beans and brewing methods.</p>
+            <h2>Our Mission</h2>
+            <p>At Cafitio Corner, our mission is to offer a diverse selection of coffee and the best equipment for enthusiasts to craft their perfect cup at home. We aim to be a comprehensive resource for all coffee lovers.</p>
             <h2>Our Values</h2>
             <ul>
-                <li><strong>Quality:</strong> We source only the highest quality coffee beans from reputable farms and roasters.</li>
+                <li><strong>Quality:</strong> We source only the finest coffee beans from trusted farms and roasters.</li>
                 <li><strong>Sustainability:</strong> We promote sustainable practices and partner with environmentally responsible suppliers.</li>
-                <li><strong>Community:</strong> We aim to foster a community of coffee enthusiasts.</li>
-                <li><strong>Innovation:</strong> We explore new ways to enhance your coffee experience.</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col">
-            <h2>What We Offer</h2>
-            <p>At Cafitio Corner, you will find:</p>
-            <ul>
-                <li><strong>Coffee Beans:</strong> A curated selection of single-origin and blended beans.</li>
-                <li><strong>Brewing Equipment:</strong> Top-quality equipment for all brewing methods.</li>
-                <li><strong>Accessories:</strong> Enhance your coffee-making process with our range of accessories.</li>
-                <li><strong>Education:</strong> Resources and guides for coffee lovers at all levels.</li>
+                <li><strong>Community:</strong> We foster a community of coffee enthusiasts.</li>
             </ul>
             <h2>Join Us</h2>
-            <p>Follow us on social media, subscribe to our newsletter, and visit our blog for the latest updates, tips, and exclusive offers. Thank you for choosing Cafitio Corner.</p>
+            <p>Follow us on social media and subscribe to our newsletter for updates, tips, and exclusive offers. Thank you for choosing Cafitio Corner.</p>
         </div>
     </div>
 </div>
