@@ -205,6 +205,7 @@
                                             <textarea name="comment" class="form-control">{{ review.comment }}</textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Update Review</button>
+                                        <button type="button" onclick="toggleEditForm('{{ review.id }}')" class="btn btn-secondary">Cancel</button>
                                     </form>
                                 </div>
                             {% endif %}
