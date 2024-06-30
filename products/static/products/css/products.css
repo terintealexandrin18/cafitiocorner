@@ -107,6 +107,10 @@
     margin: 0 auto 20px;
 }
 
+.reviews-toggle {
+    cursor: pointer;
+}
+
 /* Pagination */
 
 .pagination-container {
