@@ -7,8 +7,6 @@ html, body {
 }
 
 body {
-    background: url('/media/coffee-mugs-and-bens-background-image.jpg') no-repeat center center fixed;
-    background-size: cover;
     color: #555;
     font-family: 'Nanum Gothic', sans-serif;
     font-weight: 400;
@@ -16,6 +14,14 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.cover-image-container {
+    background: url('/media/coffee-mugs-and-bens-background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+}
+
 
 .logo-format {
     text-transform: uppercase;
@@ -448,3 +454,70 @@ input[name='q']::placeholder {
     align-items: center;
 }
 
+/* Footer */
+
+body .footer {
+    background-color: #f8f9fa !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;    
+    margin-top: 20px !important;
+    border-top: 1px solid #e7e7e7 !important;
+}
+
+.footer h5 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer a {
+    color: #333;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+
+.icons-footer .social-icon {
+    font-size: 1.5em;
+    margin: 10px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.icons-footer .social-icon:hover {
+    color: black;
+}
+
+.btn-black {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+.btn-black:hover {
+    background-color: #333;
+}
+
+.footer-banner {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #e7e7e7;
+    margin-top: 20px;
+}
+
+.footer-banner p {
+    margin: 0;
+}
+
+.footer-banner p a {
+    color: #007bff;
+}
+
+.footer-banner p a:hover {
+    text-decoration: underline;
+}

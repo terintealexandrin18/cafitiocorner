@@ -36,7 +36,7 @@
 
     <title>Cafitio Corner {% block extra_title %}{% endblock %}</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100 cover-image-container">
 <header class="container-fluid fixed-top-desktop-only header">
     <div class="row align-items-center justify-content-center">
         <!-- Logo -->
@@ -64,7 +64,7 @@
                             <a class="nav-link" href="{% url 'products' %}"><i class="fas fa-shopping-cart"></i><br> Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-info-circle"></i><br> About Us</a>
+                            <a class="nav-link" href="{% url 'about' %}"><i class="fas fa-info-circle"></i><br> About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fas fa-envelope"></i><br> Contact Us</a>
@@ -140,9 +140,8 @@
     </div>
 </header>
 
-
-
-{% if messages %}
+<main class="flex-grow-1">
+    {% if messages %}
         <div class="message-container">
             {% for message in messages %}
                 {% with message.level as level %}
@@ -159,12 +158,49 @@
             {% endfor %}
         </div>
     {% endif %}
+    
+    {% block page_header %}
+    {% endblock %}
 
-{% block page_header %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
+</main>
 
-{% block content %}
-{% endblock %}
+
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-12">
+                <h5>Follow us on social media:</h5>
+                <div class="icons-footer">
+                    <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <h5>Contact Us</h5>
+                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> 0123456 78910</p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> cafitiocorner@example.com</p>
+            </div>
+            <div class="col-md-4 col-12">
+                <h5>Subscribe to our Newsletter</h5>
+                <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the latest trends and exclusive offers.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <button type="submit" class="btn btn-black">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-banner mt-4">
+            <p>© 2024 This website is for educational use only! Made and Designed by: <a href="https://github.com/terintealexandrin18" target="_blank">Alex Terinte</a></p>
+            <p>Please review our <a href="https://www.example.com/privacy-policy" target="_blank"><strong>Privacy Policy</strong></a>.</p>
+        </div>
+    </div>
+</footer>
 
 {% block postloadjs %}
 <script type="text/javascript">
