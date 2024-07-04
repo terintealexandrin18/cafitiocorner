@@ -185,13 +185,23 @@
                 <p><i class="fas fa-envelope"></i> <strong>Email:</strong> cafitiocorner@example.com</p>
             </div>
             <div class="col-md-4 col-12">
-                <h5>Subscribe to our Newsletter</h5>
-                <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the latest trends and exclusive offers.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                <form method="POST" action="{% url 'newsletters' %}" id="newsletters-form">
+                    {% csrf_token %}
+                    <div class="justify-content-center"></div>
+                    <div class="modal-body text-center">
+                        <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the latest trends and exclusive offers.</p>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Enter your email" required autocomplete="email">
+                            <div class="d-flex gap-2 flex-column">
+                                <button class="btn btn-primary mt-2" type="submit" id="subscribe">Subscribe</button>
+                                <button class="btn btn-warning mt-2" type="button" id="unsubscribe" onclick="confirmUnsubscribe()">Unsubscribe</button>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-black">Subscribe</button>
+                </form>
+                <form method="POST" action="{% url 'unsubscribe' %}" id="unsubscribe-form" style="display: none;">
+                    {% csrf_token %}
+                    <input type="hidden" name="email" id="unsubscribe-email">
                 </form>
             </div>
         </div>
@@ -206,6 +216,26 @@
 <script type="text/javascript">
     $('.toast').toast('show');
 </script>
+
+<script type="text/javascript">
+    function confirmUnsubscribe() {
+    const emailField = document.querySelector('input[name="email"]');
+    const email = emailField.value;
+
+    if (!email) {
+        alert("Please enter your email address.");
+        return;
+    }
+
+    if (confirm("Are you sure you want to unsubscribe?")) {
+        const unsubscribeForm = document.getElementById("unsubscribe-form");
+        const unsubscribeEmailField = document.getElementById("unsubscribe-email");
+        unsubscribeEmailField.value = email;
+        unsubscribeForm.submit();
+    }
+}
+</script>
+
 {% endblock %}
 
 </body>
