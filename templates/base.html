@@ -2,241 +2,337 @@
 
 <!doctype html>
 <html lang="en">
-<head>
 
+<head>
     {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
 
     {% block extra_meta %}
     {% endblock %}
 
     {% block corecss %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
     {% block corejs %}
-        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <!-- Stripe -->
-        <script src="https://js.stripe.com/v3/"></script>
-        {% endblock %}
+    <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    {% endblock %}
 
     {% block extra_js %}
     {% endblock %}
 
     <title>Cafitio Corner {% block extra_title %}{% endblock %}</title>
 </head>
+
 <body class="d-flex flex-column min-vh-100 cover-image-container">
-<header class="container-fluid fixed-top-desktop-only header">
-    <div class="row align-items-center justify-content-center">
-        <!-- Logo -->
-        <div class="col-12 text-center my-auto py-2 py-lg-0">
-            <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                <h2 class="my-0 logo-font"><strong>Cafitio</strong> Corner</h2>
-            </a>
+    <header class="container-fluid fixed-top-desktop-only header">
+        <div class="row align-items-center justify-content-center">
+            <!-- Logo -->
+            <div class="col-12 text-center my-auto py-2 py-lg-0">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <h2 class="my-0 logo-font"><strong>Cafitio</strong> Corner</h2>
+                </a>
+            </div>
         </div>
-    </div>
-    <div class="row align-items-center justify-content-between">
-        <!-- Icons and Navigation -->
-        <div class="col-12 my-auto py-2 py-lg-0">
-            <nav class="navbar navbar-expand-lg navbar-light p-0 justify-content-between">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#searchBar" aria-controls="searchBar" aria-expanded="false" aria-label="Toggle search">
-                    <i class="fas fa-search"></i>
-                </button>
-                <a class="nav-link d-inline d-lg-none" href="#"><i class="fas fa-user"></i></a>
-                <a class="nav-link d-inline d-lg-none" href="#"><i class="fas fa-shopping-cart"></i></a>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'products' %}"><i class="fas fa-shopping-cart"></i><br> Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'about' %}"><i class="fas fa-info-circle"></i><br> About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-envelope"></i><br> Contact Us</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0 mx-auto d-none d-lg-flex" method="GET" action="{% url 'products' %}">
-                        <input class="form-control border-black rounded-0 mr-sm-2" type="search" name="q" placeholder="Search...">
-                        <button class="btn btn-black" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                    <ul class="navbar-nav ml-auto">
-                        <!-- User Account -->
-                        <li class="nav-item dropdown d-none d-lg-inline">
-                            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="text-center">
-                                    <i class="fas fa-user fa-lg"></i>
-                                    <p>My Account</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                                {% if request.user.is_authenticated %}
+        <div class="row align-items-center justify-content-between">
+            <!-- Icons and Navigation -->
+            <div class="col-12 my-auto py-2 py-lg-0">
+                <nav class="navbar navbar-expand-lg navbar-light p-0 justify-content-between">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#searchBar"
+                        aria-controls="searchBar" aria-expanded="false" aria-label="Toggle search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a class="nav-link d-inline d-lg-none" href="#"><i class="fas fa-user"></i></a>
+                    <a class="nav-link d-inline d-lg-none" href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'products' %}"><i class="fas fa-shopping-cart"></i><br>
+                                    Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'about' %}"><i class="fas fa-info-circle"></i><br>
+                                    About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-envelope"></i><br> Contact Us</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0 mx-auto d-none d-lg-flex" method="GET"
+                            action="{% url 'products' %}">
+                            <input class="form-control border-black rounded-0 mr-sm-2" type="search" name="q"
+                                placeholder="Search...">
+                            <button class="btn btn-black" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                        <ul class="navbar-nav ml-auto">
+                            <!-- User Account -->
+                            <li class="nav-item dropdown d-none d-lg-inline">
+                                <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <div class="text-center">
+                                        <i class="fas fa-user fa-lg"></i>
+                                        <p>My Account</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                    {% if request.user.is_authenticated %}
                                     {% if request.user.is_superuser %}
-                                        <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                                    <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
                                     {% endif %}
                                     <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                     <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                                {% else %}
+                                    {% else %}
                                     <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
                                     <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                                {% endif %}
-                            </div>
-                        </li>
-                        <!-- Cart Icon -->
-                        <li class="nav-item d-none d-lg-inline">
-                            <a class="nav-link" href="{% url 'view_bag' %}">
-                                <div class="text-center">
-                                    <i class="fas fa-shopping-bag fa-lg {% if grand_total %}cart-filled{% else %}cart-empty{% endif %}"></i>
-                                    <p>
-                                        {% if grand_total %}
-                                            £{{ grand_total|floatformat:2 }}
-                                        {% else %}
-                                            £0.00
-                                        {% endif %}
-                                    </p>
+                                    {% endif %}
                                 </div>
-                            </a>
-                        </li>
-                    </ul> 
-                </div>
-            </nav>
-        </div>
-    </div>
-    <div class="row align-items-center d-lg-none">
-        <!-- Search Bar -->
-        <div class="col-12 my-auto py-2 py-lg-0 collapse" id="searchBar">
-            <form method="GET" action="{% url 'products' %}">
-                <div class="input-group w-100">
-                    <input class="form-control border-black rounded-0" type="text" name="q" placeholder="Search...">
-                    <div class="input-group-append">
-                        <button class="btn btn-black" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
+                            </li>
+                            <!-- Cart Icon -->
+                            <li class="nav-item d-none d-lg-inline">
+                                <a class="nav-link" href="{% url 'view_bag' %}">
+                                    <div class="text-center">
+                                        <i
+                                            class="fas fa-shopping-bag fa-lg {% if grand_total %}cart-filled{% else %}cart-empty{% endif %}"></i>
+                                        <p>
+                                            {% if grand_total %}
+                                            £{{ grand_total|floatformat:2 }}
+                                            {% else %}
+                                            £0.00
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div id="delivery-banner" class="row text-center">
-        <div class="col">
-            <h3 class="my-1">FREE DELIVERY FOR ALL ORDERS OVER £{{ free_delivery_threshold }}</h3>
-        </div>
-    </div>
-</header>
-
-<main class="flex-grow-1">
-    {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
-    {% endif %}
-    
-    {% block page_header %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-</main>
-
-
-<!-- Footer -->
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-12">
-                <h5>Follow us on social media:</h5>
-                <div class="icons-footer">
-                    <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/company/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                </div>
+                </nav>
             </div>
-            <div class="col-md-4 col-12">
-                <h5>Contact Us</h5>
-                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> 0123456 78910</p>
-                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> cafitiocorner@example.com</p>
-            </div>
-            <div class="col-md-4 col-12">
-                <form method="POST" action="{% url 'newsletters' %}" id="newsletters-form">
-                    {% csrf_token %}
-                    <div class="justify-content-center"></div>
-                    <div class="modal-body text-center">
-                        <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the latest trends and exclusive offers.</p>
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Enter your email" required autocomplete="email">
-                            <div class="d-flex gap-2 flex-column">
-                                <button class="btn btn-primary mt-2" type="submit" id="subscribe">Subscribe</button>
-                                <button class="btn btn-warning mt-2" type="button" id="unsubscribe" onclick="confirmUnsubscribe()">Unsubscribe</button>
-                            </div>
+        </div>
+        <div class="row align-items-center d-lg-none">
+            <!-- Search Bar -->
+            <div class="col-12 my-auto py-2 py-lg-0 collapse" id="searchBar">
+                <form method="GET" action="{% url 'products' %}">
+                    <div class="input-group w-100">
+                        <input class="form-control border-black rounded-0" type="text" name="q" placeholder="Search...">
+                        <div class="input-group-append">
+                            <button class="btn btn-black" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </div>
                 </form>
-                <form method="POST" action="{% url 'unsubscribe' %}" id="unsubscribe-form" style="display: none;">
-                    {% csrf_token %}
-                    <input type="hidden" name="email" id="unsubscribe-email">
-                </form>
             </div>
         </div>
-        <div class="footer-banner mt-4">
-            <p>© 2024 This website is for educational use only! Made and Designed by: <a href="https://github.com/terintealexandrin18" target="_blank">Alex Terinte</a></p>
-            <p>Please review our <a href="https://www.example.com/privacy-policy" target="_blank"><strong>Privacy Policy</strong></a>.</p>
+        <div id="delivery-banner" class="row text-center">
+            <div class="col">
+                <h3 class="my-1">FREE DELIVERY FOR ALL ORDERS OVER £{{ free_delivery_threshold }}</h3>
+            </div>
         </div>
-    </div>
-</footer>
+    </header>
 
-{% block postloadjs %}
-<script type="text/javascript">
-    $('.toast').toast('show');
-</script>
+    <main class="flex-grow-1">
+        {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+            {% with message.level as level %}
+            {% if level == 40 %}
+            {% include 'includes/toasts/toast_error.html' %}
+            {% elif level == 30 %}
+            {% include 'includes/toasts/toast_warning.html' %}
+            {% elif level == 25 %}
+            {% include 'includes/toasts/toast_success.html' %}
+            {% else %}
+            {% include 'includes/toasts/toast_info.html' %}
+            {% endif %}
+            {% endwith %}
+            {% endfor %}
+        </div>
+        {% endif %}
 
-<script type="text/javascript">
-    function confirmUnsubscribe() {
-    const emailField = document.querySelector('input[name="email"]');
-    const email = emailField.value;
+        {% block page_header %}
+        {% endblock %}
 
-    if (!email) {
-        alert("Please enter your email address.");
-        return;
-    }
+        {% block content %}
+        {% endblock %}
+    </main>
 
-    if (confirm("Are you sure you want to unsubscribe?")) {
-        const unsubscribeForm = document.getElementById("unsubscribe-form");
-        const unsubscribeEmailField = document.getElementById("unsubscribe-email");
-        unsubscribeEmailField.value = email;
-        unsubscribeForm.submit();
-    }
-}
-</script>
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    <h5>Follow us on social media:</h5>
+                    <div class="icons-footer">
+                        <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" class="social-icon"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/" target="_blank" class="social-icon"><i
+                                class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> 0123456 78910</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> cafitiocorner@example.com</p>
+                </div>
+                <div class="col-md-4 col-12">
+                    <h5>Subscribe</h5>
+                    <form method="POST" action="{% url 'newsletters' %}" id="newsletters-form" novalidate>
+                        {% csrf_token %}
+                        <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the
+                            latest trends and exclusive offers.</p>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Enter your email">
+                            <div class="d-flex gap-2 flex-column">
+                                <button class="btn btn-primary mt-2" type="submit" id="subscribe">Subscribe</button>
+                                <button class="btn btn-warning mt-2" type="button" id="unsubscribe" data-toggle="modal"
+                                    data-target="#unsubscribeModal">Unsubscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form method="POST" action="{% url 'unsubscribe' %}" id="unsubscribe-form" style="display: none;">
+                        {% csrf_token %}
+                        <input type="hidden" name="email" id="unsubscribe-email">
+                    </form>
+                </div>
 
-{% endblock %}
+                <!-- Bootstrap modal for unsubscribe confirmation -->
+                <div class="modal fade" id="unsubscribeModal" tabindex="-1" role="dialog"
+                    aria-labelledby="unsubscribeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="unsubscribeModalLabel">Confirm Unsubscription</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to unsubscribe?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-warning"
+                                    id="confirmUnsubscribeBtn">Unsubscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bootstrap modal for empty email alert -->
+                <div class="modal fade" id="emptyEmailModal" tabindex="-1" role="dialog"
+                    aria-labelledby="emptyEmailModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="emptyEmailModalLabel">Empty Email</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Please enter your email address to subscribe.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bootstrap modal for empty email alert -->
+                <div class="modal fade" id="emptyEmailModal" tabindex="-1" role="dialog"
+                    aria-labelledby="emptyEmailModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="emptyEmailModalLabel">Empty Email</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Please enter your email address to subscribe.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-banner mt-4">
+                    <p>© 2024 This website is for educational use only! Made and Designed by: <a
+                            href="https://github.com/terintealexandrin18" target="_blank">Alex Terinte</a></p>
+                    <p>Please review our <a href="https://www.example.com/privacy-policy"
+                            target="_blank"><strong>Privacy
+                                Policy</strong></a>.</p>
+                </div>
+            </div>
+    </footer>
+
+    {% block postloadjs %}
+    <script>
+        $(document).ready(function () {
+            $('.toast').toast('show');
+
+            // Handle subscription form submission
+            $('#newsletters-form').on('submit', function (event) {
+                event.preventDefault(); // Prevent form submission to inspect data
+                const emailInput = $(this).find('input[name="email"]').val();
+                console.log("Subscription email input:",
+                emailInput); // Log the email input to the console
+                if (!emailInput) {
+                    $('#emptyEmailModal').modal('show');
+                } else {
+                    $(this).off('submit').submit(); // Allow form submission if the email is present
+                }
+            });
+
+            // Handle unsubscribe confirmation and submission
+            $('#confirmUnsubscribeBtn').on('click', function () {
+                const emailInput = $('#newsletters-form').find('input[name="email"]').val();
+                console.log("Unsubscribe email input:",
+                emailInput); // Log the email input to the console
+                if (emailInput) {
+                    $('#unsubscribe-email').val(emailInput);
+                    $('#unsubscribe-form').submit();
+                } else {
+                    $('#emptyEmailModal').modal('show');
+                }
+                $('#unsubscribeModal').modal('hide');
+            });
+        });
+    </script>
+    {% endblock %}
 
 </body>
+
 </html>

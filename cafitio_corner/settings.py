@@ -92,7 +92,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
-                'newsletters.context_processors.render_subscribe_form',
+                'newsletter.contexts.render_subscribe_form',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

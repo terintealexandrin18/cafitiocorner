@@ -3,34 +3,29 @@ from django.contrib import messages
 from .models import Subscriber
 from .forms import SubscriberForm, UnsubscribeForm
 
+from django.http import HttpResponseRedirect
+from django.contrib import messages
+from .models import Subscriber
+from .forms import SubscriberForm
+
 def add_subscriber(request):
-    form = SubscriberForm(request.POST or None)
-
-    if form.is_valid():
-        instance = form.save(commit=False)
-
-        existing_subscriber = Subscriber.objects.filter(email=instance.email).first()
-        if existing_subscriber:
-            if existing_subscriber.is_subscribed:
-                messages.error(
-                    request,
-                    f"{existing_subscriber.email} already exists in our database. "
-                    "Please check your email and try again."
-                )
+    if request.method == 'POST':
+        form = SubscriberForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            existing_subscriber = Subscriber.objects.filter(email=instance.email).first()
+            if existing_subscriber:
+                if existing_subscriber.is_subscribed:
+                    messages.error(request, f"{existing_subscriber.email} already exists in our database.")
+                else:
+                    existing_subscriber.is_subscribed = True
+                    existing_subscriber.save()
+                    messages.success(request, f"{existing_subscriber.email} has been re-subscribed to the newsletter")
             else:
-                existing_subscriber.is_subscribed = True
-                existing_subscriber.save()
-                messages.success(
-                    request,
-                    f"{existing_subscriber.email} has been re-subscribed to the newsletter"
-                )
+                instance.save()
+                messages.success(request, f"{instance.email} has been added to our newsletter")
         else:
-            instance.save()
-            messages.success(
-                request,
-                f"{instance.email} has been added to our the newsletter"
-            )
-
+            messages.error(request, "Please correct the error below.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def unsubscribe(request):
@@ -40,21 +35,13 @@ def unsubscribe(request):
             email = form.cleaned_data['email']
             try:
                 subscriber = Subscriber.objects.get(email=email)
-                subscriber.unsubscribe()
-                messages.success(
-                    request,
-                    f"Successfully unsubscribed {email} from our newsletter."
-                )
+                if not subscriber.is_subscribed:
+                    messages.error(request, f"{email} is already unsubscribed.")
+                else:
+                    subscriber.unsubscribe()
+                    messages.success(request, f"Successfully unsubscribed {email} from our newsletter.")
             except Subscriber.DoesNotExist:
-                messages.error(
-                    request,
-                    f"No subscriber found with the email {email}. "
-                    f"Please check your email and try again."
-                )
+                messages.error(request, f"No subscriber found with the email {email}.")
         else:
-            messages.error(
-                request,
-                "Invalid form submission. Check your input and try again."
-            )
-
+            messages.error(request, "Invalid form submission.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
