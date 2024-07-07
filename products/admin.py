@@ -18,10 +18,18 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = (
-        'friendly_name',
-        'name',
-    )
+    list_display = ('friendly_name', 'name', 'parent')
+    list_filter = ('parent',)
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        queryset = queryset.select_related('parent')
+        return queryset
+
+    def parent(self, obj):
+        return obj.parent.friendly_name if obj.parent else None
+    parent.admin_order_field = 'parent__friendly_name'
+    parent.short_description = 'Parent Category'
 
 
 class ReviewAdmin(admin.ModelAdmin):

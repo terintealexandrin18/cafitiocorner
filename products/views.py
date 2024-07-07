@@ -33,7 +33,12 @@ def all_products(request):
             
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
+            
+            # Filter products by category and its subcategories
+            products = products.filter(
+                Q(category__name__in=categories) | 
+                Q(category__parent__name__in=categories)
+            )
             categories = Category.objects.filter(name__in=categories)
 
         if 'q' in request.GET:
@@ -42,7 +47,7 @@ def all_products(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
             
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains(query))
             products = products.filter(queries)
 
     # Calculate the average rating for each product
@@ -54,7 +59,7 @@ def all_products(request):
         product.empty_stars = range(5 - int(product.average_rating))
 
     # Pagination
-    paginator = Paginator(products, 8)  # Show 8 products per page
+    paginator = Paginator(products, 8)  
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
