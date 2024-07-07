@@ -1,30 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 text-center my-5">
-            <h1 class="text-white">Please check the Food & Bites category!</h1>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4 mb-4 text-center">
-            <div class="card">
-                <img src="{% static 'images/special_offer.jpg' %}" class="card-img-top" alt="Special Offer">
-            </div>
-            <a href="{% url 'products' %}" class="btn btn-black btn-lg shop-now-button mt-3">View Special Offers</a>
-        </div>
-    </div>
-</div>
-{% endblock %}
-
 {% block content %}
-<div class="container">
-    <div class="row h-100 align-items-center justify-content-center">
-        <div class="col-12 col-md-6 text-center">
-            <h1 class="display-4 text-white">Fuel Your Day, Brew Your Way!</h1>
-            <div class="my-5">
+<div class="container-fluid">
+    <div class="row align-items-center justify-content-start" style="min-height: calc(100vh - 56px);">
+        <div class="col-12 col-md-6 ml-md-5">
+            <h1 class="display-4 text-white text-left ml-md-3">Fuel Your Day, Brew Your Way!</h1>
+            <div class="my-5 text-left ml-md-3">
                 <a href="{% url 'products' %}" class="btn btn-black btn-lg shop-now-button">Shop now</a>
             </div>
         </div>
