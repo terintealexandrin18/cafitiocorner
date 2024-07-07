@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
 body {
@@ -78,10 +78,27 @@ body {
     font-size: 0.875rem;
 }
 
-#delivery-banner {
+
+/* Delivery Banner */
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    50% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  #delivery-banner {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
     background-color: #bf6a49;
     color: white;
-}
+  }
+  
+  #delivery-banner h3 {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+  }
 
 .text-white {
     color: white !important;
