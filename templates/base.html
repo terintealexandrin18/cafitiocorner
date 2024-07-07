@@ -46,14 +46,7 @@
 
 <body class="d-flex flex-column min-vh-100 cover-image-container">
     <header class="container-fluid fixed-top-desktop-only header">
-        <div class="row align-items-center justify-content-center">
-            <!-- Logo -->
-            <div class="col-12 text-center my-auto py-2 py-lg-0">
-                <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="my-0 logo-font"><strong>Cafitio</strong> Corner</h2>
-                </a>
-            </div>
-        </div>
+        
         <div class="row align-items-center justify-content-between">
             <!-- Icons and Navigation -->
             <div class="col-12 my-auto py-2 py-lg-0">
@@ -71,6 +64,15 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
+                                <a class="nav-link" href="{% url 'home' %}">
+                                    <img src="{{ MEDIA_URL }}cafitio-logo1.png" alt="Cafitio Corner Logo"
+                                        class="img-fluid" style="max-height: 110px;">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i><br>Home</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'products' %}"><i class="fas fa-shopping-cart"></i><br>
                                     Shop</a>
                             </li>
@@ -79,7 +81,8 @@
                                     About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'contact' %}"><i class="fas fa-envelope"></i><br> Contact Us</a>
+                                <a class="nav-link" href="{% url 'contact' %}"><i class="fas fa-envelope"></i><br>
+                                    Contact Us</a>
                             </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0 mx-auto d-none d-lg-flex" method="GET"
@@ -149,7 +152,7 @@
                 </form>
             </div>
         </div>
-        <div id="delivery-banner" class="row text-center">
+        <div id="delivery-banner" class="text-center">
             <div class="col">
                 <h3 class="my-1">FREE DELIVERY FOR ALL ORDERS OVER £{{ free_delivery_threshold }}</h3>
             </div>
@@ -183,7 +186,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-light">
+    <footer class="footer mt-auto py-3 bg-light" style="background-color: #D1CBB8;">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-12">
@@ -206,12 +209,14 @@
                     <h5>Subscribe</h5>
                     <form method="POST" action="{% url 'newsletters' %}" id="newsletters-form" novalidate>
                         {% csrf_token %}
-                        <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the latest trends and exclusive offers.</p>
+                        <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the
+                            latest trends and exclusive offers.</p>
                         <div class="form-group">
                             <input type="email" name="email" class="form-control" placeholder="Enter your email">
                             <div class="d-flex gap-2">
                                 <button class="btn btn-primary mt-2" type="submit" id="subscribe">Subscribe</button>
-                                <button class="btn btn-warning mt-2" type="button" id="unsubscribe" data-toggle="modal" data-target="#unsubscribeModal">Unsubscribe</button>
+                                <button class="btn btn-warning mt-2" type="button" id="unsubscribe" data-toggle="modal"
+                                    data-target="#unsubscribeModal">Unsubscribe</button>
                             </div>
                         </div>
                     </form>
@@ -220,9 +225,10 @@
                         <input type="hidden" name="email" id="unsubscribe-email">
                     </form>
                 </div>
-                
+    
                 <!-- Bootstrap modal for unsubscribe confirmation -->
-                <div class="modal fade" id="unsubscribeModal" tabindex="-1" role="dialog" aria-labelledby="unsubscribeModalLabel" aria-hidden="true">
+                <div class="modal fade" id="unsubscribeModal" tabindex="-1" role="dialog"
+                    aria-labelledby="unsubscribeModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -236,14 +242,16 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-warning" id="confirmUnsubscribeBtn">Unsubscribe</button>
+                                <button type="button" class="btn btn-warning"
+                                    id="confirmUnsubscribeBtn">Unsubscribe</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+    
                 <!-- Bootstrap modal for empty email alert -->
-                <div class="modal fade" id="emptyEmailModal" tabindex="-1" role="dialog" aria-labelledby="emptyEmailModalLabel" aria-hidden="true">
+                <div class="modal fade" id="emptyEmailModal" tabindex="-1" role="dialog"
+                    aria-labelledby="emptyEmailModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -261,16 +269,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="footer-banner mt-4 d-flex justify-content-center align-items-center">
-                        <p class="mb-0 text-center">
-                            © 2024 This website is for educational use only! Made and Designed by: 
-                            <a href="https://github.com/terintealexandrin18" target="_blank">Alex Terinte</a> |
-                            <a href="https://www.example.com/privacy-policy" target="_blank"><strong>Privacy Policy</strong></a>.
-                        </p>
-                    </div>
-                </div>
             </div>
+        </div>
+        <div class="container-fluid">
+            <div class="footer-banner mt-4 d-flex justify-content-center align-items-center">
+                <p class="mb-0 text-center">
+                    © 2024 This website is for educational use only! Made and Designed by:
+                    <a href="https://github.com/terintealexandrin18" target="_blank">Alex Terinte</a> |
+                    <a href="https://www.example.com/privacy-policy" target="_blank"><strong>Privacy
+                        Policy</strong></a>.
+                </p>
+            </div>
+        </div>
     </footer>
 
     {% block postloadjs %}
@@ -280,7 +290,7 @@
 
             // Handle subscription form submission
             $('#newsletters-form').on('submit', function (event) {
-                event.preventDefault(); 
+                event.preventDefault();
                 const emailInput = $(this).find('input[name="email"]').val();
                 if (!emailInput) {
                     $('#emptyEmailModal').modal('show');
@@ -291,7 +301,7 @@
 
             // Handle unsubscribe confirmation and submission
             $('#confirmUnsubscribeBtn').on('click', function () {
-                const emailInput = $('#newsletters-form').find('input[name="email"]').val(); 
+                const emailInput = $('#newsletters-form').find('input[name="email"]').val();
                 if (emailInput) {
                     $('#unsubscribe-email').val(emailInput);
                     $('#unsubscribe-form').submit();

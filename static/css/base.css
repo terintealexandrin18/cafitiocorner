@@ -1,9 +1,9 @@
 /* Style default body */
-
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 body {
@@ -15,17 +15,16 @@ body {
     flex-direction: column;
 }
 
+.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+}
+
 .cover-image-container {
     background: url('/media/coffee-mugs-and-bens-background-image.jpg') no-repeat center center fixed;
     background-size: cover;
     width: 100%;
     height: 500px;
-}
-
-
-.logo-format {
-    text-transform: uppercase;
-    font-weight: 300px;
 }
 
 .header-container {
@@ -49,7 +48,7 @@ body {
 }
 
 .header {
-    background-color: white;
+    background-color:  #D1CBB8;
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
 }
@@ -79,6 +78,11 @@ body {
     font-size: 0.875rem;
 }
 
+#delivery-banner {
+    background-color: #bf6a49;
+    color: white;
+}
+
 .text-white {
     color: white !important;
 }
@@ -95,7 +99,6 @@ a {
     color: black;
     text-decoration: none;
     transition: color 0.3s ease;
-    margin-left: 15px;
 }
 
 a:hover,
@@ -115,7 +118,6 @@ a:focus {
 
 .navbar-nav .nav-item .nav-link {
     color: black !important;
-    margin: 5px 0; 
     text-align: center; 
 }
 
@@ -128,13 +130,9 @@ a:focus {
     padding-right: 20px;
 }
 
-/* Sorting dropdown */
-
 #sort-selector {
     width: auto;
 }
-
-/* Button to scroll up */
 
 .btt-button {
     height: 50px;
@@ -170,8 +168,6 @@ a:focus {
     border: 1px solid black;
 }
 
-/* Btn for add to bag */
-
 .btn-bag {
     background: brown;
     color: white;
@@ -182,8 +178,6 @@ a:focus {
     border: 1px solid black;
     text-align: center;
 }
-
-/* Page overlay */
 
 .overlay {
     height: 100%;
@@ -198,8 +192,6 @@ a:focus {
 input[name='q']::placeholder {
     color: #aab7c4;
 }
-
-/* Messages toasts */
 
 .message-container {
     position: fixed;
@@ -216,7 +208,6 @@ input[name='q']::placeholder {
     height: 2px;
 }
 
-/* Convenience classes - colors copied from Bootstrap */
 .arrow-primary {
     border-bottom-color: #007bff !important;
 }
@@ -255,8 +246,6 @@ input[name='q']::placeholder {
     overflow-y: auto;
 }
 
-/* Allauth form formatting */
-
 .allauth-form-inner-content p {
     margin-top: 1.5rem;
     
@@ -292,8 +281,6 @@ input[name='q']::placeholder {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0;
-
-    /* standard bootstrap btn transitions */
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
@@ -354,8 +341,6 @@ input[name='q']::placeholder {
         margin: 10px 15px; 
     }
 }
-
-/* Product Form */
 
 .btn-file {
     position: relative;
@@ -457,7 +442,7 @@ input[name='q']::placeholder {
 /* Footer */
 
 body .footer {
-    background-color: #f8f9fa !important;
+    background-color: #D1CBB8 !important;
     padding-top: 60px !important;
     padding-bottom: 60px !important;    
     margin-top: 20px !important;
@@ -478,7 +463,6 @@ body .footer {
     margin-right: 10px;
     font-size: 20px;
 }
-
 
 .icons-footer .social-icon {
     font-size: 1.5em;
@@ -503,11 +487,12 @@ body .footer {
 }
 
 .footer-banner {
-    background-color: #f8f9fa;
+    background-color: #BF6A49;
     padding: 10px;
     text-align: center;
     border-top: 1px solid #e7e7e7;
     margin-top: 20px;
+    width: 100%;
 }
 
 .footer-banner p {
