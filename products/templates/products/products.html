@@ -26,7 +26,7 @@
     <!-- Product counter and link -->
     <div class="row">
         <div class="col-12 col-md-6 order-md-first d-flex justify-content-center justify-content-md-start">
-            <p class="text-muted mt-3 text-center text-md-left">
+            <p class="ml-3 text-muted mt-3 text-center text-md-left">
                 {% if search_term or current_categories or current_sorting != 'None_None' %}
                     <span class="small"><a class="link-dark" href="{% url 'products' %}">Products Home</a> | </span>
                 {% endif %}
@@ -38,7 +38,7 @@
         <!-- Sort selector -->
         <div class="sort-select-wrapper col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
             <select id="sort-selector"
-                class="custom-select custom-select-sm rounded border {% if current_sorting != 'None_None' %}border-blue{% endif %}">
+                class="mr-3 custom-select custom-select-sm rounded border {% if current_sorting != 'None_None' %}border-blue{% endif %}">
                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...
                 </option>
                 <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low

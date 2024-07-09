@@ -47,38 +47,50 @@
 <body class="d-flex flex-column min-vh-100 cover-image-container">
     <header class="container-fluid fixed-top-desktop-only header">
         <div class="row align-items-center justify-content-between">
-
             <!-- Icons and Navigation -->
             <div class="col-12 my-auto py-2 py-lg-0">
                 <nav class="navbar navbar-expand-lg navbar-light p-0 justify-content-between align-items-center">
                     <div class="navbar-brand">
                         <a class="nav-link" href="{% url 'home' %}">
-                            <img src="{{ MEDIA_URL }}cafitio-logo1.png" alt="Cafitio Corner Logo" class="img-fluid"
-                                style="max-height: 110px;">
+                            <img src="{{ MEDIA_URL }}cafitio-logo1.png" alt="Cafitio Corner Logo" style="max-height: 100px;">
                         </a>
                     </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item mr-1">
-                                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                                <a class="nav-link d-none d-lg-block" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                                <a class="nav-link d-lg-none" href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item mr-1">
-                                <a class="nav-link" href="{% url 'products' %}"><i class="fas fa-shopping-cart"></i> Shop</a>
+                                <a class="nav-link d-none d-lg-block" href="{% url 'products' %}"><i class="fas fa-shopping-cart"></i> Shop</a>
+                                <a class="nav-link d-lg-none" href="{% url 'products' %}">Shop</a>
                             </li>
                             <li class="nav-item mr-1">
-                                <a class="nav-link" href="{% url 'about' %}"><i class="fas fa-info-circle"></i> About Us</a>
+                                <a class="nav-link d-none d-lg-block" href="{% url 'about' %}"><i class="fas fa-info-circle"></i> About Us</a>
+                                <a class="nav-link d-lg-none" href="{% url 'about' %}">About Us</a>
                             </li>
                             <li class="nav-item mr-1">
-                                <a class="nav-link" href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact Us</a>
+                                <a class="nav-link d-none d-lg-block" href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact Us</a>
+                                <a class="nav-link d-lg-none" href="{% url 'contact' %}">Contact Us</a>
                             </li>
                         </ul>
-                        <form class="form-inline my-2 my-lg-0 mx-2" method="GET" action="{% url 'products' %}">
-                            <input class="form-control border-black rounded-0 mr-2" type="search" name="q" placeholder="Search...">
-                            <button class="btn btn-black" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
+
+                        <!-- Search Bar -->
+                        <form class="form-inline my-2 my-lg-0 mx-2 w-100" method="GET" action="{% url 'products' %}">
+                            <div class="input-group w-100">
+                                <input class="form-control border-secondary rounded-0" type="search" name="q" placeholder="Search...">
+                                <div class="input-group-append">
+                                    <button class="btn bg-white border-secondary border-left-0 rounded-0" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                         <ul class="navbar-nav ml-auto align-items-center">
+
                             <!-- User Account -->
                             <li class="nav-item dropdown d-none d-lg-inline">
                                 <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -100,6 +112,7 @@
                                     {% endif %}
                                 </div>
                             </li>
+
                             <!-- Cart Icon -->
                             <li class="nav-item d-none d-lg-inline">
                                 <a class="nav-link" href="{% url 'view_bag' %}">
@@ -120,28 +133,14 @@
                 </nav>
             </div>
         </div>
-        <div class="row align-items-center d-lg-none">
-            <!-- Search Bar -->
-            <div class="col-12 my-auto py-2 py-lg-0 collapse" id="searchBar">
-                <form method="GET" action="{% url 'products' %}">
-                    <div class="input-group w-100">
-                        <input class="form-control border-black rounded-0" type="text" name="q" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button class="btn btn-black" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
         <div id="delivery-banner" class="text-center">
-            <div class="col">
+            <div class="col-12">
                 <h3 class="my-1">FREE DELIVERY FOR ALL ORDERS OVER £{{ free_delivery_threshold }}</h3>
             </div>
         </div>
     </header>
 
+    <!-- Messages -->
     <main class="flex-grow-1">
         {% if messages %}
         <div class="message-container">
@@ -169,24 +168,24 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-light" style="background-color: #D1CBB8;">
-        <div class="container">
+    <footer class="footer mt-auto pt-sm-5 pt-md-4 bg-light">
+        <div class="container p-3">
             <div class="row">
-                <div class="col-md-4 col-12">
-                    <h5>Follow us on social media:</h5>
+                <div class="col-md-4 col-12 mb-4 mb-md-0">
+                    <h4>Follow us on social media:</h4>
                     <div class="icons-footer">
                         <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.linkedin.com/company/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4 col-12">
-                    <h5>Contact Us</h5>
+                <div class="col-md-4 col-12 mb-4 mb-md-0">
+                    <h4>Contact Us</h4>
                     <p><i class="fas fa-phone"></i> <strong>Phone:</strong> 0123456 78910</p>
                     <p><i class="fas fa-envelope"></i> <strong>Email:</strong> cafitiocorner@example.com</p>
                 </div>
-                <div class="col-md-4 col-12">
-                    <h5>Subscribe</h5>
+                <div class="col-md-4 col-12 mb-4 mb-md-0">
+                    <h4>Subscribe</h4>
                     <form method="POST" action="{% url 'newsletters' %}" id="newsletters-form" novalidate>
                         {% csrf_token %}
                         <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the latest trends and exclusive offers.</p>
@@ -203,7 +202,7 @@
                         <input type="hidden" name="email" id="unsubscribe-email">
                     </form>
                 </div>
-
+    
                 <!-- Bootstrap modal for unsubscribe confirmation -->
                 <div class="modal fade" id="unsubscribeModal" tabindex="-1" role="dialog" aria-labelledby="unsubscribeModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -224,7 +223,7 @@
                         </div>
                     </div>
                 </div>
-
+    
                 <!-- Bootstrap modal for empty email alert -->
                 <div class="modal fade" id="emptyEmailModal" tabindex="-1" role="dialog" aria-labelledby="emptyEmailModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
