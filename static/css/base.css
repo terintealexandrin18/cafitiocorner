@@ -99,7 +99,7 @@ main {
     white-space: nowrap;
     width: 100%;
     box-sizing: border-box;
-    background-color: #bf6a49;
+    background-color: #725c3a;
     color: white;
     padding: 10px 0;
 
@@ -155,9 +155,10 @@ main {
 }
 
 .shop-now-button {
-    background: black;
-    color: white;
+    background: #d2AB80;
+    color: black;
     min-width: 260px;
+    font-weight: 700;
 }
 
 .shop-now-button:hover,
@@ -169,6 +170,25 @@ main {
     background: #222;
     color: white;
 }
+
+/* Sumbit btn */
+
+.submit-btn {
+    background-color: white;
+    color: #809671;
+    border-color: #809671;
+    font-weight: 650;
+}
+
+/* Cancel / delete  btn */
+
+.cancel-btn {
+    background-color: white;
+    color: #AB706D;
+    border-color: #AB706D;
+    font-weight: 650;
+}
+
 
 /* Text Colors */
 .text-white {
@@ -195,7 +215,7 @@ a:hover,
 a:active,
 a:focus {
     color: #222;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Cart Colors */
@@ -254,6 +274,12 @@ a:focus {
 /* Dropdown Menu */
 .dropdown-menu .dropdown-item {
     padding-left: 10px; 
+   
+}
+
+.dropdown-menu {
+    left: -50px;
+    right: auto;
 }
 
 .dropdown-menu .dropdown-item:hover {
@@ -310,12 +336,14 @@ body .footer {
 }
 
 .footer-banner {
-    background-color: #BF6A49;
+    background-color: #725c3a;
     padding: 10px;
     text-align: center;
     border-top: 1px solid #e7e7e7;
     margin-top: 20px;
     width: 100%;
+    color: white;
+
 }
 
 .footer-banner p {
@@ -323,12 +351,13 @@ body .footer {
 }
 
 .footer-banner p a {
-    color: #007bff;
+    color: black;
 }
 
 .footer-banner p a:hover {
     text-decoration: underline;
 }
+
 
 /* Toast Messages */
 .message-container {
@@ -490,6 +519,23 @@ input[name='q']::placeholder {
     position: fixed;
     background: #f4f6fc;
     z-index: -1;
+}
+
+/* Account dropdown */
+.dropdown-item.dropdown-hover:hover {
+    background-color: #D1CBB8 !important;
+}
+
+/* Products nav bar */
+
+.nav-custom a,
+.nav-custom .dropdown-toggle {
+    font-size: 1.2em;
+}
+
+.nav-custom a:hover,
+.nav-custom .dropdown-toggle:hover {
+    background-color: #D1CBB8 !important;
 }
 
 /* Media Queries */
