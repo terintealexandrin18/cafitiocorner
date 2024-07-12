@@ -1,14 +1,14 @@
-<div class="d-block d-md-none dropdown ps-2">
+<div class="d-block d-md-none dropdown ps-2 m-small-nav">
     <a class="dropdown-toggle link-dark" type="button" id="categories-dropdown" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         Categories
     </a>
-    <div class="dropdown-menu" aria-labelledby="categories-dropdown">
+    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="categories-dropdown">
         <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}">All Products</a>
         
         <!-- Coffee Machine -->
         <div class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle link-dark ps-2" href="#">Coffee Machine</a>
+            <a class="dropdown-item dropdown-toggle link-dark ps-2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Coffee Machine</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}?category=ground_coffee_machines">Ground Coffee Machines</a>
                 <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}?category=coffee_bean_machines">Coffee Bean Machines</a>
@@ -18,7 +18,7 @@
 
         <!-- Ground & Bean Coffee -->
         <div class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle link-dark ps-2" href="#">Ground & Bean Coffee</a>
+            <a class="dropdown-item dropdown-toggle link-dark ps-2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ground & Bean Coffee</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}?category=ground_coffee">Ground Coffee</a>
                 <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}?category=beans_coffee">Beans Coffee</a>
@@ -28,7 +28,7 @@
 
         <!-- Cups & Mugs -->
         <div class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle link-dark ps-2" href="#">Cups & Mugs</a>
+            <a class="dropdown-item dropdown-toggle link-dark ps-2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cups & Mugs</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}?category=coffee_cups">Coffee Cups</a>
                 <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}?category=travel_mugs">Travel Mugs</a>
@@ -39,7 +39,7 @@
 
         <!-- Milk Frother -->
         <div class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle link-dark ps-2" href="#">Milk Frother</a>
+            <a class="dropdown-item dropdown-toggle link-dark ps-2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Milk Frother</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}?category=manual_milk_frother">Manual Milk Frother</a>
                 <a class="dropdown-item link-dark ps-2" href="{% url 'products' %}?category=electric_milk_frother">Electric Milk Frother</a>

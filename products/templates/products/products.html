@@ -38,7 +38,7 @@
         <!-- Sort selector -->
         <div class="sort-select-wrapper col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
             <select id="sort-selector"
-                class="mr-3 custom-select custom-select-sm rounded border {% if current_sorting != 'None_None' %}border-blue{% endif %}">
+                class="mr-3 w-auto custom-select custom-select-sm rounded border {% if current_sorting != 'None_None' %}border-blue{% endif %}">
                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...
                 </option>
                 <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low
@@ -147,6 +147,8 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<script src="{% static 'products/js/dropdown.js' %}"></script>
+
 <script type="text/javascript">
     $('.btt-link').click(function (e) {
         window.scrollTo(0, 0);

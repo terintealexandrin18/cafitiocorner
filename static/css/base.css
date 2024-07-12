@@ -146,7 +146,6 @@ main {
 .btn-bag {
     background: brown;
     color: white;
-    min-width: 200px;
 }
 
 .secure-btn {
@@ -157,7 +156,6 @@ main {
 .shop-now-button {
     background: #d2AB80;
     color: black;
-    min-width: 260px;
     font-weight: 700;
 }
 
@@ -174,18 +172,16 @@ main {
 /* Sumbit btn */
 
 .submit-btn {
-    background-color: white;
-    color: #809671;
-    border-color: #809671;
+    background-color: #809671;
+    color: black;
     font-weight: 650;
 }
 
 /* Cancel / delete  btn */
 
 .cancel-btn {
-    background-color: white;
-    color: #AB706D;
-    border-color: #AB706D;
+    background-color: #AB706D;
+    color: black;
     font-weight: 650;
 }
 
@@ -526,17 +522,7 @@ input[name='q']::placeholder {
     background-color: #D1CBB8 !important;
 }
 
-/* Products nav bar */
 
-.nav-custom a,
-.nav-custom .dropdown-toggle {
-    font-size: 1.2em;
-}
-
-.nav-custom a:hover,
-.nav-custom .dropdown-toggle:hover {
-    background-color: #D1CBB8 !important;
-}
 
 /* Media Queries */
 /* Extra Large Devices, Large Container */
