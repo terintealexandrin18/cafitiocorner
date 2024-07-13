@@ -102,20 +102,25 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <div class="text-center">
-                                        <i class="fas fa-user fa-lg"></i>
-                                        <p>My Account</p>
+                                        {% if request.user.is_authenticated %}
+                                            <i class="fas fa-user-check fa-lg"></i>
+                                            <p>{{ request.user.username }}</p>
+                                        {% else %}
+                                            <i class="fas fa-user fa-lg"></i>
+                                            <p>My Account</p>
+                                        {% endif %}
                                     </div>
                                 </a>
                                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
                                     {% if request.user.is_authenticated %}
-                                    {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_product' %}" class="dropdown-item dropdown-hover">Product Management</a>
-                                    {% endif %}
-                                    <a href="{% url 'profile' %}" class="dropdown-item dropdown-hover">My Profile</a>
-                                    <a href="{% url 'account_logout' %}" class="dropdown-item dropdown-hover">Logout</a>
+                                        {% if request.user.is_superuser %}
+                                            <a href="{% url 'add_product' %}" class="dropdown-item dropdown-hover">Product Management</a>
+                                        {% endif %}
+                                        <a href="{% url 'profile' %}" class="dropdown-item dropdown-hover">My Profile</a>
+                                        <a href="{% url 'account_logout' %}" class="dropdown-item dropdown-hover">Logout</a>
                                     {% else %}
-                                    <a href="{% url 'account_signup' %}" class="dropdown-item dropdown-hover">Register</a>
-                                    <a href="{% url 'account_login' %}" class="dropdown-item dropdown-hover">Login</a>
+                                        <a href="{% url 'account_signup' %}" class="dropdown-item dropdown-hover">Register</a>
+                                        <a href="{% url 'account_login' %}" class="dropdown-item dropdown-hover">Login</a>
                                     {% endif %}
                                 </div>
                             </li>
@@ -264,6 +269,9 @@
     </footer>
 
     {% block postloadjs %}
+
+    <script src="{% static 'js/base.js' %}"></script>
+
     <script>
         $(document).ready(function () {
             $('.toast').toast('show');
@@ -297,3 +305,4 @@
 </body>
 
 </html>
+
