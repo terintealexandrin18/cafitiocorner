@@ -92,7 +92,7 @@
                         <ul class="navbar-nav ml-auto align-items-center">
 
                             <!-- User Account -->
-                            <li class="nav-item dropdown d-none d-lg-inline">
+                            <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <div class="text-center">
                                         <i class="fas fa-user fa-lg"></i>
@@ -114,7 +114,7 @@
                             </li>
 
                             <!-- Cart Icon -->
-                            <li class="nav-item d-none d-lg-inline">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'view_bag' %}">
                                     <div class="text-center">
                                         <i class="fas fa-shopping-bag fa-lg {% if grand_total %}cart-filled{% else %}cart-empty{% endif %}"></i>

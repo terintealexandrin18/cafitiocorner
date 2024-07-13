@@ -126,12 +126,12 @@
         <div class="col-12 text-center">
             <div class="pagination-container">
                 {% if products.has_previous %}
-                    <a href="?page=1{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}" class="btn btn-outline-primary">First</a>
-                    <a href="?page={{ products.previous_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}" class="btn btn-outline-primary">Previous</a>
+                    <a href="?page=1{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}" class="btn border">First</a>
+                    <a href="?page={{ products.previous_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}" class="btn border">Previous</a>
                 {% endif %}
                 {% if products.has_next %}
-                    <a href="?page={{ products.next_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}" class="btn btn-outline-primary">Next</a>
-                    <a href="?page={{ products.paginator.num_pages }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}" class="btn btn-outline-primary">Last</a>
+                    <a href="?page={{ products.next_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}" class="btn border">Next</a>
+                    <a href="?page={{ products.paginator.num_pages }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}" class="btn border">Last</a>
                 {% endif %}
             </div>
         </div>

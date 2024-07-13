@@ -144,8 +144,10 @@ main {
 }
 
 .btn-bag {
-    background: brown;
-    color: white;
+    background: #d2ab80;
+    color: black;
+    font-weight: 700;
+    padding: 10px 20px;
 }
 
 .secure-btn {
@@ -154,9 +156,10 @@ main {
 }
 
 .shop-now-button {
-    background: #d2AB80;
+    background: #d1cbb8;
     color: black;
     font-weight: 700;
+    padding: 10px 20px;
 }
 
 .shop-now-button:hover,
@@ -177,6 +180,13 @@ main {
     font-weight: 650;
 }
 
+.submit-btn-checkout {
+    background-color: #809671;
+    color: black;
+    font-weight: 650;
+    padding: 10px 20px;
+}
+
 /* Cancel / delete  btn */
 
 .cancel-btn {
@@ -185,6 +195,11 @@ main {
     font-weight: 650;
 }
 
+/* Overwrite boostrap color primary */
+.btn-primary{
+    background-color: #809671 !important;
+    border-color: #809671  !important;
+}
 
 /* Text Colors */
 .text-white {
