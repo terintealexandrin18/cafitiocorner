@@ -554,7 +554,13 @@ input[name='q']::placeholder {
   .custom-margin-lg {
     margin-left: 30px;
 }
+}
 
+/*  Qty buttons */
+@media (min-width: 320px) {
+    .btn-black.decrement-qty, .btn-black.increment-qty {
+        padding: 0px 15px;
+    }
 }
 
 
@@ -627,3 +633,83 @@ input[name='q']::placeholder {
     }
 
   }
+
+/* Bag CSS */
+.bag-items-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.bag-item {
+    background: #f8f9fa;
+}
+
+.product-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.product-details {
+    margin: 5px 0;
+}
+
+.product-price {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.qty_button .input-group-prepend .btn,
+.qty_button .input-group-append .btn {
+    min-width: 40px;
+    text-align: center;
+    padding: 5px;
+}
+
+.qty_input {
+    width: 60px;
+    text-align: center;
+}
+
+.update-link,
+.remove-item {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.product-subtotal {
+    font-size: 1rem;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center; 
+}
+
+/* Style the update button */
+.btn-xs.update-link {
+    width: 40px; 
+    height: 34px; 
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide large screen table on small screens and show bag item containers */
+@media (max-width: 576px) {
+    .table-responsive.d-none.d-md-block {
+        display: none !important;
+    }
+
+    .bag-item.d-md-none {
+        display: flex !important;
+    }
+
+    .btn-lg {
+        width: 100%; 
+        margin-bottom: 10px; 
+    }
+
+    .totals-container {
+        text-align: center !important;
+    }
+}

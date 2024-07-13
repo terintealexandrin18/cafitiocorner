@@ -38,17 +38,17 @@
 
 select,
 select option {
-    color: #000000;
+  color: #000000;
 }
 
 select:invalid,
 select option[value=""] {
-    color: #aab7c4 !important;
+  color: #aab7c4 !important;
 }
 
 #loading-overlay {
-	display: none;
-	position: fixed;
+  display: none;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -58,9 +58,37 @@ select option[value=""] {
 }
 
 .loading-spinner {
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
+
+@media (max-width: 576px) {
+  /* Hide the product image on small screens */
+  .product-image-small {
+    display: none;
+  }
+  /* Resize the quantity buttons on small screens */
+  .qty-button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+  /* Center the action buttons on small screens */
+  .submit-button {
+    text-align: center;
+  }
+  /* Adjust the width and margins for the quantity controls */
+  .qty-control {
+    width: 80px;
+    margin: auto;
+  }
+  /* Center the adjust bag and complete order buttons */
+  .submit-button a, 
+  .submit-button button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
