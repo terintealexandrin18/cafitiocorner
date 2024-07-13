@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
 
-{% block extra_css %}
-<!-- Add any additional CSS here -->
-{% endblock %}
 
 {% block content %}
 <div class="overlay"></div>
@@ -17,10 +13,10 @@
 
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form method="post" novalidate>
+            <form method="POST" novalidate>
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <button type="submit" class="btn submit-btn mt-3">Submit</button>
             </form>
             {% if messages %}
             <ul class="messages">

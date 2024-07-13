@@ -3,7 +3,8 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-}
+    color:black;
+    }
 
 body {
     color: #555;
@@ -15,8 +16,21 @@ body {
     min-height: 100vh;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Rubik", sans-serif;
+}
+
 main {
     flex-grow: 1;
+}
+
+
+/* Title Index page */
+.main-title {
+    font-family: "Rubik", sans-serif;
+    background-color: #d1cbb887;
+    color: black;
+    font-weight: 600;
 }
 
 /* Container Styles */
@@ -27,7 +41,7 @@ main {
 
 /* Background Image */
 .cover-image-container {
-    background: url('/media/coffee-mugs-and-bens-background-image.jpg') no-repeat center center fixed;
+    background: url('/media/coffe-mug-background.jpg') no-repeat center center fixed;
     background-size: cover;
     width: 100%;
     height: 500px;
@@ -111,6 +125,12 @@ main {
 }
 
 /* Button Styles */
+
+.btn-update {
+    background: #d2ab80;
+    color: black;
+}
+
 .btn-black {
     background: black;
     color: white;
@@ -369,6 +389,12 @@ body .footer {
     text-decoration: underline;
 }
 
+/* Form contact */
+
+.form-control-black {
+    border: 1px solid black;
+    border-radius: 0;
+}
 
 /* Toast Messages */
 .message-container {

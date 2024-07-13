@@ -14,9 +14,16 @@
     {% endblock %}
 
     {% block corecss %}
+    <!-- Boostrap 4.4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -52,7 +59,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light p-0 justify-content-between align-items-center">
                     <div class="navbar-brand">
                         <a class="nav-link" href="{% url 'home' %}">
-                            <img src="{{ MEDIA_URL }}cafitio-logo1.png" alt="Cafitio Corner Logo" style="max-height: 100px;">
+                            <img src="{{ MEDIA_URL }}cafitio-logo1.png" alt="Cafitio Corner Logo" style="max-height: 75px;">
                         </a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
