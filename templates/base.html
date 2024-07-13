@@ -202,7 +202,7 @@
                         {% csrf_token %}
                         <p>Join our monthly newsletter and immerse yourself in inspiration. Stay in the loop with the latest trends and exclusive offers.</p>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Enter your email">
+                            <input type="email" name="email" class="form-control" placeholder="Enter your email" autocomplete="email">
                             <div class="d-flex gap-2">
                                 <button class="btn submit-btn mt-2" type="submit" id="subscribe">Subscribe</button>
                                 <button class="btn cancel-btn mt-2" type="button" id="unsubscribe" data-toggle="modal" data-target="#unsubscribeModal">Unsubscribe</button>

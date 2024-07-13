@@ -13,5 +13,3 @@ setTimeout(function() {
         closeMessageContainer(container);
     });
 }, 5000);
-
-console.log("hello World");
