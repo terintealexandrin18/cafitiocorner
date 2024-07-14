@@ -5,7 +5,10 @@ from django.db.models import Q, Avg
 from django.core.paginator import Paginator
 from .models import Product, Category, Review
 from .forms import ProductForm, ReviewForm
+from profiles.models import UserProfile
+from wishlist.models import Wishlist
 from django.db.models.functions import Lower
+
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
@@ -47,7 +50,7 @@ def all_products(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
             
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains(query))
             products = products.filter(queries)
 
     # Calculate the average rating for each product
@@ -57,6 +60,13 @@ def all_products(request):
         product.average_rating = round(average_rating)
         product.filled_stars = range(int(product.average_rating))
         product.empty_stars = range(5 - int(product.average_rating))
+
+    # Fetch user wishlist
+    if request.user.is_authenticated:
+        user_profile = get_object_or_404(UserProfile, user=request.user)
+        user_wishlist = Wishlist.objects.filter(user_profile=user_profile).values_list('product_id', flat=True)
+    else:
+        user_wishlist = []
 
     # Pagination
     paginator = Paginator(products, 8)  
@@ -72,14 +82,20 @@ def all_products(request):
         'current_sorting': current_sorting,
         'sort': sort,
         'direction': direction,
+        'user_wishlist': list(user_wishlist),
     }
-
     return render(request, 'products/products.html', context)
 
 
+@login_required
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all()
+    
+    user_wishlist = []
+    if request.user.is_authenticated:
+        user_profile = get_object_or_404(UserProfile, user=request.user)
+        user_wishlist = Wishlist.objects.filter(user_profile=user_profile).values_list('product_id', flat=True)
 
     if request.method == 'POST' and 'submit_review' in request.POST:
         review_form = ReviewForm(data=request.POST)
@@ -103,8 +119,8 @@ def product_detail(request, product_id):
         'reviews': reviews,
         'review_form': review_form,
         'average_rating': average_rating,
+        'user_wishlist': list(user_wishlist),
     }
-
     return render(request, 'products/product_detail.html', context)
 
 
@@ -130,7 +146,6 @@ def add_product(request):
     context = {
         'form': form,
     }
-
     return render(request, template, context)
 
 
@@ -159,7 +174,6 @@ def edit_product(request, product_id):
         'form': form,
         'product': product,
     }
-
     return render(request, template, context)
 
 
@@ -206,7 +220,6 @@ def submit_review(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
-
 @login_required
 def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id, user=request.user)
@@ -218,7 +231,6 @@ def edit_review(request, review_id):
             return redirect('product_detail', product_id=review.product.id)
     else:
         form = ReviewForm(instance=review)
-    # The form processing can be passed back to product_detail or handled here as per your design.
     return redirect('product_detail', product_id=review.product.id)
 
 @login_required
@@ -228,3 +240,27 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, 'Review deleted successfully!')
     return redirect('product_detail', product_id=product_id)
+
+
+@login_required
+def add_to_wishlist(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    if Wishlist.objects.filter(user_profile=user_profile, product=product).exists():
+        messages.info(request, f'{product.name} is already in your Wishlist.')
+    else:
+        Wishlist.objects.create(user_profile=user_profile, product=product)
+        messages.success(request, f'{product.name} added to Wishlist successfully!')
+
+    return redirect(reverse('products'))
+
+
+@login_required
+def remove_from_wishlist(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    user_profile = UserProfile.objects.get(user=request.user)
+    wishlist_item = Wishlist.objects.get(user_profile=user_profile, product=product)
+    wishlist_item.delete()
+    messages.success(request, f'{product.name} has been successfully removed.')
+    return redirect(reverse('wishlist'))

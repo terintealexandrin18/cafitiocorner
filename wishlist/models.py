@@ -21,5 +21,11 @@ class Wishlist(models.Model):
         on_delete=models.CASCADE
     )
 
+    class Meta:
+        unique_together = ('user_profile', 'product')
+        indexes = [
+            models.Index(fields=['user_profile', 'product']),
+        ]
+
     def __str__(self):
         return f"{self.product.name} in wishlist of {self.user_profile.user.username}"
