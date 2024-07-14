@@ -209,16 +209,10 @@
                                         <div class="form-group">
                                             <label for="rating">Update Rating:</label>
                                             <div class="rating-container">
-                                                <input type="radio" id="edit_rating1_{{ review.id }}" name="rating" value="1" {% if review.rating == 1 %}checked{% endif %}>
-                                                <label for="edit_rating1_{{ review.id }}" class="star">☆</label>
-                                                <input type="radio" id="edit_rating2_{{ review.id }}" name="rating" value="2" {% if review.rating == 2 %}checked{% endif %}>
-                                                <label for="edit_rating2_{{ review.id }}" class="star">☆</label>
-                                                <input type="radio" id="edit_rating3_{{ review.id }}" name="rating" value="3" {% if review.rating == 3 %}checked{% endif %}>
-                                                <label for="edit_rating3_{{ review.id }}" class="star">☆</label>
-                                                <input type="radio" id="edit_rating4_{{ review.id }}" name="rating" value="4" {% if review.rating == 4 %}checked{% endif %}>
-                                                <label for="edit_rating4_{{ review.id }}" class="star">☆</label>
-                                                <input type="radio" id="edit_rating5_{{ review.id }}" name="rating" value="5" {% if review.rating == 5 %}checked{% endif %}>
-                                                <label for="edit_rating5_{{ review.id }}" class="star">☆</label>
+                                                {% for i in "12345" %}
+                                                <input type="radio" id="edit_rating{{ i }}_{{ review.id }}" name="rating" value="{{ i }}" {% if review.rating == i|stringformat:"i" %}checked{% endif %}>
+                                                <label for="edit_rating{{ i }}_{{ review.id }}" class="star">☆</label>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                         <div class="form-group">
