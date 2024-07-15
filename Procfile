@@ -1,0 +1,1 @@
+web: gunicorn cafitio_corner.wsgi:application
