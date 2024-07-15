@@ -114,7 +114,7 @@
                                     </small>
                                     {% endif %}
                                 </div>
-                                <a href="{% url 'toggle_wishlist' product.id %}" class="wishlist-icon ml-auto">
+                                <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}" class="wishlist-icon ml-2">
                                     {% if product.id in user_wishlist %}
                                     <i class="fas fa-heart"></i>
                                     {% else %}

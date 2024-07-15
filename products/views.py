@@ -87,29 +87,29 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-@login_required
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all()
     
     user_wishlist = []
+    review_form = None
     if request.user.is_authenticated:
         user_profile = get_object_or_404(UserProfile, user=request.user)
         user_wishlist = Wishlist.objects.filter(user_profile=user_profile).values_list('product_id', flat=True)
 
-    if request.method == 'POST' and 'submit_review' in request.POST:
-        review_form = ReviewForm(data=request.POST)
-        if review_form.is_valid():
-            new_review = review_form.save(commit=False)
-            new_review.product = product
-            new_review.user = request.user
-            new_review.save()
-            messages.success(request, 'Review successfully added!')
-            return redirect('product_detail', product_id=product_id)
+        if request.method == 'POST' and 'submit_review' in request.POST:
+            review_form = ReviewForm(data=request.POST)
+            if review_form.is_valid():
+                new_review = review_form.save(commit=False)
+                new_review.product = product
+                new_review.user = request.user
+                new_review.save()
+                messages.success(request, 'Review successfully added!')
+                return redirect('product_detail', product_id=product_id)
+            else:
+                messages.error(request, 'Failed to add review. Please ensure the form is valid.')
         else:
-            messages.error(request, 'Failed to add review. Please ensure the form is valid.')
-    else:
-        review_form = ReviewForm()
+            review_form = ReviewForm()
 
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
     average_rating = round(average_rating)

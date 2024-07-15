@@ -87,13 +87,13 @@
                                                 <i class="fas fa-plus"></i>
                                             </span>
                                         </button>
-                                            <a href="{% url 'toggle_wishlist' product.id %}" class="wishlist-icon ml-2">
-                                                {% if product.id in user_wishlist %}
-                                                <i class="fas fa-heart"></i>
-                                                {% else %}
-                                                <i class="far fa-heart"></i>
-                                                {% endif %}
-                                            </a>
+                                        <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}" class="wishlist-icon ml-2">
+                                            {% if product.id in user_wishlist %}
+                                            <i class="fas fa-heart"></i>
+                                            {% else %}
+                                            <i class="far fa-heart"></i>
+                                            {% endif %}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -115,6 +115,7 @@
         </div>
     </div>
 
+    {% if user.is_authenticated %}
     <div class="review-section">
         <!-- Section Title -->
         <div class="container">
@@ -163,71 +164,72 @@
                 </div>
             </div>
         </div>
+    </div>
+    {% endif %}
+</div>
 
-        <!-- Toggle Reviews Section -->
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6 text-center">
-                    <h2 class="section-title reviews-toggle" onclick="toggleReviews()">
-                        <i class="fas fa-comments"></i>Customers Reviews ({{ reviews.count }})
-                    </h2>
-                    <hr class="section-underline">
-                </div>
-            </div>
+<!-- Toggle Reviews Section -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 text-center">
+            <h2 class="section-title reviews-toggle" onclick="toggleReviews()">
+                <i class="fas fa-comments"></i>Customers Reviews ({{ reviews.count }})
+            </h2>
+            <hr class="section-underline">
         </div>
+    </div>
+</div>
 
-        <!-- Existing Reviews List -->
-        <div class="container" id="reviews-container" style="display:none;">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="reviews-list">
-                        {% for review in reviews %}
-                        <div class="review-item mt-4">
-                            <strong><i class="fas fa-user-check mr-2"></i> {{ review.user.username }}</strong> - Rating:
-                            <div class="d-inline-block star-rating">
-                                {% for i in review.rating|default:0|to_list %}
-                                <span class="star">★</span>
-                                {% endfor %}
-                                {% for i in review.rating|default:0|add:1|to_list:5 %}
-                                <span class="star">☆</span>
-                                {% endfor %}
-                            </div>
-                            <p class="mt-3">{{ review.comment }}</p>
-                            <small class="text-muted">{{ review.created_at|date:"d F Y, h:i A" }}</small>
-                            {% if review.user == request.user %}
-                                <div class="review-actions">
-                                    <button type="button" onclick="toggleEditForm('{{ review.id }}')" class="btn btn-link">Edit</button>
-                                    <form method="POST" action="{% url 'delete_review' review.id %}" class="d-inline">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Are you sure?');">Delete</button>
-                                    </form>
-                                </div>
-                                <!-- Hidden Edit Form -->
-                                <div id="editForm{{ review.id }}" style="display:none;">
-                                    <form method="POST" action="{% url 'edit_review' review.id %}">
-                                        {% csrf_token %}
-                                        <div class="form-group">
-                                            <label for="rating">Update Rating:</label>
-                                            <div class="rating-container">
-                                                {% for i in "12345" %}
-                                                <input type="radio" id="edit_rating{{ i }}_{{ review.id }}" name="rating" value="{{ i }}" {% if review.rating == i|stringformat:"i" %}checked{% endif %}>
-                                                <label for="edit_rating{{ i }}_{{ review.id }}" class="star">☆</label>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="comment">Update Review:</label>
-                                            <textarea name="comment" class="form-control">{{ review.comment }}</textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Update Review</button>
-                                        <button type="button" onclick="toggleEditForm('{{ review.id }}')" class="btn btn-secondary">Cancel</button>
-                                    </form>
-                                </div>
-                            {% endif %}
-                        </div>
+<!-- Existing Reviews List -->
+<div class="container" id="reviews-container" style="display:none;">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="reviews-list">
+                {% for review in reviews %}
+                <div class="review-item mt-4">
+                    <strong><i class="fas fa-user-check mr-2"></i> {{ review.user.username }}</strong> - Rating:
+                    <div class="d-inline-block star-rating">
+                        {% for i in review.rating|default:0|to_list %}
+                        <span class="star">★</span>
+                        {% endfor %}
+                        {% for i in review.rating|default:0|add:1|to_list:5 %}
+                        <span class="star">☆</span>
                         {% endfor %}
                     </div>
+                    <p class="mt-3">{{ review.comment }}</p>
+                    <small class="text-muted">{{ review.created_at|date:"d F Y, h:i A" }}</small>
+                    {% if review.user == request.user %}
+                        <div class="review-actions">
+                            <button type="button" onclick="toggleEditForm('{{ review.id }}')" class="btn btn-link">Edit</button>
+                            <form method="POST" action="{% url 'delete_review' review.id %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                            </form>
+                        </div>
+                        <!-- Hidden Edit Form -->
+                        <div id="editForm{{ review.id }}" style="display:none;">
+                            <form method="POST" action="{% url 'edit_review' review.id %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="rating">Update Rating:</label>
+                                    <div class="rating-container">
+                                        {% for i in "12345" %}
+                                        <input type="radio" id="edit_rating{{ i }}_{{ review.id }}" name="rating" value="{{ i }}" {% if review.rating == i|stringformat:"i" %}checked{% endif %}>
+                                        <label for="edit_rating{{ i }}_{{ review.id }}" class="star">☆</label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Update Review:</label>
+                                    <textarea name="comment" class="form-control">{{ review.comment }}</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Review</button>
+                                <button type="button" onclick="toggleEditForm('{{ review.id }}')" class="btn btn-secondary">Cancel</button>
+                            </form>
+                        </div>
+                    {% endif %}
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -257,8 +259,6 @@
     </div>
 </div>
 {% endblock %}
-
-
 
 {% block postloadjs %}
     {{ block.super }}
