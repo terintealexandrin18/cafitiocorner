@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_countries',
     'storages',
-    'django-summernote'
+    'django_summernote'
 
 ]
 
