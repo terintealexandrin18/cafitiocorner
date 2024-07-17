@@ -5,9 +5,9 @@ This is a confirmation of your order at Cafitio Corner. Your order information i
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
-Order Total: ${{ order.order_total|floatformat:2 }}
-Delivery: ${{ order.delivery_cost|floatformat:2 }}
-Grand Total: ${{ order.grand_total|floatformat:2 }}
+Order Total: £{{ order.order_total|floatformat:2 }}
+Delivery: £{{ order.delivery_cost|floatformat:2 }}
+Grand Total: £{{ order.grand_total|floatformat:2 }}
 
 Your order will be shipped to {{ order.street_address }} in {{ order.city }}, {{ order.country }}.
 
@@ -17,6 +17,6 @@ If you have any questions, feel free to contact us at {{ contact_email }}.
 
 Thank you for your order!
 
-Sincerely,
+Sincerely,You are receiving this email because you 
 
 Cafitio Corner
