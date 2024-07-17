@@ -1,10 +1,13 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from .models import Product, Category, Review
 
 # Register your models here.
 
 
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(SummernoteModelAdmin):
+    summernote_fields = ('description',) 
+
     list_display = (
         'sku',
         'name',
