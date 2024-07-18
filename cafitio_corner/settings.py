@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['cafitio-corner-5f01d0c35567.herokuapp.com', 'localhost', '8000-terintealex-cafitiocorn-bxorgs2uthj.ws.codeinstitute-ide.net']
 

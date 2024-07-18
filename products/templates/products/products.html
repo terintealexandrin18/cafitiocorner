@@ -114,7 +114,8 @@
                                     </small>
                                     {% endif %}
                                 </div>
-                                <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}" class="wishlist-icon ml-2">
+                                <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}"
+                                    class="wishlist-icon ml-2">
                                     {% if product.id in user_wishlist %}
                                     <i class="fas fa-heart"></i>
                                     {% else %}
@@ -135,15 +136,15 @@
         <div class="col-12 text-center">
             <div class="pagination-container">
                 {% if products.has_previous %}
-                <a href="?page=1{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                <a href="?page=1{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% for category in current_categories %}&category={{ category.name }}{% endfor %}"
                     class="btn btn-outline-black rounded-0">First</a>
-                <a href="?page={{ products.previous_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                <a href="?page={{ products.previous_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% for category in current_categories %}&category={{ category.name }}{% endfor %}"
                     class="btn border">Previous</a>
                 {% endif %}
                 {% if products.has_next %}
-                <a href="?page={{ products.next_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                <a href="?page={{ products.next_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% for category in current_categories %}&category={{ category.name }}{% endfor %}"
                     class="btn btn-outline-black rounded-0">Next</a>
-                <a href="?page={{ products.paginator.num_pages }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}"
+                <a href="?page={{ products.paginator.num_pages }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% for category in current_categories %}&category={{ category.name }}{% endfor %}"
                     class="btn btn-outline-black rounded-0">Last</a>
                 {% endif %}
             </div>

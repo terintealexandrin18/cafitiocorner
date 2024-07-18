@@ -36,8 +36,6 @@ def all_products(request):
             
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            
-            # Filter products by category and its subcategories
             products = products.filter(
                 Q(category__name__in=categories) | 
                 Q(category__parent__name__in=categories)
@@ -48,18 +46,17 @@ def all_products(request):
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('products'))
+                return redirect('products')
             
             queries = Q(name__icontains=query) | Q(description__icontains(query))
             products = products.filter(queries)
 
-    # Calculate the average rating for each product
-    for product in products:
-        reviews = product.reviews.all()
-        average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
-        product.average_rating = round(average_rating)
-        product.filled_stars = range(int(product.average_rating))
-        product.empty_stars = range(5 - int(product.average_rating))
+    # Pagination
+    paginator = Paginator(products, 8)  # Set number of items per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    current_sorting = f'{sort}_{direction}'
 
     # Fetch user wishlist
     if request.user.is_authenticated:
@@ -67,13 +64,6 @@ def all_products(request):
         user_wishlist = Wishlist.objects.filter(user_profile=user_profile).values_list('product_id', flat=True)
     else:
         user_wishlist = []
-
-    # Pagination
-    paginator = Paginator(products, 8)  
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-
-    current_sorting = f'{sort}_{direction}'
 
     context = {
         'products': page_obj,
@@ -84,8 +74,8 @@ def all_products(request):
         'direction': direction,
         'user_wishlist': list(user_wishlist),
     }
-    return render(request, 'products/products.html', context)
 
+    return render(request, 'products/products.html', context)
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
