@@ -12,13 +12,11 @@ from django.db.models.functions import Lower
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
-
     products = Product.objects.all().annotate(avg_rating=Avg('reviews__rating'))
     query = None
     categories = None
     sort = None
     direction = None
-
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -33,13 +31,11 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-            
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            
             # Filter products by category and its subcategories
             products = products.filter(
-                Q(category__name__in=categories) | 
+                Q(category__name__in=categories) |
                 Q(category__parent__name__in=categories)
             )
             categories = Category.objects.filter(name__in=categories)
@@ -49,8 +45,8 @@ def all_products(request):
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
-            
-            queries = Q(name__icontains=query) | Q(description__icontains(query))
+
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
     # Calculate the average rating for each product
@@ -69,7 +65,7 @@ def all_products(request):
         user_wishlist = []
 
     # Pagination
-    paginator = Paginator(products, 8)  
+    paginator = Paginator(products, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -86,10 +82,10 @@ def all_products(request):
     }
     return render(request, 'products/products.html', context)
 
+
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all()
-    
     user_wishlist = []
     review_form = None
     if request.user.is_authenticated:
@@ -140,7 +136,7 @@ def add_product(request):
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm()
-        
+
     template = 'products/add_product.html'
     context = {
         'form': form,
@@ -232,6 +228,7 @@ def edit_review(request, review_id):
         form = ReviewForm(instance=review)
     return redirect('product_detail', product_id=review.product.id)
 
+
 @login_required
 def delete_review(request, review_id):
     review = get_object_or_404(Review, id=review_id, user=request.user)
@@ -251,7 +248,6 @@ def add_to_wishlist(request, product_id):
     else:
         Wishlist.objects.create(user_profile=user_profile, product=product)
         messages.success(request, f'{product.name} added to Wishlist successfully!')
-
     return redirect(reverse('products'))
 
 

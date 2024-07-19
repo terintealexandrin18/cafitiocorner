@@ -2,6 +2,7 @@ from crispy_forms.helper import FormHelper
 from django import forms
 from .models import Subscriber
 
+
 class SubscriberForm(forms.ModelForm):
     class Meta:
         model = Subscriber
@@ -17,6 +18,7 @@ class SubscriberForm(forms.ModelForm):
             'required': True,
             'autocomplete': 'email'
         })
+
 
 class UnsubscribeForm(forms.Form):
     email = forms.EmailField(

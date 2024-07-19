@@ -2,9 +2,9 @@ from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 from .models import Product, Category, Review
 
+
 class ProductAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
-
     list_display = (
         'sku',
         'name',
@@ -13,8 +13,8 @@ class ProductAdmin(SummernoteModelAdmin):
         'rating',
         'image',
     )
-    
     ordering = ('sku',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('friendly_name', 'name', 'parent')
@@ -30,10 +30,12 @@ class CategoryAdmin(admin.ModelAdmin):
     parent.admin_order_field = 'parent__friendly_name'
     parent.short_description = 'Parent Category'
 
+
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('product', 'user', 'rating', 'comment', 'created_at')
     list_filter = ('rating', 'created_at')
     search_fields = ('product__name', 'user__username', 'comment')
+
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)

@@ -1,7 +1,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
 from .models import ContactMessage
+
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -18,6 +18,5 @@ class ContactForm(forms.ModelForm):
         super(ContactForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'POST'
-
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'

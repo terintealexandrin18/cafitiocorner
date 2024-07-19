@@ -8,10 +8,10 @@ from django_countries.fields import CountryField
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
-
 import json
 import time
 import stripe
+
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -28,14 +28,13 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )      
-
+        )
 
     def handle_event(self, event):
         """
@@ -59,7 +58,7 @@ class StripeWH_Handler:
             intent.latest_charge
         )
 
-        billing_details = stripe_charge.billing_details 
+        billing_details = stripe_charge.billing_details
         shipping_details = intent.shipping
         grand_total = round(stripe_charge.amount / 100, 2)
 
@@ -85,8 +84,6 @@ class StripeWH_Handler:
                 profile.default_street_address = shipping_details.address.line1
                 profile.default_state = shipping_details.address.state
                 profile.save()
-        
-
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -135,14 +132,14 @@ class StripeWH_Handler:
                         quantity = item_data
                     else:
                         quantity = item_data.get('quantity', 0)
-                    
+
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
                         quantity=quantity,
                     )
                     order_line_item.save()
-                        
+
             except Exception as e:
                 if order:
                     order.delete()

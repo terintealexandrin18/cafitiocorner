@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib import messages
 from .forms import ContactForm
 
+
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -13,5 +14,4 @@ def contact_view(request):
             return HttpResponseRedirect(reverse('contact'))
     else:
         form = ContactForm()
-    
     return render(request, 'contact/contact.html', {'form': form})

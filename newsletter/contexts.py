@@ -1,5 +1,6 @@
 from .forms import SubscriberForm
 
+
 def render_subscribe_form(request):
     """
     Render subscribe form across all pages.

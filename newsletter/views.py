@@ -3,10 +3,6 @@ from django.contrib import messages
 from .models import Subscriber
 from .forms import SubscriberForm, UnsubscribeForm
 
-from django.http import HttpResponseRedirect
-from django.contrib import messages
-from .models import Subscriber
-from .forms import SubscriberForm
 
 def add_subscriber(request):
     if request.method == 'POST':
@@ -27,6 +23,7 @@ def add_subscriber(request):
         else:
             messages.error(request, "Please correct the error below.")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 
 def unsubscribe(request):
     if request.method == 'POST':

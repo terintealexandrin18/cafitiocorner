@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import submit_review 
+from .views import submit_review
 
 urlpatterns = [
     path('', views.all_products, name='products'),
