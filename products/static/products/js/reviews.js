@@ -1,3 +1,5 @@
+// Toggles the visibility of the edit form for a review.
+
 function toggleEditForm(reviewId) {
     var x = document.getElementById("editForm" + reviewId);
     var reviewActions = x.closest('.review-item').querySelector('.review-actions');
@@ -9,6 +11,8 @@ function toggleEditForm(reviewId) {
         reviewActions.style.display = "block";
     }
 }
+
+// Initialize star rating functionality once the DOM is fully loaded
 
 document.addEventListener("DOMContentLoaded", function() {
     function initializeStarRating(container) {

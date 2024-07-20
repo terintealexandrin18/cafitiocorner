@@ -4,14 +4,22 @@ from .models import Product, Category, Review
 
 
 class ProductForm(forms.ModelForm):
-
+    """
+    Form class to handle the creation and editing of Product instances.
+    Utilizes CustomClearableFileInput for the image field.
+    """
     class Meta:
         model = Product
         fields = '__all__'
         exclude = ['rating']
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(label='Image', required=False,
+                             widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the ProductForm with dynamic category
+        choices and custom styles.
+        """
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()
         friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
@@ -21,6 +29,10 @@ class ProductForm(forms.ModelForm):
 
 
 class ReviewForm(forms.ModelForm):
+    """
+    Form class to handle the creation and editing of Review instances.
+    Includes validation to ensure either rating or comment is provided.
+    """
     class Meta:
         model = Review
         fields = ['rating', 'comment']
@@ -29,9 +41,14 @@ class ReviewForm(forms.ModelForm):
         }
 
     def clean(self):
+        """
+        Custom validation to ensure that at least one of rating or
+        comment is provided.
+        """
         cleaned_data = super().clean()
         rating = cleaned_data.get('rating')
         comment = cleaned_data.get('comment')
         if not rating and not comment:
-            raise forms.ValidationError("At least one of the fields (rating or comment) must be filled.")
+            raise forms.ValidationError("At least one of the fields "
+                  "(rating or comment) must be filled.")
         return cleaned_data

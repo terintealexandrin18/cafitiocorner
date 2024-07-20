@@ -4,7 +4,14 @@ from .models import ContactMessage
 
 
 class ContactForm(forms.ModelForm):
+    """
+    Form for users to submit contact messages.
+    """
+
     class Meta:
+        """
+        Meta class to specify the model and fields to include in the form.
+        """
         model = ContactMessage
         fields = ['name', 'email', 'subject', 'message']
         widgets = {
@@ -15,6 +22,9 @@ class ContactForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the form and add crispy forms helper for form styling.
+        """
         super(ContactForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'POST'

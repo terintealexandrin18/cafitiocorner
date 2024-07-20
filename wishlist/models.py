@@ -29,4 +29,7 @@ class Wishlist(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.product.name} in wishlist of {self.user_profile.user.username}"
+        return (
+            f"{self.product.name} in wishlist of "
+            f"{self.user_profile.user.username}"
+        )

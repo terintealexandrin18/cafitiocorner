@@ -3,6 +3,11 @@ from .models import UserProfile
 
 
 class UserProfileForm(forms.ModelForm):
+    """
+    Form for updating user profile information.
+    Excludes the 'user' field from the form.
+    Customizes field attributes, placeholders, and removes labels.
+    """
     class Meta:
         model = UserProfile
         exclude = ('user',)
@@ -29,5 +34,7 @@ class UserProfileForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
+            self.fields[field].widget.attrs['class'] = (
+                'border-black rounded-0 profile-form-input'
+            )
             self.fields[field].label = False

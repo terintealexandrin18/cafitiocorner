@@ -6,11 +6,15 @@ from .forms import ContactForm
 
 
 def contact_view(request):
+    """
+    Handle the display and processing of the contact form.
+    """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Thank you for your message. We will get back to you soon.')
+            messages.success(request, 'Thank you for your message. '
+                             'We will get back to you soon.')
             return HttpResponseRedirect(reverse('contact'))
     else:
         form = ContactForm()

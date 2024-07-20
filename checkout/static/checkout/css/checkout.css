@@ -1,3 +1,4 @@
+/* Stripe Element Styling */
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -25,6 +26,7 @@
   color: #aab7c4;
 }
 
+/* Fieldset Label Position */
 .fieldset-label {
   position: relative;
   right: .5rem;
@@ -46,6 +48,7 @@ select option[value=""] {
   color: #aab7c4 !important;
 }
 
+/* Loading Overlay */
 #loading-overlay {
   display: none;
   position: fixed;
@@ -65,26 +68,22 @@ select option[value=""] {
   height: 100%;
 }
 
+/* Responsive Styling for Small Screens */
 @media (max-width: 576px) {
-  /* Hide the product image on small screens */
   .product-image-small {
     display: none;
   }
-  /* Resize the quantity buttons on small screens */
   .qty-button {
     padding: 5px 10px;
     font-size: 0.8rem;
   }
-  /* Center the action buttons on small screens */
   .submit-button {
     text-align: center;
   }
-  /* Adjust the width and margins for the quantity controls */
   .qty-control {
     width: 80px;
     margin: auto;
   }
-  /* Center the adjust bag and complete order buttons */
   .submit-button a, 
   .submit-button button {
     display: block;

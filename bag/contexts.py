@@ -5,6 +5,13 @@ from products.models import Product
 
 
 def bag_contents(request):
+    """
+    Retrieve the contents of the shopping bag from the session
+    and calculate totals.
+    This function calculates the total cost, product count, delivery charge,
+    and grand total for the items in the shopping bag. It also determines
+    how much more is needed to qualify for free delivery.
+    """
     bag_items = []
     total = 0
     product_count = 0

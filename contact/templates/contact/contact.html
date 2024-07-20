@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
 <div class="overlay"></div>
 <div class="container">
@@ -13,11 +12,14 @@
 
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <!-- Contact form -->
             <form method="POST" novalidate>
                 {% csrf_token %}
+                <!-- Render the form using crispy forms -->
                 {{ form|crispy }}
                 <button type="submit" class="btn submit-btn mt-3">Submit</button>
             </form>
+            <!-- Display messages if any -->
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}

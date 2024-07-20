@@ -3,23 +3,26 @@
 {% load my_filters %}
 
 {% block extra_css %}
+<!-- Include custom CSS for the product details page -->
 <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
 {% endblock %}
 
 {% block content %}
+<!-- Page overlay -->
 <div class="overlay"></div>
 <div class="container-fluid">
+    <!-- Page title -->
     <div class="row">
         <div class="col text-center my-1">
             <h1>Product Informations</h1>
         </div>
     </div>
 
-    <!-- Category menu-->
+    <!-- Category menu -->
     <div class="categories-menu row border-top border-bottom py-3 mb-3 logo-text">
         <!-- Display in larger screens -->
         {% include 'includes/products-nav.html' %}
-        <!-- Display in smaller screens-->
+        <!-- Display in smaller screens -->
         {% include 'includes/mobile-products-nav.html' %}
     </div>
 
@@ -39,6 +42,7 @@
                 {% endif %}
             </div>
         </div>
+        <!-- Product details -->
         <div class="col-12 col-md-6 col-lg-4 margin-left-small">
             <div class="product-details-container mb-5 mt-md-5">
                 <p class="mb-0">{{ product.name }}</p>
@@ -50,6 +54,7 @@
                     </a>
                 </p>
                 {% endif %}
+                <!-- Star rating display -->
                 <div class="d-inline-block star-rating">
                     {% for i in average_rating|default:0|to_list %}
                     <span class="star">★</span>
@@ -59,6 +64,7 @@
                     {% endfor %}
                     <small class="text-muted">({{ average_rating|default:"No Rating" }})</small>
                 </div>
+                <!-- Admin actions for superuser -->
                 {% if request.user.is_superuser %}
                 <small class="ml-3">
                     <a href="{% url 'edit_product' product.id %}">Edit</a> |
@@ -66,6 +72,7 @@
                 </small>
                 {% endif %}
                 <p class="mt-3">{{ product.description | safe }}</p>
+                <!-- Add to bag form -->
                 <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
@@ -87,6 +94,7 @@
                                                 <i class="fas fa-plus"></i>
                                             </span>
                                         </button>
+                                        <!-- Wishlist button -->
                                         <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}" class="wishlist-icon ml-2">
                                             {% if product.id in user_wishlist %}
                                             <i class="fas fa-heart"></i>
@@ -115,9 +123,10 @@
         </div>
     </div>
 
+    <!-- Review section for authenticated users -->
     {% if user.is_authenticated %}
     <div class="review-section">
-        <!-- Section Title -->
+        <!-- Section title -->
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 text-center">
@@ -127,7 +136,7 @@
             </div>
         </div>
 
-        <!-- Review Submission Form -->
+        <!-- Review submission form -->
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6">
@@ -153,6 +162,7 @@
                                 <label for="comment">Your Review:</label>
                                 <textarea id="comment" name="comment" class="form-control"></textarea>
                             </div>
+                            <!-- Display non-field errors if any -->
                             {% if review_form.non_field_errors %}
                             <div class="alert alert-danger">
                                 {{ review_form.non_field_errors }}
@@ -168,7 +178,7 @@
     {% endif %}
 </div>
 
-<!-- Toggle Reviews Section -->
+<!-- Toggle reviews section -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 text-center">
@@ -180,7 +190,7 @@
     </div>
 </div>
 
-<!-- Existing Reviews List -->
+<!-- Existing reviews list -->
 <div class="container" id="reviews-container" style="display:none;">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
@@ -198,6 +208,7 @@
                     </div>
                     <p class="mt-3">{{ review.comment }}</p>
                     <small class="text-muted">{{ review.created_at|date:"d F Y, h:i A" }}</small>
+                    <!-- Edit and delete buttons for the user's reviews -->
                     {% if review.user == request.user %}
                         <div class="review-actions">
                             <button type="button" onclick="toggleEditForm('{{ review.id }}')" class="btn btn-link">Edit</button>
@@ -206,7 +217,7 @@
                                 <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Are you sure?');">Delete</button>
                             </form>
                         </div>
-                        <!-- Hidden Edit Form -->
+                        <!-- Hidden edit form -->
                         <div id="editForm{{ review.id }}" style="display:none;">
                             <form method="POST" action="{% url 'edit_review' review.id %}">
                                 {% csrf_token %}
@@ -235,7 +246,7 @@
     </div>
 </div>
 
-<!-- Delete Confirmation Modal -->
+<!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -268,6 +279,7 @@
     <script src="{% static 'products/js/delete-modal.js' %}"></script>
 
     <script>
+        // Function to toggle the display of the reviews section
         function toggleReviews() {
             var x = document.getElementById("reviews-container");
             if (x.style.display === "none" || x.style.display === "") {

@@ -1,4 +1,5 @@
 /* Rating products */
+
 .review {
     border: 1px solid #ccc;
     padding: 10px;
@@ -133,37 +134,36 @@
     background-color: #D1CBB8 !important;
 }
 
+/* Media Queries */
+
 @media (max-width: 576px) {
-  
+    /* Nav bar margins small screens */
+    .m-small-nav {
+        margin: auto;
+    }
 
+    /* Center align dropdown menu */
+    .dropdown-menu-center {
+        left: 50% !important;
+        transform: translateX(-50%) translateY(10px) !important;
+        top: auto !important;
+    }
 
-/* Nav bar margins small screens */
-.m-small-nav {
-    margin:auto;
+    .dropdown-submenu .dropdown-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: none;
+        margin-left: 20px;
+    }
+
+    .margin-left-small {
+        margin-left: 10px;
+    }
 }
 
-/* Center align dropdown menu */
-.dropdown-menu-center {
-    left: 50% !important;
-    transform: translateX(-50%) translateY(10px) !important;
-    top: auto !important;
-}
-
-.dropdown-submenu .dropdown-menu {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: none;
-    margin-left: 20px;
-}
-
-.margin-left-small{
-    margin-left: 10px;
-}
-
-}
+/* Wishlist icon */
 
 .wishlist-icon {
     font-size: 1.5em;
 }
-

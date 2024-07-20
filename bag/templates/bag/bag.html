@@ -3,6 +3,7 @@
 {% load bag_tools %}
 
 {% block content %}
+<!-- Overlay background for the page -->
 <div class="overlay"></div>
 <div class="container position-relative">
     <div class="row">
@@ -10,12 +11,12 @@
             <h1>Shopping Bag</h1>
         </div>
     </div>
-
     <div class="row">
         <div class="col">
             {% if bag_items %}
             <div class="bag-items-container">
                 {% for item in bag_items %}
+                <!-- Mobile view of bag items -->
                 <div class="bag-item row mb-4 p-3 border rounded d-md-none">
                     <div class="col-12">
                         <p class="product-name"><strong>{{ item.product.name }}</strong></p>
@@ -56,6 +57,7 @@
                     </div>
                 </div>
                 {% endfor %}
+                <!-- Desktop view of bag items -->
                 <div class="table-responsive rounded d-none d-md-block">
                     <table class="table table-sm table-borderless">
                         <thead class="text-black">
@@ -71,6 +73,7 @@
                         {% for item in bag_items %}
                         <tr>
                             <td class="p-3 w-25">
+                                <!-- Product image -->
                                 {% if item.product.image %}
                                 <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                 {% else %}
@@ -122,6 +125,7 @@
                         {% endfor %}
                     </table>
                 </div>
+                <!-- Totals and checkout section -->
                 <div class="totals-container text-right mt-4">
                     <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
                     <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
@@ -146,6 +150,7 @@
                 </div>
             </div>
             {% else %}
+            <!-- Message when the bag is empty -->
             <p class="lead mb-5">Your bag is empty.</p>
             <a href="{% url 'products' %}" class="btn btn-lg shop-now-button">
                 <i class="fas fa-chevron-left"></i>
@@ -166,8 +171,7 @@
     $('.update-link').click(function(e) {
         var form = $(this).closest('form');
         form.submit();
-    })
-
+    });
     // Remove item and reload
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
@@ -179,6 +183,7 @@
         .done(function() {
             location.reload();
         });
-    })
+    });
 </script>
+
 {% endblock %}

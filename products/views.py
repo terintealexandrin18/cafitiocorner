@@ -12,11 +12,14 @@ from django.db.models.functions import Lower
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
-    products = Product.objects.all().annotate(avg_rating=Avg('reviews__rating'))
+    products = Product.objects.all().annotate(
+        avg_rating=Avg('reviews__rating')
+    )
     query = None
     categories = None
     sort = None
     direction = None
+
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -33,7 +36,6 @@ def all_products(request):
             products = products.order_by(sortkey)
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            # Filter products by category and its subcategories
             products = products.filter(
                 Q(category__name__in=categories) |
                 Q(category__parent__name__in=categories)
@@ -43,13 +45,16 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request, "You didn't enter any search "
+                               "criteria!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (
+                Q(name__icontains=query) |
+                Q(description__icontains=query)
+            )
             products = products.filter(queries)
 
-    # Calculate the average rating for each product
     for product in products:
         reviews = product.reviews.all()
         average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
@@ -57,14 +62,14 @@ def all_products(request):
         product.filled_stars = range(int(product.average_rating))
         product.empty_stars = range(5 - int(product.average_rating))
 
-    # Fetch user wishlist
     if request.user.is_authenticated:
         user_profile = get_object_or_404(UserProfile, user=request.user)
-        user_wishlist = Wishlist.objects.filter(user_profile=user_profile).values_list('product_id', flat=True)
+        user_wishlist = Wishlist.objects.filter(
+            user_profile=user_profile
+        ).values_list('product_id', flat=True)
     else:
         user_wishlist = []
 
-    # Pagination
     paginator = Paginator(products, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -84,13 +89,19 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
+    """
+    A view to show individual product details including reviews
+    """
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all()
     user_wishlist = []
     review_form = None
+
     if request.user.is_authenticated:
         user_profile = get_object_or_404(UserProfile, user=request.user)
-        user_wishlist = Wishlist.objects.filter(user_profile=user_profile).values_list('product_id', flat=True)
+        user_wishlist = Wishlist.objects.filter(
+            user_profile=user_profile
+        ).values_list('product_id', flat=True)
 
         if request.method == 'POST' and 'submit_review' in request.POST:
             review_form = ReviewForm(data=request.POST)
@@ -102,7 +113,9 @@ def product_detail(request, product_id):
                 messages.success(request, 'Review successfully added!')
                 return redirect('product_detail', product_id=product_id)
             else:
-                messages.error(request, 'Failed to add review. Please ensure the form is valid.')
+                messages.error(
+                    request, 'Failed to add review. Please '
+                    'ensure the form is valid.')
         else:
             review_form = ReviewForm()
 
@@ -121,7 +134,9 @@ def product_detail(request, product_id):
 
 @login_required
 def add_product(request):
-    """ Add a product to the store """
+    """
+    Add a product to the store
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -133,7 +148,9 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request, 'Failed to add product. Please ensure '
+                'the form is valid.')
     else:
         form = ProductForm()
 
@@ -146,7 +163,9 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ Edit a product in the store """
+    """
+    Edit a product in the store
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -159,7 +178,10 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request, 'Failed to update product. Please ensure '
+                'the form is valid.'
+            )
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -174,7 +196,9 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product from the store """
+    """
+    Delete a product from the store
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -187,6 +211,9 @@ def delete_product(request, product_id):
 
 @login_required
 def submit_review(request, product_id):
+    """
+    Submit a review for a product
+    """
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all()
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
@@ -202,7 +229,9 @@ def submit_review(request, product_id):
             messages.success(request, "Review submitted successfully!")
             return redirect('product_detail', product_id=product.id)
         else:
-            messages.error(request, 'Failed to add review. Please ensure the form is valid.')
+            messages.error(
+                request, 'Failed to add review. '
+                'Please ensure the form is valid.')
     else:
         form = ReviewForm()
 
@@ -217,6 +246,9 @@ def submit_review(request, product_id):
 
 @login_required
 def edit_review(request, review_id):
+    """
+    Edit an existing review
+    """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
@@ -231,6 +263,9 @@ def edit_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
+    """
+    Delete an existing review
+    """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     product_id = review.product.id
     review.delete()
@@ -240,22 +275,34 @@ def delete_review(request, review_id):
 
 @login_required
 def add_to_wishlist(request, product_id):
+    """
+    Add a product to the user's wishlist
+    """
     product = get_object_or_404(Product, pk=product_id)
     user_profile = UserProfile.objects.get(user=request.user)
 
-    if Wishlist.objects.filter(user_profile=user_profile, product=product).exists():
+    if Wishlist.objects.filter(user_profile=user_profile,
+                               product=product).exists():
         messages.info(request, f'{product.name} is already in your Wishlist.')
     else:
         Wishlist.objects.create(user_profile=user_profile, product=product)
-        messages.success(request, f'{product.name} added to Wishlist successfully!')
+        messages.success(request, f'{product.name} added to '
+                         'Wishlist successfully!')
     return redirect(reverse('products'))
 
 
 @login_required
 def remove_from_wishlist(request, product_id):
+    """
+    Remove a product from the user's wishlist
+    """
     product = get_object_or_404(Product, pk=product_id)
     user_profile = UserProfile.objects.get(user=request.user)
-    wishlist_item = Wishlist.objects.get(user_profile=user_profile, product=product)
+    wishlist_item = Wishlist.objects.get(
+        user_profile=user_profile, product=product
+    )
     wishlist_item.delete()
-    messages.success(request, f'{product.name} has been successfully removed.')
+    messages.success(
+        request, f'{product.name} has been successfully removed.'
+    )
     return redirect(reverse('wishlist'))

@@ -5,6 +5,7 @@
 <div class="overlay"></div>
 <div class="container">
     <div class="row">
+        <!-- Page Title -->
         <div class="col text-center my-1">
             <h1>Your Wishlist</h1>
         </div>
@@ -16,15 +17,19 @@
                 <div class="row">
                     {% for item in user_wishlist %}
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
+                        <!-- Card for each wishlist item -->
                         <div class="card h-100 d-flex flex-column">
+                            <!-- Product image -->
                             <a href="{% url 'product_detail' item.product.id %}" class="img-container">
                                 <img src="{{ item.product.image.url }}" class="card-img-top img-fluid" alt="{{ item.product.name }}">
                             </a>
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <div>
+                                    <!-- Product name -->
                                     <p class="card-title">{{ item.product.name }}</p>
                                 </div>
                                 <div>
+                                    <!-- Product price and remove button -->
                                     <p class="card-text">£{{ item.product.price }}</p>
                                     <a href="{% url 'toggle_wishlist' item.product.id %}" class="btn cancel-btn mt-2">Remove</a>
                                 </div>
@@ -34,6 +39,7 @@
                     {% endfor %}
                 </div>
             {% else %}
+                <!-- Message when the wishlist is empty -->
                 <p class="text-center">Your wishlist is empty.</p>
             {% endif %}
         </div>

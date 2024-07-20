@@ -2,13 +2,16 @@
 {% load static %}
 
 {% block extra_css %}
+<!-- Link to the checkout CSS -->
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block content %}
 
+<!-- Overlay background for the page -->
 <div class="overlay"></div>
 <div class="container">
+    <!-- Order confirmation header -->
     <div class="row">
         <div class="col text-center my-1">
             <h1>Thank you</h1>
@@ -17,6 +20,7 @@
         </div>
     </div>
 
+    <!-- Order details -->
     <div class="row">
         <div class="col-12 col-lg-7">
             <div class="order-confirmation-wrapper p-2 border">
@@ -26,6 +30,7 @@
                     </div>
                 </div>
 
+                <!-- Order number -->
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <p class="mb-0 text-black font-weight-bold">Order Number</p>
@@ -35,6 +40,7 @@
                     </div>
                 </div>
 
+                <!-- Order date -->
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <p class="mb-0 text-black font-weight-bold">Order Date</p>
@@ -50,6 +56,7 @@
                     </div>
                 </div>
 
+                <!-- Order line items -->
                 {% for item in order.lineitems.all %}
                 <div class="row">
                     <div class="col-12 col-md-4">
@@ -69,6 +76,7 @@
                     </div>
                 </div>
 
+                <!-- Delivery information -->
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <p class="mb-0 text-black font-weight-bold">Full Name</p>
@@ -142,6 +150,7 @@
                     </div>
                 </div>
 
+                <!-- Billing information -->
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <p class="mb-0 text-black font-weight-bold">Order Total</p>
@@ -172,6 +181,7 @@
         </div> 
     </div> 
     
+    <!-- Navigation buttons -->
     <div class="row">
         <div class="col-12 col-lg-7 my-5 text-center">
             {% if from_profile %}
@@ -186,7 +196,7 @@
                     <span class="icon mr-2">
                         <i class="fas fa-gifts"></i>
                     </span>
-                    <span class="text-uppercase">Continue Shoping</span>
+                    <span class="text-uppercase">Continue Shopping</span>
                 </a>
             {% endif %}
         </div>

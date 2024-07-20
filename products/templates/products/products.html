@@ -3,23 +3,26 @@
 {% load my_filters %}
 
 {% block extra_css %}
+<!-- Include custom CSS for the products page -->
 <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
 {% endblock %}
 
 {% block content %}
+<!-- Page overlay -->
 <div class="overlay"></div>
 <div class="container-fluid position-relative">
+    <!-- Page title -->
     <div class="row">
         <div class="col text-center my-1">
             <h1>Products</h1>
         </div>
     </div>
 
-    <!-- Category menu-->
+    <!-- Category menu -->
     <div class="categories-menu row border-top border-bottom py-3 mb-3 logo-text">
         <!-- Display in larger screens -->
         {% include 'includes/products-nav.html' %}
-        <!-- Display in smaller screens-->
+        <!-- Display in smaller screens -->
         {% include 'includes/mobile-products-nav.html' %}
     </div>
 
@@ -61,10 +64,11 @@
         </div>
     </div>
 
-    <!--Products container-->
+    <!-- Products container -->
     <div class="row">
         <div class="product-container col-10 offset-1">
             <div class="row">
+                <!-- Loop through products and display each one -->
                 {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
                     <div class="card h-100">
@@ -96,6 +100,7 @@
                                         </a>
                                     </p>
                                     {% endif %}
+                                    <!-- Star rating display -->
                                     <div class="d-inline-block star-rating">
                                         {% for i in product.filled_stars %}
                                         <span class="star">★</span>
@@ -105,6 +110,7 @@
                                         {% endfor %}
                                         <small class="text-muted">({{ product.average_rating }})</small>
                                     </div>
+                                    <!-- Admin actions for superuser -->
                                     {% if request.user.is_superuser %}
                                     <small class="ml-3">
                                         <a href="{% url 'edit_product' product.id %}">Edit</a> |
@@ -114,6 +120,7 @@
                                     </small>
                                     {% endif %}
                                 </div>
+                                <!-- Wishlist button -->
                                 <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}"
                                     class="wishlist-icon ml-2">
                                     {% if product.id in user_wishlist %}
@@ -135,12 +142,14 @@
     <div class="row">
         <div class="col-12 text-center">
             <div class="pagination-container">
+                <!-- Previous page links -->
                 {% if products.has_previous %}
                 <a href="?page=1{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% for category in current_categories %}&category={{ category.name }}{% endfor %}"
                     class="btn btn-outline-black rounded-0">First</a>
                 <a href="?page={{ products.previous_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% for category in current_categories %}&category={{ category.name }}{% endfor %}"
                     class="btn border">Previous</a>
                 {% endif %}
+                <!-- Next page links -->
                 {% if products.has_next %}
                 <a href="?page={{ products.next_page_number }}{% if sort %}&sort={{ sort }}{% endif %}{% if direction %}&direction={{ direction }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}{% for category in current_categories %}&category={{ category.name }}{% endfor %}"
                     class="btn btn-outline-black rounded-0">Next</a>
@@ -187,16 +196,19 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<!-- Include custom JavaScript files -->
 <script src="{% static 'products/js/dropdown.js' %}"></script>
 <script src="{% static 'products/js/delete-modal.js' %}"></script>
 
 <script type="text/javascript">
+    // Back to top button functionality
     $('.btt-link').click(function (e) {
         window.scrollTo(0, 0);
     });
 </script>
 
 <script type="text/javascript">
+    // Sort selector functionality
     $('#sort-selector').change(function () {
         var selector = $(this);
         var currentUrl = new URL(window.location);
