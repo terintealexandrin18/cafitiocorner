@@ -643,6 +643,14 @@ input[name='q']::placeholder {
 }
 
 /* BAG STYLES */
+.bag-items-container img.img-fluid {
+    max-width: 200px; 
+    height: auto;
+}
+.table-responsive img.img-fluid {
+    max-width: 100px; 
+    height: auto; 
+}
 .bag-items-container {
     display: flex;
     flex-direction: column;
