@@ -1,10 +1,10 @@
-/* Global Styles */
+/* GLOBAL STYLES */
 html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    color:black;
-    }
+    color: black;
+}
 
 body {
     color: #555;
@@ -24,8 +24,7 @@ main {
     flex-grow: 1;
 }
 
-
-/* Title Index page */
+/* TITLE STYLES */
 .main-title {
     font-family: "Rubik", sans-serif;
     background-color: #d1cbb8;
@@ -33,13 +32,13 @@ main {
     font-weight: 600;
 }
 
-/* Container Styles */
+/* CONTAINER STYLES */
 .container-fluid {
     padding-right: 0;
     padding-left: 0;
 }
 
-/* Background Image */
+/* BACKGROUND IMAGE */
 .cover-image-container {
     background: url('/media/coffe-mug-background.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -47,7 +46,7 @@ main {
     height: 500px;
 }
 
-/* Header Styles */
+/* HEADER STYLES */
 .header {
     background-color: #D1CBB8;
     padding-top: 10px;
@@ -78,7 +77,7 @@ main {
     font-size: 0.875rem;
 }
 
-/* Navbar Styles */
+/* NAVBAR STYLES */
 .navbar-nav .nav-item .nav-link {
     color: black !important;
     text-align: center;
@@ -100,7 +99,7 @@ main {
     margin-right: auto;
 }
 
-/* Delivery Banner */
+/* DELIVERY BANNER STYLES */
 @keyframes marquee {
     0% { transform: translateX(100%); }
     50% { transform: translateX(-100%); }
@@ -116,7 +115,6 @@ main {
     background-color: #725c3a;
     color: white;
     padding: 10px 0;
-
 }
 
 #delivery-banner h3 {
@@ -124,8 +122,7 @@ main {
     animation: marquee 15s linear infinite;
 }
 
-/* Button Styles */
-
+/* BUTTON STYLES */
 .btn-update {
     background: #d2ab80;
     color: black;
@@ -192,8 +189,7 @@ main {
     color: white;
 }
 
-/* Sumbit btn */
-
+/* SUBMIT BUTTON */
 .submit-btn {
     background-color: #809671;
     color: black;
@@ -207,21 +203,20 @@ main {
     padding: 10px 20px;
 }
 
-/* Cancel / delete  btn */
-
+/* CANCEL / DELETE BUTTON */
 .cancel-btn {
     background-color: #AB706D;
     color: black;
     font-weight: 650;
 }
 
-/* Overwrite boostrap color primary */
+/* OVERWRITE BOOTSTRAP PRIMARY BUTTON */
 .btn-primary{
     background-color: #809671 !important;
     border-color: #809671  !important;
 }
 
-/* Text Colors */
+/* TEXT COLORS */
 .text-white {
     color: white !important;
 }
@@ -230,12 +225,12 @@ main {
     color: #000 !important;
 }
 
-/* Border Colors */
+/* BORDER COLORS */
 .border-black {
     border: 1px solid black !important;
 }
 
-/* Links */
+/* LINKS */
 a {
     color: black;
     text-decoration: none;
@@ -249,7 +244,7 @@ a:focus {
     text-decoration: none;
 }
 
-/* Cart Colors */
+/* CART COLORS */
 .cart-empty {
     color: black;
 }
@@ -258,7 +253,7 @@ a:focus {
     color: green;
 }
 
-/* Product Image */
+/* PRODUCT IMAGE */
 .img-container {
     padding: 15px; 
     height: 250px; 
@@ -284,7 +279,7 @@ a:focus {
     max-width: 70%;
 }
 
-/* Card Styles */
+/* CARD STYLES */
 .card {
     margin-bottom: 30px; 
 }
@@ -297,15 +292,14 @@ a:focus {
     text-align: center;
 }
 
-/* Product Container */
+/* PRODUCT CONTAINER */
 .product-container {
     margin-top: 30px;
 }
 
-/* Dropdown Menu */
+/* DROPDOWN MENU */
 .dropdown-menu .dropdown-item {
     padding-left: 10px; 
-   
 }
 
 .dropdown-menu {
@@ -317,7 +311,7 @@ a:focus {
     background-color: white;
 }
 
-/* Categories Menu */
+/* CATEGORIES MENU */
 .categories-menu {
     background-color: white;
 }
@@ -333,7 +327,7 @@ a:focus {
     align-items: center;
 }
 
-/* Footer */
+/* FOOTER STYLES */
 body .footer {
     background-color: #D1CBB8 !important;
     margin-top: 20px !important;
@@ -374,7 +368,6 @@ body .footer {
     margin-top: 20px;
     width: 100%;
     color: white;
-
 }
 
 .footer-banner p {
@@ -389,17 +382,16 @@ body .footer {
     text-decoration: underline;
 }
 
-/* Form contact */
-
+/* FORM CONTACT */
 .form-control-black {
     border: 1px solid black;
     border-radius: 0;
 }
 
-/* Toast Messages */
+/* TOAST MESSAGES */
 .message-container {
     position: fixed;
-    top:110px;
+    top: 110px;
     right: 30px;
     z-index: 99999999;
     transition: opacity 0.5s ease;
@@ -414,12 +406,12 @@ body .footer {
     height: 2px;
 }
 
-/* Input Placeholder */
+/* INPUT PLACEHOLDER */
 input[name='q']::placeholder {
     color: #aab7c4;
 }
 
-/* Back to Top Button */
+/* BACK TO TOP BUTTON */
 .btt-button {
     height: 50px;
     width: 50px;
@@ -448,7 +440,7 @@ input[name='q']::placeholder {
     color: #222;
 }
 
-/* Allauth Form Styles */
+/* ALLAUTH FORM STYLES */
 .allauth-form-inner-content p {
     margin-top: 1.5rem;
 }
@@ -483,7 +475,7 @@ input[name='q']::placeholder {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .allauth-form-inner-content button:hover,
@@ -497,7 +489,7 @@ input[name='q']::placeholder {
     color: #17a2b8;
 }
 
-/* Arrow Styles */
+/* ARROW STYLES */
 .arrow-primary {
     border-bottom-color: #007bff !important;
 }
@@ -530,14 +522,14 @@ input[name='q']::placeholder {
     border-bottom-color: #343a40 !important;
 }
 
-/* Bag Notification Wrapper */
+/* BAG NOTIFICATION WRAPPER */
 .bag-notification-wrapper {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-/* Custom Checkbox */
+/* CUSTOM CHECKBOX */
 .custom-checkbox .custom-control-label::before {
     border-radius: 0;
     border-color: #dc3545;
@@ -549,7 +541,7 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
-/* Overlay */
+/* OVERLAY */
 .overlay {
     height: 100%;
     width: 100%;
@@ -560,14 +552,12 @@ input[name='q']::placeholder {
     z-index: -1;
 }
 
-/* Account dropdown */
+/* ACCOUNT DROPDOWN */
 .dropdown-item.dropdown-hover:hover {
     background-color: #D1CBB8 !important;
 }
 
-
-
-/* Media Queries */
+/* MEDIA QUERIES */
 /* Extra Large Devices, Large Container */
 @media (min-width: 1200px) {
     .container {
@@ -575,22 +565,19 @@ input[name='q']::placeholder {
     }
 }
 
-
 @media (min-width: 992px) {
-
-  /*  Index page margins */
+  /* Index page margins */
   .custom-margin-lg {
     margin-left: 30px;
-}
+  }
 }
 
-/*  Qty buttons */
+/* Quantity Buttons */
 @media (min-width: 320px) {
     .btn-black.decrement-qty, .btn-black.increment-qty {
         padding: 0px 15px;
     }
 }
-
 
 /* Medium Devices (Tablets) and Smaller */
 @media (max-width: 991px) {
@@ -634,17 +621,13 @@ input[name='q']::placeholder {
     }
 
     /* Responsive styles for the banner text */
-
     .main .display-4 {
         font-size: 2rem; 
         padding: 0 10px;
     }
 }
 
-
-
 @media (max-width: 768px) {
-
     /* Responsive styles for the banner text */
     .main .display-4 {
         font-size: 1.5rem; 
@@ -652,17 +635,14 @@ input[name='q']::placeholder {
     }
 
     /* Delivery banner */
-
-
     #delivery-banner h3 {
         animation: none;
         font-size: 1rem;
         white-space: normal;
     }
+}
 
-  }
-
-/* Bag CSS */
+/* BAG STYLES */
 .bag-items-container {
     display: flex;
     flex-direction: column;
