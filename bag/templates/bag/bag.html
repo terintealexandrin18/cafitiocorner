@@ -14,7 +14,6 @@
     <div class="row">
         <div class="col">
             {% if bag_items %}
-            <div class="bag-items-container">
                 {% for item in bag_items %}
                 <!-- Mobile view of bag items -->
                 <div class="bag-item row mb-4 p-3 border rounded d-md-none">
@@ -58,7 +57,7 @@
                 </div>
                 {% endfor %}
                 <!-- Desktop view of bag items -->
-                <div class="table-responsive rounded d-none d-md-block">
+                <div class="rounded d-none d-md-block">
                     <table class="table table-sm table-borderless">
                         <thead class="text-black">
                             <tr>
@@ -75,9 +74,9 @@
                             <td class="p-3 w-25">
                                 <!-- Product image -->
                                 {% if item.product.image %}
-                                <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                <img class="img-fluid card-img-top img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                 {% else %}
-                                <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                <img class="img-fluid card-img-top img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
                                 {% endif %}
                             </td>
                             <td class="py-3">
@@ -148,7 +147,6 @@
                         </span>
                     </a>
                 </div>
-            </div>
             {% else %}
             <!-- Message when the bag is empty -->
             <p class="lead mb-5">Your bag is empty.</p>
