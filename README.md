@@ -324,6 +324,9 @@ Kanban Board - final stage
 
  - The wireframes for the project were created using [Balsamiq](https://balsamiq.com). These wireframes helped in planning the layout and user interface of the website effectively.
 
+#### Wireframes
+
+
 | Page              | Desktop Version                                                   | Mobile Version                                                   |
 |-------------------|-------------------------------------------------------------------|------------------------------------------------------------------|
 | **Home**          | ![Home Desktop](assets/wireframes/home_desktop.png)               | ![Home Mobile](assets/wireframes/home_mobile.png)                |
@@ -334,3 +337,37 @@ Kanban Board - final stage
 | **Checkout Success** | ![Checkout Success Desktop](assets/wireframes/checkout_success_desktop.png) | ![Checkout Success Mobile](assets/wireframes/checkout_success_mobile.png) |
 | **Contact**       | ![Contact Desktop](assets/wireframes/contact_desktop.png)         | ![Contact Mobile](assets/wireframes/contact_mobile.png)          |
 | **About**         | ![About Desktop](assets/wireframes/about_desktop.png)             | ![About Mobile](assets/wireframes/about_mobile.png)              |
+
+
+### Surface
+
+#### Color Scheme
+
+![Color Scheme](assets/readme/colorscheme.png)
+
+- The colors used in the website have been carefully selected to create a warm, inviting, and sophisticated aesthetic, enhancing the user experience and making the shopping process enjoyable.
+
+- We use Cream (#D1CBB8) for the main background. This light, neutral color provides a clean and welcoming canvas, ensuring readability and reducing eye strain for users browsing the site.
+
+- Green (#809671) is used for primary buttons, links, and call-to-action sections. Green evokes feelings of tranquility and nature, which aligns with the organic and comforting atmosphere we aim to create. It effectively draws attention to important interactive elements without overwhelming the user.
+
+- Brown (#725C3A) serves as a secondary accent color for elements such as secondary buttons, headers, and borders. This earthy tone complements the cream background and green accents, adding warmth and a sense of reliability to the design.
+
+- Muted Red (#AB706D) is utilized for alerts, notifications, and error messages. This color highlights urgent information that requires user attention, providing a subtle yet effective way to convey critical messages without causing alarm.
+
+- Beige (#D2AB80) is used to highlight specific content areas such as product cards, testimonials, and feature sections. This soft neutral color offers a gentle contrast to the cream background, making these sections stand out without disrupting the overall harmony of the design.
+
+By incorporating these colors, the website achieves a harmonious balance that guides the user's attention intuitively while maintaining a cohesive and aesthetically pleasing appearance throughout.
+
+
+#### Typography
+
+The typography for this project has been carefully selected to enhance readability and create a visually appealing hierarchy. Google Fonts are used specifically for titles, providing a unique and stylish appearance, while the body text uses default system fonts for simplicity and faster loading times.
+
+Titles
+- The Google Font 'Roboto' is used for all titles (h1, h2, h3, h4, h5, h6). This ensures that headings stand out and contribute to a cohesive visual identity.
+
+Body Text
+- Default system fonts like Arial and Helvetica are used for the body text. These fonts are reliable and widely supported, ensuring good readability and performance.
+
+By combining 'Roboto' for titles with standard fonts for body text, the website maintains a clean and professional look while ensuring optimal performance and readability.
