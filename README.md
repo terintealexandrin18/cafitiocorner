@@ -320,7 +320,17 @@ Kanban Board - final stage
 ![Entity Relationship Diagram](assets/readme/entity-relationship-diagram.png)
 
 
+### Skeleton
 
+ - The wireframes for the project were created using [Balsamiq](https://balsamiq.com). These wireframes helped in planning the layout and user interface of the website effectively.
 
-
-
+| Page              | Desktop Version                                                   | Mobile Version                                                   |
+|-------------------|-------------------------------------------------------------------|------------------------------------------------------------------|
+| **Home**          | ![Home Desktop](assets/wireframes/home_desktop.png)               | ![Home Mobile](assets/wireframes/home_mobile.png)                |
+| **Products**      | ![Products Desktop](assets/wireframes/products_desktop.png)       | ![Products Mobile](assets/wireframes/products_mobile.png)        |
+| **Product Details** | ![Product Details Desktop](assets/wireframes/products_informations_desktop.png) | ![Product Details Mobile](assets/wireframes/products_informations_mobile.png) |
+| **Bag**           | ![Bag Desktop](assets/wireframes/bag_desktop.png)                 | ![Bag Mobile](assets/wireframes/bag_mobile.png)                  |
+| **Checkout**      | ![Checkout Desktop](assets/wireframes/checkout_desktop.png)       | ![Checkout Mobile](assets/wireframes/checkout_mobile.png)        |
+| **Checkout Success** | ![Checkout Success Desktop](assets/wireframes/checkout_success_desktop.png) | ![Checkout Success Mobile](assets/wireframes/checkout_success_mobile.png) |
+| **Contact**       | ![Contact Desktop](assets/wireframes/contact_desktop.png)         | ![Contact Mobile](assets/wireframes/contact_mobile.png)          |
+| **About**         | ![About Desktop](assets/wireframes/about_desktop.png)             | ![About Mobile](assets/wireframes/about_mobile.png)              |
