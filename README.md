@@ -530,5 +530,113 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 ### Header
 - The header contains the main logo, navigation links, and search product functionality.
 - The main logo works as a link to the home page.
-- The navigation links allow the shopper access to all sections to facilitate navigation across the website. 
-- The shopping bag icon changes, reflecting the current status. The current shopping amount is displayed for the shopper.
+- The navigation links allow the shopper access to all sections to facilitate navigation across the website.
+- The shopping bag icon changes the color reflecting the current status. If no items are in cart the icon color is black; if items are in cart the icon color changes to green. Also, the current shopping amount is displayed for the shopper.
+- ![Header](assets/readme/nav_bar.png)
+
+### Search Bar
+- The search bar allows the user to search the website for products using specific keywords.
+- ![Search Bar](assets/readme/search_bar.png)
+
+### Footer
+- The footer contains contact details and business social media links, including Facebook Business page, Instagram, and Linkedin. It also includes links to the owner's Github page and the Privacy Policy.
+- A newsletter registration form has been located in the footer allowing the shopper to subscribe across the whole website.
+- ![Footer](assets/readme/footer.png)
+
+### Home Page
+- Display the discount for free delivery on all orders. The text bar moves left to right and right to left to ensure users are aware of the offer.
+- Button that redirects to the "All Products" page, helping users easily navigate to the product pages. The background image visually represents the website's offerings.
+- ![Home Page](assets/readme/home_page.png)
+
+### Products
+
+#### Products Page
+- Display all the products currently available or filtered on a specific category.
+- Display an image of the products as well as their main information such as name, price, rating, and whether they are added to the wishlist or not.
+- Users can see only 8 items per page and can navigate to the first page, last page, next, and previous pages.
+- The user can add items to the wishlist and remove items from the wishlist without having to click on the product details.
+- Provides sorting functionality to sort products by price, rating, name, or category.
+- A back-to-the-top button is available so the shopper can easily return to the top of the page.
+- As a superuser, the admin can see the edit and delete buttons, allowing quick access to the product admin.
+- ![Products Page](assets/readme/products_page.png)
+
+#### Product Informations Page
+- The product navigation bar is present in case the shopper wants to go back to the products.
+- Provide a larger image of the product and display its detailed information.
+- A heart icon is available to easily add/remove the product to the shopper's wishlist.
+- Allow the user to select the quantity of products to be added to the shopping bag.
+- An "Add to Bag" button is available to add the desired quantity of the product to the shopping bag.
+- A reviews link is available, indicating how many reviews the product has received and to toggle the reviews.
+- All reviews the product has received are displayed in the reviews section at the bottom of the page.
+- The reviews and ratings can be updated by the user.
+- Edit and delete links are displayed only for admins to update or delete the product.
+- ![Product Informations Page](assets/readme/products_informations_page.png)
+- ![Product Informations Page](assets/readme/products_informations_page_with_review.png)
+
+### Products Admin
+
+#### Add Product
+- Provide a form for the site admin to add new products to the store.
+- ![Add Product](assets/readme/admin_add_product.png)
+
+#### Edit Product
+- Provide a prefilled form for the site admin to update products in the store.
+- ![Edit Product](assets/readme/admin_edit_product.png)
+
+### Shopping Cart Page
+- A message alerts the user if the free delivery threshold has not been reached, displaying the amount left.
+- Display all products currently in the shopping cart and their information.
+- Allow the user to update the product quantity or remove the product from the shopping cart.
+- Display the current total cost including the cart total and delivery costs.
+- Provide a "Keep Shopping" link to go back to the products.
+- A button to checkout is provided for the shopper to complete the purchase.
+- ![Shopping Cart Page](assets/readme/shoping_cart.png)
+
+### Checkout Page
+- Provide a checkout form for the shopper to complete the purchase and provide the necessary contact, shipping, and payment information.
+- Display an order summary listing all the products to be purchased and their total cost including the bag total and delivery costs.
+- Provide a button back to the shopping bag if the shopper would like to adjust the products in the shopping cart.
+- A message informs the shopper of the amount to be charged on the provided card.
+- Descriptive error messages are displayed if there is any issue with the payment information provided.
+- A button is clearly available for the shopper to complete the order.
+- Stripe webhook handler is created in the backend to pass the order information if the browser crashes after checkout completion.
+- ![Checkout Page](assets/readme/checkout_page.png)
+
+### Checkout Success Page
+- Display the order details and shopper information to allow the shopper to confirm that the information provided is correct.
+- Additionally, inform the shopper that an email has been sent to the email address provided with the same information.
+- A button to continue shopping is provided at the bottom of the page.
+- ![Checkout Success Page](assets/readme/checkout_success_page.png)
+
+### Profile Page
+- Provide a form for the registered shopper to update their default information.
+- An order history section is present with all registered shopper's past orders information.
+- ![Profile Page](assets/readme/profile_page.png)
+
+### Wishlist Page
+- Display the registered shopper's wishlist products and provide a picture, name and price for each product.
+- A remove button is present for the registered shopper to remove products they no longer want to keep on the list.
+- A confirmation will appear before removing the product from the wishlist.
+- ![Wishlist Page](assets/readme/wishlist_page.png)
+
+### Contact Us Page
+- Provide a form where the user can get in touch with the business regarding different topics.
+- ![Contact Us Page](assets/readme/contact_page.png)
+
+### About Us Page
+- Provides an overview of Cafitio Corner's mission, story, values, and ways to connect with us.
+- Includes an engaging image representing our coffee-centric focus.
+- ![About Us Page](assets/readme/about_page.png)
+
+### Accounts Pages
+| Page            | Purpose                                                                                 | Image                                      |
+|-----------------|-----------------------------------------------------------------------------------------|--------------------------------------------|
+| Sign Up         | Allow the shopper to sign up for an account on the website.                             | ![Sign Up](assets/readme/sign_up.png)      |
+| Sign In         | Allow the registered shopper to sign in with their account.                             | ![Sign In](assets/readme/sign_in.png)      |
+| Sign Out        | Allow the registered shopper to sign out from their account.                            | ![Sign Out](assets/readme/sign_out.png)    |
+| Reset Password  | Allow the registered shopper to reset their password.                                   | ![Reset Password](assets/readme/password_reset.png) |
+
+### 404 Error Page
+- Provide information to the shopper if the address entered cannot be found.
+- A link to return to the products page is present.
+- ![404 Error Page](assets/readme/404_page.png)
