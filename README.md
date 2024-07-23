@@ -371,3 +371,30 @@ Body Text
 - Default system fonts like Arial and Helvetica are used for the body text. These fonts are reliable and widely supported, ensuring good readability and performance.
 
 By combining 'Roboto' for titles with standard fonts for body text, the website maintains a clean and professional look while ensuring optimal performance and readability.
+
+
+## Marketing
+### Search Engine Optimization (SEO)
+
+To improve the search index rating on Google, extensive research was conducted using various tools such as Google Keyword Planner and SEMrush. These tools helped identify relevant keywords to use in meta tags, content, and other strategic areas of the website.
+
+The implemented meta tags include a description and keywords that focus on capturing the primary search queries related to our business:
+
+- Description: "Cafitio Corner - Top coffee products, accessories, and more. Free delivery on orders over £40. Sign in for exclusive deals."
+- Keywords: "Cafitio Corner, coffee shop, coffee accessories, online coffee store, free delivery, coffee products, coffee deals, coffee beans, coffee machines"
+
+These keywords are strategically chosen to align with the products and services offered by Cafitio Corner, ensuring that potential customers can easily find the website through search engines.
+
+Continuous Monitoring and Improvement
+
+- SEO is an ongoing process. To ensure the effectiveness of the selected keywords, they are regularly monitored using tools like Google Analytics. This allows us to:
+    - Track the performance of each keyword.
+    - Determine which terms are driving traffic to the site.
+    - Refine and adjust the keywords based on performance data.
+
+ - Additional SEO Strategies
+
+    - Sitemap: A sitemap was generated using [xml-sitemaps](https://www.xml-sitemaps.com/) and is included in the root level of the project. This helps search engines crawl and index the website more efficiently.
+    - Robots.txt: A `robots.txt` file was created at the root level of the project. This file instructs search engine crawlers on which URLs they can access on the website, improving crawl efficiency and ensuring important pages are indexed.
+
+By implementing these SEO strategies, Cafitio Corner aims to increase its online visibility, attract more visitors, and provide an enhanced user experience.
