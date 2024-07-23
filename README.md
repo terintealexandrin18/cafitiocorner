@@ -640,3 +640,58 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 - Provide information to the shopper if the address entered cannot be found.
 - A link to return to the products page is present.
 - ![404 Error Page](assets/readme/404_page.png)
+
+
+## Technologies Used
+
+### Languages Used
+- HTML5
+- CSS3
+- JavaScript
+- Python
+
+### Libraries and Frameworks
+- Django: Utilized as the primary web framework.
+- Django Template: Employed as a templating language to render backend data into HTML.
+- Bootstrap 4: Implemented for styling and ensuring responsiveness across the website.
+- Google Fonts: Integrated to import fonts used across the entire site.
+- Font Awesome: Applied to enhance aesthetics and user experience with icons.
+- jQuery 3.6.0: Utilized as a JavaScript library to simplify code writing.
+
+### Packages / Dependencies Installed
+- Django Allauth: Facilitated user authentication, registration, and account management.
+- Django Crispy Forms: Managed the rendering of forms.
+- Django Countries: Provided country choices for forms and country fields for models.
+- Pillow: Enabled image processing capabilities.
+- Gunicorn: Served as the WSGI HTTP Server for UNIX to support the Django application deployment.
+- Django Summernote: Integrated as a text editor to manage content easily within the Django admin.
+- psycopg2: Used as the PostgreSQL adapter for Python.
+- dj-database-url: Allowed the configuration of the database via a URL.
+- django-heroku: Simplified the configuration of the Django application for Heroku deployment.
+- django-storages: Managed storage of static and media files on AWS S3.
+- boto3: Allowed interaction with AWS services.
+- whitenoise: Simplified the serving of static files.
+
+### Database Management
+- SQLite: Used as the single-file database during development.
+- Heroku Postgres: Database was used in production, as a service based on PostgreSQL provided by Heroku.
+
+### Payment Service
+- Stripe: Managed all online payment transactions.
+
+### Cloud Storage
+- Amazon Web Services (AWS) S3: Used to store all static and media files in the production environment.
+
+### Tools and Programs
+- [Git](https://git-scm.com/): Employed for version control, using the Gitpod terminal to commit and push code to GitHub.
+- [GitPod](https://www.gitpod.io/): Used for code writing, committing, and pushing to GitHub.
+- [GitHub](https://github.com/): Hosted the project's code repository.
+- [Heroku](https://www.heroku.com/): Deployed the website.
+- [Coolors](http://colormind.io/): Utilized to create the website's color scheme.
+- [Balsamiq](https://balsamiq.com/): Used for creating wireframes during the design phase.
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/): Employed during development for code review and responsiveness testing.
+- [W3C Markup Validator](https://validator.w3.org/): Validated HTML code.
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/): Validated CSS code.
+- [JSHint](https://jshint.com/): Used to validate the site's JavaScript code quality.
+- [Font Awesome](https://fontawesome.com/): Applied to enhance aesthetics and user experience with icons.
+- [PEP8 CI](https://pep8ci.herokuapp.com/): Used to validate the site's Python code quality.
