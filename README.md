@@ -417,9 +417,9 @@ By implementing these SEO strategies, Cafitio Corner aims to increase its online
     - We embrace the latest trends and technologies to stay at the forefront of the coffee industry.
 
 
-### Customers
+#### Customers
 
-#### Target Audience:
+##### Target Audience:
 
 - Coffee Enthusiasts:
   - Experienced coffee drinkers seeking premium products and unique flavors.
@@ -442,9 +442,9 @@ By implementing these SEO strategies, Cafitio Corner aims to increase its online
   - Access to informative content and customer support for guidance on product selection and usage.
 
 
-### Competitors
+#### Competitors
 
-#### Primary Competitors:
+##### Primary Competitors:
 
 Cafitio Corner competes with established online coffee retailers, such as:
 - Blue Bottle Coffee
@@ -455,7 +455,7 @@ Cafitio Corner competes with established online coffee retailers, such as:
 
 ### SWOT Analysis
 
-#### Strengths
+##### Strengths
 
 - Diverse Product Range:
   - Cafitio Corner offers a comprehensive selection of premium coffee products, accessories, and machines, providing customers with a wide array of choices in one place.
@@ -463,7 +463,7 @@ Cafitio Corner competes with established online coffee retailers, such as:
 - Community Engagement:
   - Fostering an online community where coffee enthusiasts can connect, share experiences, and contribute to a vibrant and engaged user base.
 
-#### Weaknesses
+##### Weaknesses
 
 - New Brand:
   - As a new entrant, Cafitio Corner may face challenges in establishing brand recognition and trust in the competitive market.
@@ -471,7 +471,7 @@ Cafitio Corner competes with established online coffee retailers, such as:
 - Limited Marketing Budget:
   - Initial budget constraints may limit the reach and awareness of Cafitio Corner compared to more established competitors.
 
-#### Opportunities
+##### Opportunities
 
 - Market Niche:
   - Cafitio Corner has the opportunity to fill a niche in the market by providing a diverse and curated selection of coffee-related products on one platform, a unique offering not widely available.
@@ -479,7 +479,7 @@ Cafitio Corner competes with established online coffee retailers, such as:
 - Collaborations:
   - Potential collaborations with prominent coffee brands, influencers, and organizations can enhance brand visibility and credibility.
 
-#### Threats
+##### Threats
 
 - Supply Chain Disruptions:
   - Challenges in shipping and supply chain disruptions, particularly for products produced in other countries, may impact inventory and lead to delays.
@@ -494,22 +494,41 @@ Cafitio Corner competes with established online coffee retailers, such as:
   - Other similar companies gaining more PR and a larger market share may pose a threat to Cafitio Corner's growth.
 
 
-### Marketing Strategy
+#### Marketing Strategy
 
 Given our resource constraints, we are strategically focusing on cost-effective yet impactful marketing initiatives to establish and grow Cafitio Corner. Our marketing strategy is designed to create brand awareness, foster customer loyalty, and attract a wider audience:
 
-#### Engaging Social Media Presence
+##### Engaging Social Media Presence
 
 - Facebook Community Building:
   - Actively manage our Facebook page, engaging with our audience through regular posts, updates, and responding promptly to customer inquiries. This platform serves as a hub for coffee enthusiasts to share experiences and connect.
 
-#### Newsletter Loyalty Program
+##### Newsletter Loyalty Program
 
 - Customer Loyalty through Newsletters:
   - Encourage visitors to sign up for our newsletter by offering exclusive discounts, early access to new products, and valuable coffee-related content. This not only builds customer loyalty but also provides a direct communication channel.
 
-#### Word of Mouth Marketing
+##### Word of Mouth Marketing
 
 - Customer Referral Program:
   - Implement a customer referral program, incentivizing existing customers to refer friends and family to Cafitio Corner. This taps into the power of word of mouth, expanding our customer base organically.
 
+#### Facebook Business page
+
+![Facebook Page](assets/readme/facebook_cafitio_corner.png)
+
+
+The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-61563015151538/)
+
+
+## Features
+
+### General
+- The website has been designed from a mobile-first perspective.
+- Responsive design across all device sizes.
+
+### Header
+- The header contains the main logo, navigation links, and search product functionality.
+- The main logo works as a link to the home page.
+- The navigation links allow the shopper access to all sections to facilitate navigation across the website. 
+- The shopping bag icon changes, reflecting the current status. The current shopping amount is displayed for the shopper.

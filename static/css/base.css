@@ -75,6 +75,7 @@ main {
 .header .nav-link p {
     margin: 0;
     font-size: 0.875rem;
+    margin-top: 15px;
 }
 
 /* NAVBAR STYLES */
