@@ -980,3 +980,24 @@ That's it! Your project should now be successfully deployed to Heroku with stati
 
 
 ## Finished Product
+
+### Page Overview
+
+| Page               | Desktop                                                  | Mobile                                                   |
+|--------------------|----------------------------------------------------------|----------------------------------------------------------|
+| Home               | ![home_page_d](assets/readme/home_page_d.png)            | ![home_page_m](assets/readme/home_page_m.png)            |
+| Products           | ![product_page_d](assets/readme/product_page_d.png)      | ![product_page_m1](assets/readme/product_page_m1.png) <br> ![product_page_m2](assets/readme/product_page_m2.png) |
+| Product Details    | ![product_informations_d](assets/readme/product_informations_d.png) | ![product_informations_m](assets/readme/product_informations_m.png) |
+| Add Product        | ![add_product_d](assets/readme/add_product_d.png)        | ![add_product_m](assets/readme/add_product_m.png)        |
+| Edit Product       | ![edit_product_d](assets/readme/edit_product_d.png)      | ![edit_product_m](assets/readme/edit_product_m.png)      |
+| Shopping Bag       | ![shopping_bag_d](assets/readme/shoping_bag_d.png)      | ![shopping_bag_m](assets/readme/shoping_bag_m.png)      |
+| Checkout           | ![checkout_d](assets/readme/checkout_d.png)              | ![checkout_m](assets/readme/checkout_m.png)              |
+| Checkout Success   | ![checkout_success_d](assets/readme/checkout_success_d.png) | ![checkout_success_m](assets/readme/checkout_success_m.png) |
+| Profile            | ![profile_d](assets/readme/profile_d.png)                | ![profile_m](assets/readme/profile_m.png)                |
+| Wishlist           | ![wishlist_d](assets/readme/wishlist_d.png)              | ![wishlist_m](assets/readme/wishlist_m.png)              |
+| Contact Us         | ![contact_d](assets/readme/contact_d.png)                | ![contact_m](assets/readme/contact_m.png)                |
+| About Us           | ![about_d](assets/readme/about_d.png)                    | ![about_m](assets/readme/about_m.png)                    |
+| Sign Up            | ![sign_up_d](assets/readme/sign_up_d.png)                | ![sign_up_m](assets/readme/sign_up_m.png)                |
+| Sign In            | ![sign_in_d](assets/readme/sign_in_d.png)                | ![sign_in_m](assets/readme/sign_in_m.png)                |
+| Sign Out           | ![sign_out_d](assets/readme/sign_out_d.png)              | ![sign_out_m](assets/readme/sign_out_m.png)              |
+| Password Reset     | ![password_reset_d](assets/readme/password_reset_d.png)  | ![password_reset_m](assets/readme/password_reset_m.png)  |
