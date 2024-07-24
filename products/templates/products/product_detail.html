@@ -89,13 +89,16 @@
                                     </div>
                                     <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                                     <div class="input-group-append">
-                                        <button class="increment-qty btn btn-black rounded-0" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                        <button class="increment-qty btn btn-black rounded-0"
+                                            data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
                                             <span class="icon">
                                                 <i class="fas fa-plus"></i>
                                             </span>
                                         </button>
                                         <!-- Wishlist button -->
-                                        <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}" class="wishlist-icon ml-2">
+                                        <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}"
+                                            class="wishlist-icon ml-2"
+                                            aria-label="{% if product.id in user_wishlist %}Remove from wishlist{% else %}Add to wishlist{% endif %}">
                                             {% if product.id in user_wishlist %}
                                             <i class="fas fa-heart"></i>
                                             {% else %}
