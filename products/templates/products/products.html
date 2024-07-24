@@ -41,25 +41,23 @@
         <!-- Sort selector -->
         <div class="sort-select-wrapper col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
             <select id="sort-selector"
-                class="mr-3 w-auto custom-select custom-select-sm rounded border {% if current_sorting != 'None_None' %}border-blue{% endif %}">
-                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...
+                class="mr-3 w-auto custom-select custom-select-sm rounded border {% if current_sorting != 'None_None' %}border-blue{% endif %}"
+                aria-label="Sort by">
+                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)
                 </option>
-                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low
-                    to high)</option>
-                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price
-                    (high to low)</option>
-                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating
-                    (low to high)</option>
-                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating
-                    (high to low)</option>
-                <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)
-                </option>
-                <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)
-                </option>
-                <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>
-                    Category (A-Z)</option>
-                <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>
-                    Category (Z-A)</option>
+                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to
+                    low)</option>
+                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to
+                    high)</option>
+                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to
+                    low)</option>
+                <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category
+                    (A-Z)</option>
+                <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category
+                    (Z-A)</option>
             </select>
         </div>
     </div>
@@ -122,7 +120,8 @@
                                 </div>
                                 <!-- Wishlist button -->
                                 <a href="{% if user.is_authenticated %}{% url 'toggle_wishlist' product.id %}{% else %}{% url 'account_login' %}{% endif %}"
-                                    class="wishlist-icon ml-2">
+                                    class="wishlist-icon ml-2"
+                                    aria-label="{% if product.id in user_wishlist %}Remove from wishlist{% else %}Add to wishlist{% endif %}">
                                     {% if product.id in user_wishlist %}
                                     <i class="fas fa-heart"></i>
                                     {% else %}

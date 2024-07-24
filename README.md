@@ -526,6 +526,7 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 ### General
 - The website has been designed from a mobile-first perspective.
 - Responsive design across all device sizes.
+- Validation messages for various actions such as adding a product to the bag, logging in/logging out, updating the bag quantity, removing an item from the bag, adding a new item andy many more. These messages can be closed manually or will disappear after 5 seconds.
 
 ### Header
 - The header contains the main logo, navigation links, and search product functionality.
@@ -1047,8 +1048,6 @@ There are 2 issues in the project that have been identified and need to be resol
 
 
 ## Acknowledgements
-
-This project was developed and designed as a Portfolio 5 Project for the Full Stack Software Developer Diploma course at the Code Institute. 
 
 I would like to thank my mentor, Marcel, the Slack community, and everyone at the Code Institute for their help and support.
 
