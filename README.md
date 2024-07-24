@@ -981,7 +981,6 @@ That's it! Your project should now be successfully deployed to Heroku with stati
 
 ## Finished Product
 
-### Page Overview
 
 | Page               | Desktop                                                  | Mobile                                                   |
 |--------------------|----------------------------------------------------------|----------------------------------------------------------|
@@ -1001,3 +1000,56 @@ That's it! Your project should now be successfully deployed to Heroku with stati
 | Sign In            | ![sign_in_d](assets/readme/sign_in_d.png)                | ![sign_in_m](assets/readme/sign_in_m.png)                |
 | Sign Out           | ![sign_out_d](assets/readme/sign_out_d.png)              | ![sign_out_m](assets/readme/sign_out_m.png)              |
 | Password Reset     | ![password_reset_d](assets/readme/password_reset_d.png)  | ![password_reset_m](assets/readme/password_reset_m.png)  |
+
+
+## Credits
+
+### Content
+- Product examples were taken from the following website: [Amazon](https://www.amazon.com)
+- Content for the individual products was taken from the following page: [Amazon](https://www.amazon.com)
+- All other content was written by the developer.
+
+### Media
+- Home page image and About Us page image were taken from [Pixabay](https://www.pixabay.com)
+- Product images were taken from [Amazon](https://www.amazon.com)
+
+## Code
+
+The code in Code Institute's video on the Boutique Ado project was used as the main reference point to set up an e-commerce/online store project using HTML, CSS, JS, Python+Django, PostgreSQL database, Stripe, and AWS S3 as storage.
+
+### Resources and References
+
+- Stack Overflow - Used to search for solutions to various issues encountered during development.
+- Slack - Utilized for seeking help and discussing issues with peers and mentors.
+- Crispy Forms Documentation - Used for implementing and styling Django forms.
+- Django Documentation - Followed step-by-step to ensure proper setup and implementation of Django features.
+- Code Institute Template - This repository was created using the template provided by Code Institute.
+- W3Schools - Consulted regularly for inspiration and to better understand the implementation of various code snippets.
+
+
+## Known Bugs
+
+There are 2 issues in the project that have been identified and need to be resolved. However, they remain unsolved due to a lack of my current skills and/or time. Both issues do not impact the functionality of the website:
+
+1. Gitpod Configuration Warnings
+   - Warning: `ms-toolsai.vscode-jupyter-cell-tags extension is not synced, but not added in .gitpod.yml`
+   - Warning: `ms-toolsai.vscode-jupyter-slideshow extension is not synced, but not added in .gitpod.yml`
+   - ![terminal error](assets/readme/terminal.png) 
+
+   These warnings indicate that certain VS Code extensions are not synced and not added to the `.gitpod.yml` configuration file. This does not affect the core functionality of the website but needs to be addressed to ensure a clean development environment setup.
+
+2. Console Errors
+   - Error: There is an unspecified error appearing in the browser console that needs to be addressed. The exact details of the error are not currently available, but it does not impact the overall functionality of the website.
+   - Error: A 404 error appears when navigating to certain pages. This needs further investigation to determine the cause and to implement a solution. This does not significantly impact the website's functionality but is noted for future resolution.
+   - ![console error](assets/readme/console.png)
+
+   Despite these issues, the website functions correctly, and these warnings and errors can be addressed as needed in the future.
+
+
+## Acknowledgements
+
+This project was developed and designed as a Portfolio 5 Project for the Full Stack Software Developer Diploma course at the Code Institute. 
+
+I would like to thank my mentor, Marcel, the Slack community, and everyone at the Code Institute for their help and support.
+
+I also want to extend my gratitude to my wife for her unwavering support throughout this journey.

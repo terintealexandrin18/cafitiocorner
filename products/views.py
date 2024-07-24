@@ -54,7 +54,7 @@ def all_products(request):
                 Q(description__icontains=query)
             )
             products = products.filter(queries)
-            
+
     products = products.order_by('name')
 
     for product in products:
