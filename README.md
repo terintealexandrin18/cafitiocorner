@@ -695,3 +695,288 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 - [JSHint](https://jshint.com/): Used to validate the site's JavaScript code quality.
 - [Font Awesome](https://fontawesome.com/): Applied to enhance aesthetics and user experience with icons.
 - [PEP8 CI](https://pep8ci.herokuapp.com/): Used to validate the site's Python code quality.
+
+### Testing
+The testing documentation can be found [here](#)
+
+## Deployment to Heroku
+
+This project is deployed on Heroku for production, with all static and media files stored on AWS S3. Here are the steps to deploy on Heroku:
+
+1. **Create Heroku App**
+   - Navigate to [Heroku](https://heroku.com), create a new account or log in.
+   - On the dashboard page, click the "Create New App" button.
+   - Give the app a unique name (with hyphens between words) and select the region closest to you.
+   - Click "Create App".
+
+2. **Provision Heroku Postgres Database**
+   - On the Resources tab, add a new Heroku Postgres database.
+
+3. **Configure Environment Variables**
+   - Navigate to the Settings tab and click "Reveal Config Vars".
+   - Add the following variables:
+
+     | Variable               | Key                                     |
+     |------------------------|-----------------------------------------|
+     | AWS_ACCESS_KEY_ID      | your_access_key_id_from_AWS             |
+     | AWS_SECRET_ACCESS_KEY  | your_secret_access_key_from_AWS         |
+     | DATABASE_URL           | your_database_url                       |
+     | EMAIL_HOST_PASS        | your_app_password_from_your_email       |
+     | EMAIL_HOST_USER        | your_email_address                      |
+     | SECRET_KEY             | your_secret_key                         |
+     | STRIPE_PUBLIC_KEY      | your_stripe_public_key                  |
+     | STRIPE_SECRET_KEY      | your_stripe_secret_key                  |
+     | USE_AWS                | True                                    |
+
+4. **Install Required Packages**
+   - If not already installed, install `dj_database_url` and `psycopg2`:
+
+     ```bash
+     pip3 install dj_database_url psycopg2-binary
+     ```
+
+5. **Database Configuration**
+   - In `settings.py`, import `dj_database_url`.
+   - Replace the default database configuration with:
+
+     ```python
+     DATABASES = {
+       'default': dj_database_url.parse('YOUR_DATABASE_URL_FROM_HEROKU')
+     }
+     ```
+
+6. **Run Migrations**
+   ```bash
+   python3 manage.py migrate
+   ```
+
+7. **Import Data to Database**
+   - Backup the current database and load it into a JSON file:
+
+     ```bash
+     ./manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+     ```
+
+   - Connect to the Postgres database and load the data:
+
+     ```bash
+     ./manage.py loaddata db.json
+     ```
+
+8. **Create Superuser**
+
+   - Create a superuser for your Django application by running the following command in your terminal:
+
+     ```bash
+     python3 manage.py createsuperuser
+     ```
+
+   - Follow the prompts to enter the username, email address, and password for the superuser account.
+
+9. **Update Database Configuration**
+
+   - Add conditional statements in `settings.py` to switch between Postgres and SQLite:
+
+     ```python
+     import dj_database_url
+     import os
+
+     if 'DATABASE_URL' in os.environ:
+         DATABASES = {
+             'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+         }
+     else:
+         DATABASES = {
+             'default': {
+                 'ENGINE': 'django.db.backends.sqlite3',
+                 'NAME': BASE_DIR / 'db.sqlite3',
+             }
+         }
+     ```
+10. **Install Gunicorn**
+
+    - Install Gunicorn, which will act as the web server for your Django application:
+
+      ```bash
+      pip3 install gunicorn
+      ```
+
+    - Freeze the installed packages into `requirements.txt`:
+
+      ```bash
+      pip3 freeze > requirements.txt
+      ```
+
+11. **Create Procfile**
+    - In the project's root directory, create a `Procfile` to tell Heroku to create a web dyno that will run Gunicorn and serve the Django app:
+
+      ```text
+      web: gunicorn your_project_name.wsgi:application
+      ```
+
+12. **Deploy to Heroku**
+    - Login to Heroku CLI:
+
+      ```bash
+      heroku login
+      ```
+
+    - Disable collectstatic temporarily so that Heroku won't try to collect static files when it deploys:
+
+      ```bash
+      heroku config:set DISABLE_COLLECTSTATIC=1 --app your_app_name
+      ```
+
+    - Add your Heroku app to `ALLOWED_HOSTS` in `settings.py`:
+
+      ```python
+      ALLOWED_HOSTS = ['your_app_name.herokuapp.com', 'localhost']
+      ```
+
+    - Add, commit, and push to GitHub, then to Heroku:
+
+      ```bash
+      git add .
+      git commit -m "Prepare for Heroku deployment"
+      git push origin main
+      heroku git:remote -a your_app_name
+      git push heroku main
+      ```
+
+    - Connect the Heroku app to GitHub and enable automatic deploys:
+
+      - Go to the app's dashboard on Heroku.
+      - Navigate to the Deploy tab.
+      - Connect the app to GitHub by clicking "GitHub" and search for the repository.
+      - Click "Connect".
+      - Enable automatic deploys by clicking "Enable Automatic Deploys".
+
+13. **Update Settings for Secret Key and Debug**
+
+    - In `settings.py`, replace the secret key setting with a call to get it from the environment and use an empty string as a default:
+
+      ```python
+      SECRET_KEY = os.environ.get('SECRET_KEY', '')
+      ```
+
+    - Set debug to be true only if there's a variable called development in the environment:
+
+      ```python
+      DEBUG = 'DEVELOPMENT' in os.environ
+      ```
+
+### AWS Bucket Creation
+
+All static and media files are stored in an AWS S3 bucket. Follow these steps to create your own bucket:
+
+1. **Create AWS Account**
+   - Go to [Amazon Web Services](https://aws.amazon.com) and create an account or log in.
+
+2. **Create S3 Bucket**
+   - Go to the S3 service and click "Create Bucket".
+   - Name the bucket (e.g., your Heroku app name) and select the closest region.
+   - Enable ACLs (Access Control Lists) and choose "Bucket Owner Preferred".
+   - Uncheck "Block All Public Access" and acknowledge the warning.
+   - Enable Static Website Hosting in the Properties tab.
+   - Set the Index and Error documents to `index.html` and `error.html`.
+
+3. **Configure Bucket Policies**
+   - Add the following CORS (Cross-Origin Resource Sharing) configuration in the Permissions tab:
+
+     ```json
+     [
+         {
+             "AllowedHeaders": ["Authorization"],
+             "AllowedMethods": ["GET"],
+             "AllowedOrigins": ["*"],
+             "ExposeHeaders": []
+         }
+     ]
+     ```
+
+   - Set up a Bucket Policy to allow public read access:
+
+     ```json
+     {
+         "Version": "2012-10-17",
+         "Statement": [
+             {
+                 "Effect": "Allow",
+                 "Principal": "*",
+                 "Action": "s3:GetObject",
+                 "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
+             }
+         ]
+     }
+     ```
+
+4. **Create IAM User and Group**
+   - Create a user group with appropriate policies.
+   - Create a user with programmatic access, attach it to the group, and save the access keys.
+
+5. **Connect Django to AWS**
+   - Install `boto3` and `django-storages`:
+
+     ```bash
+     pip3 install boto3 django-storages
+     pip3 freeze > requirements.txt
+     ```
+
+   - Add `storages` to `INSTALLED_APPS` in `settings.py`.
+   - Configure AWS settings in `settings.py`:
+
+     ```python
+     if 'USE_AWS' in os.environ:
+         AWS_S3_OBJECT_PARAMETERS = {
+             'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+             'CacheControl': 'max-age=94608000',
+         }
+
+         AWS_STORAGE_BUCKET_NAME = 'YOUR_BUCKET_NAME'
+         AWS_S3_REGION_NAME = 'YOUR_REGION'
+         AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+         AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+         AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+         STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+         STATICFILES_LOCATION = 'static'
+         DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+         MEDIAFILES_LOCATION = 'media'
+
+         STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+         MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+     ```
+
+   - Set the following Config Vars on Heroku:
+
+     | Variable              | Value                           |
+     |-----------------------|---------------------------------|
+     | AWS_ACCESS_KEY_ID     | your_access_key_id              |
+     | AWS_SECRET_ACCESS_KEY | your_secret_access_key          |
+     | USE_AWS               | True                            |
+
+   - Create `custom_storages.py` in the project root:
+
+     ```python
+     from django.conf import settings
+     from storages.backends.s3boto3 import S3Boto3Storage
+
+     class StaticStorage(S3Boto3Storage):
+         location = settings.STATICFILES_LOCATION
+
+     class MediaStorage(S3Boto3Storage):
+         location = settings.MEDIAFILES_LOCATION
+     ```
+
+   - Push changes to GitHub:
+
+     ```bash
+     git add .
+     git commit -m "Connect to AWS S3"
+     git push
+     ```
+
+That's it! Your project should now be successfully deployed to Heroku with static and media files stored on AWS S3.
+
+
+## Finished Product
