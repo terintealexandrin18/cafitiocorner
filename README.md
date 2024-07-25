@@ -1,82 +1,86 @@
+# Cafitio Corner
+
 Welcome to Cafitio Corner. The place where you can buy coffee, coffee machines, and accessories to have a professional coffee experience at your home. Whether you're a casual coffee drinker or a connoisseur, this website caters to all types of coffee enthusiasts.
 
 The purpose of the website is to offer high-quality coffee products and accessories. It provides a convenient platform for purchasing coffee-related items. Additionally, it aims to educate and inspire coffee enthusiasts to enhance their at-home coffee experience.
 
-Image. To add.
+![responsive image with the website](assets/responsive_white.png)
 
 [Live Website](https://cafitio-corner-5f01d0c35567.herokuapp.com/)
+
 [GitHub Repository](https://github.com/terintealexandrin18/cafitiocorner)
-
-
-
 
 ## Table of Contents
 
-1. User Experience (UX)
-    i. Strategy
-        a. Project Goals
-        b. User Goals
-        c. Strategy Table
-    ii. Scope
-        a. User Stories
-    iii. Structure
-        a. Database Model
-    iv. Skeleton
-        a. Wireframes
-    v. Surface
-        a. Color Scheme
-        b. Typography
-2. Marketing
-    i. Search Engine Optimization
-    ii. Business Model
-3. Features
-    i. Home Page
-    ii. Products Page
-    iii. Product Details Page
-    iv. Products Admin
-    v. Shopping Cart Page
-    vi. Checkout Page
-    vii. Checkout Success Page
-    viii. Profile Page
-    ix. Wishlist Page
-    x. Reviews Page
-        a. Add Review
-        b. Edit Review
-    xi. Contact Us Page
-    xii. Accounts Pages
-    xiii. 404 Error Page
-4. Technologies Used
-    i. Languages Used
-    ii. Libraries and Frameworks
-    iii. Packages / Dependencies Installed
-    iv. Database Management
-    v. Payment Service
-    vi. Cloud Storage
-    vii. Tools and Programs
-5. Testing
-    i. Go to TESTING.md
-6. Deployment
-    i. How To Use This Project
-    ii. Deployment to Heroku
-    iii. AWS Bucket Creation
-    iv. Connect Django to AWS Bucket
-7. Finished Product
-8. Credits
-9. Known Bugs
-10. Acknowledgements
-
+1. [User Experience (UX)](#user-experience-ux)
+    1. [Strategy](#strategy)
+        1. [Project Goals](#project-goals)
+        2. [User Goals](#user-goals)
+        3. [Strategy Table](#strategy-table)
+    2. [Scope](#scope)
+    3. [Structure](#structure)
+        1. [Database Model](#database-model)
+    4. [Skeleton](#skeleton)
+        1. [Wireframes](#wireframes)
+    5. [Surface](#surface)
+        1. [Color Scheme](#color-scheme)
+        2. [Typography](#typography)
+2. [Marketing](#marketing)
+    1. [Search Engine Optimization (SEO)](#search-engine-optimization-seo)
+    2. [Business Model](#business-model)
+3. [Features](#features)
+    1. [General](#general)
+    2. [Header](#header)
+    3. [Search Bar](#search-bar)
+    4. [Footer](#footer)
+    5. [Home Page](#home-page)
+    6. [Products](#products)
+        1. [Products Page](#products-page)
+        2. [Product Informations Page](#product-informations-page)
+    7. [Products Admin](#products-admin)
+        1. [Add Product](#add-product)
+        2. [Edit Product](#edit-product)
+    8. [Shopping Cart Page](#shopping-cart-page)
+    9. [Checkout Page](#checkout-page)
+    10. [Checkout Success Page](#checkout-success-page)
+    11. [Profile Page](#profile-page)
+    12. [Wishlist Page](#wishlist-page)
+    13. [Contact Us Page](#contact-us-page)
+    14. [About Us Page](#about-us-page)
+    15. [Accounts Pages](#accounts-pages)
+    16. [404 Error Page](#404-error-page)
+4. [Technologies Used](#technologies-used)
+    1. [Languages Used](#languages-used)
+    2. [Libraries and Frameworks](#libraries-and-frameworks)
+    3. [Packages / Dependencies Installed](#packages--dependencies-installed)
+    4. [Database Management](#database-management)
+    5. [Payment Service](#payment-service)
+    6. [Cloud Storage](#cloud-storage)
+    7. [Tools and Programs](#tools-and-programs)
+5. [Testing](#testing)
+6. [Deployment to Heroku](#deployment-to-heroku)
+7. [Finished Product](#finished-product)
+8. [Credits](#credits)
+    1. [Content](#content)
+    2. [Media](#media)
+    3. [Code](#code)
+    4. [Resources and References](#resources-and-references)
+9. [Known Bugs](#known-bugs)
+10. [Acknowledgements](#acknowledgements)
 
 ## User Experience (UX)
+
 ### Strategy
-#### Project Goal
+
+#### Project Goals
+
 - Provide a Seamless User Experience: Ensure the website is user-friendly, intuitive, and accessible on all devices.
-- Showcase Products Effectively: ighlight coffee products, machines, and accessories with high-quality images, detailed descriptions, and user reviews.
+- Showcase Products Effectively: Highlight coffee products, machines, and accessories with high-quality images, detailed descriptions, and user reviews.
 - Streamline the Purchase Process: Simplify the shopping cart and checkout process to reduce cart abandonment and increase conversions.
 - Engage and Retain Customers: Implement features like user accounts, wishlists, and newsletters to foster customer loyalty.
-- Optimize for Search Engines: Use SEO best practices to increase visibility and attract more potential customers. 
+- Optimize for Search Engines: Use SEO best practices to increase visibility and attract more potential customers.
 
-#### User Goal
-## User Goals
+#### User Goals
 
 - Epic 1 - User Account Management
   - Access and Edit User Profile
@@ -134,8 +138,7 @@ Image. To add.
     - As a site user, I want to view my wishlist to see the items I have saved.
     - As a site user, I want to remove items from my wishlist to manage my saved products effectively.
 
-
-####  Strategy Table
+#### Strategy Table
 
 | Opportunity / Problem / Feature                  | Importance | Viability / Feasibility |
 |--------------------------------------------------|------------|-------------------------|
@@ -152,11 +155,12 @@ Image. To add.
 | View order confirmation after checkout           | 5          | 5                       |
 | Newsletter subscription                          | 5          | 5                       |
 | Add products to wishlist                         | 5          | 5                       |
-| View wishlist                                    | 5          | 3                      |
+| View wishlist                                    | 5          | 3                       |
 | Remove products from wishlist                    | 5          | 3                       |
-| **Total**                                        | **75**     | **70** 
+| **Total**                                        | **75**     | **70**
 
 ### Scope
+
 The project aims to develop an e-commerce website, Cafitio Corner, offering a wide range of coffee products, machines, and accessories to customers. The website will be responsive and user-friendly, providing users with the ability to:
 
 - User Authentication:
@@ -198,113 +202,6 @@ The project aims to develop an e-commerce website, Cafitio Corner, offering a wi
   - Access and update order statuses
   - Sort orders by status (In Progress, Completed, Cancelled)
 
-
-Key Features
-
-- Initial Project Setup:
-  - Developers can set up a new Django project to create the project's structure.
-  - Connect database and media storage for efficient data management.
-  - Early deployment of the application to ensure functionality and initial setup.
-
-- Products:
-  - Users can view and refine products by all available categories.
-  - Sort products by price, title, or category.
-  - View detailed product information including image, description, price, stock level, reviews, and rating.
-  - Registered users can leave reviews and ratings.
-
-- User Authentication:
-  - Account registration for full website functionality access.
-  - Login to access wishlist, reviews, past orders, and saved personal details.
-  - Password reset functionality.
-  - Manage wishlist, adding or removing products.
-  - Add or edit product reviews.
-
-- Orders and Checkout:
-  - Add products to the shopping cart.
-  - Update product quantities in the shopping cart.
-  - Remove products from the shopping cart.
-  - Secure checkout functionality for payments.
-
-- Admin Functionality:
-  - Add new products for sale.
-  - Delete products from the system.
-  - Edit products and stock levels.
-  - Access orders to update order status.
-  - Sort orders by status (In Progress, Completed, Cancelled).
-
-- Notification Messages:
-  - Users will receive notification messages for CRUD operations, login/logout, and signup actions.
-
-
-#### User Stories
-
-Throughout the project, I utilized the GitHub Kanban board extensively to manage user stories effectively. This approach facilitated the prioritization of tasks and provided a clear visualization of the project's progress at every stage.
-
-- Kanban Board - halfway through
-
-![User Story Kanban Board mid project](assets/readme/user_stories_2.png)
-
-
-Kanban Board - final stage
-
-![User Story Kanban Board mid project](assets/readme/user_stories_1.png)
-
-
-- As a site user, I can easily access my user profile and make necessary edits to ensure all information is kept up to date.
-
-- As a shopper, I want to receive the order confirmation by email so that it will prove that the order has been successfully placed.
-
-- As a site user, I can create an account so that I can place orders.
-
-- As a site owner, I can delete products so that I ensure the store offers only available items to the customers to browse and purchase.
-
-- As a site owner, I can edit the products so that I provide up-to-date information for the customers.
-
-- As a shopper, I want to rate products so that I can provide specific feedback based on my experience, helping other shoppers make informed decisions.
-
-- As a site user, I can leave, edit, and delete the reviews I've submitted so that I can share my experiences accurately and manage my feedback as needed.
-
-- As a site user, I can view product reviews from other users to make informed decisions before purchasing.
-
-- As a site user, I can easily reset the password in case I forget it so that I can have access to my account.
-
-- As a site user, I can seamlessly log in and log out so that I can access my profile whenever needed.
-
-- As a site user, I can access my account so that I can see the order history.
-
-- As a site owner, I can add new products so that I expand the store offerings.
-
-- As a site user, I want to view all the products so that I can choose what to purchase.
-
-- As a shopper, I want the convenience of having my personal details saved in the checkout form so that future purchases are streamlined.
-
-- As a site user, I can easily click on a product to view so that I can see the product image bigger and the product description.
-
-- As a user, I can add multiple products to the basket so that I can make a single payment.
-
-- As a site user, I can access the product description so that I can gather essential information about the product before making a decision.
-
-- As a shopper, I want to add multiple categories of products simultaneously so that I can compare prices or ratings across diverse products.
-
-- As a site user, I can select what category of products I want to see so that I can view only the category needed.
-
-- As a user, I want to be able to search for product names or descriptions so that I can quickly locate the specific items I wish to purchase.
-
-- As a shopper, I want to sort ratings and reviews so that I can quickly identify the higher ratings and newest reviews.
-
-- As a shopper, I want to effortlessly view the total amount of the items in my basket at any time so that I can manage my budget.
-
-- As a shopper, I can view and update the basket items quantity so that I can have control over my shopping.
-
-- As a site user, I can add multiple quantities of the same product to the basket, so that will facilitate bulk purchases and simplify my shopping experience.
-
-- As a shopper, I want assurance that my personal and payment information is secure so that I can confidently complete purchases.
-
-- As a shopper, I want to view the order confirmation after the checkout so that I can review the items I ordered.
-
-- As a site owner, I want to offer newsletter subscriptions to users so that we can ensure ongoing communication, sharing offers and inspiration, thereby encouraging their return visits.
-
-
 ### Structure
 
 - The header, footer, and navigation bar are consistent across all pages, ensuring a seamless user experience.
@@ -313,19 +210,16 @@ Kanban Board - final stage
 - A 404-error page is in place to handle any incorrect or broken links, guiding users back to the main content.
 
 #### Database Model
- 
- - The database model has been designed using [dbdiagram.io](https://dbdiagram.io). A relational database is used for the project, managed with SQLite3 during development and deployed using [PostgreSQL](https://www.postgresql.org/) in the production environment.
 
+The database model has been designed using [dbdiagram.io](https://dbdiagram.io). A relational database is used for the project, managed with SQLite3 during development and deployed using [PostgreSQL](https://www.postgresql.org/) in the production environment.
 
 ![Entity Relationship Diagram](assets/readme/entity-relationship-diagram.png)
 
-
 ### Skeleton
 
- - The wireframes for the project were created using [Balsamiq](https://balsamiq.com). These wireframes helped in planning the layout and user interface of the website effectively.
+The wireframes for the project were created using [Balsamiq](https://balsamiq.com). These wireframes helped in planning the layout and user interface of the website effectively.
 
 #### Wireframes
-
 
 | Page              | Desktop Version                                                   | Mobile Version                                                   |
 |-------------------|-------------------------------------------------------------------|------------------------------------------------------------------|
@@ -337,7 +231,6 @@ Kanban Board - final stage
 | **Checkout Success** | ![Checkout Success Desktop](assets/wireframes/checkout_success_desktop.png) | ![Checkout Success Mobile](assets/wireframes/checkout_success_mobile.png) |
 | **Contact**       | ![Contact Desktop](assets/wireframes/contact_desktop.png)         | ![Contact Mobile](assets/wireframes/contact_mobile.png)          |
 | **About**         | ![About Desktop](assets/wireframes/about_desktop.png)             | ![About Mobile](assets/wireframes/about_mobile.png)              |
-
 
 ### Surface
 
@@ -359,7 +252,6 @@ Kanban Board - final stage
 
 By incorporating these colors, the website achieves a harmonious balance that guides the user's attention intuitively while maintaining a cohesive and aesthetically pleasing appearance throughout.
 
-
 #### Typography
 
 The typography for this project has been carefully selected to enhance readability and create a visually appealing hierarchy. Google Fonts are used specifically for titles, providing a unique and stylish appearance, while the body text uses default system fonts for simplicity and faster loading times.
@@ -372,8 +264,8 @@ Body Text
 
 By combining 'Roboto' for titles with standard fonts for body text, the website maintains a clean and professional look while ensuring optimal performance and readability.
 
-
 ## Marketing
+
 ### Search Engine Optimization (SEO)
 
 To improve the search index rating on Google, extensive research was conducted using various tools such as Google Keyword Planner and SEMrush. These tools helped identify relevant keywords to use in meta tags, content, and other strategic areas of the website.
@@ -392,7 +284,7 @@ Continuous Monitoring and Improvement
     - Determine which terms are driving traffic to the site.
     - Refine and adjust the keywords based on performance data.
 
- - Additional SEO Strategies
+- Additional SEO Strategies
 
     - Sitemap: A sitemap was generated using [xml-sitemaps](https://www.xml-sitemaps.com/) and is included in the root level of the project. This helps search engines crawl and index the website more efficiently.
     - Robots.txt: A `robots.txt` file was created at the root level of the project. This file instructs search engine crawlers on which URLs they can access on the website, improving crawl efficiency and ensuring important pages are indexed.
@@ -415,7 +307,6 @@ By implementing these SEO strategies, Cafitio Corner aims to increase its online
     - We celebrate the diversity of coffee culture, catering to a wide audience with varied preferences.
   - Innovation:
     - We embrace the latest trends and technologies to stay at the forefront of the coffee industry.
-
 
 #### Customers
 
@@ -441,7 +332,6 @@ By implementing these SEO strategies, Cafitio Corner aims to increase its online
 - Expert Advice:
   - Access to informative content and customer support for guidance on product selection and usage.
 
-
 #### Competitors
 
 ##### Primary Competitors:
@@ -451,7 +341,6 @@ Cafitio Corner competes with established online coffee retailers, such as:
 - Stumptown Coffee Roasters
 - Intelligentsia Coffee
 - Peet’s Coffee
-
 
 ### SWOT Analysis
 
@@ -493,7 +382,6 @@ Cafitio Corner competes with established online coffee retailers, such as:
 - Public Relations and Market Share:
   - Other similar companies gaining more PR and a larger market share may pose a threat to Cafitio Corner's growth.
 
-
 #### Marketing Strategy
 
 Given our resource constraints, we are strategically focusing on cost-effective yet impactful marketing initiatives to establish and grow Cafitio Corner. Our marketing strategy is designed to create brand awareness, foster customer loyalty, and attract a wider audience:
@@ -517,41 +405,49 @@ Given our resource constraints, we are strategically focusing on cost-effective 
 
 ![Facebook Page](assets/readme/facebook_cafitio_corner.png)
 
-
-The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-61563015151538/)
-
+The Business Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-61563015151538/)
 
 ## Features
 
 ### General
+
 - The website has been designed from a mobile-first perspective.
 - Responsive design across all device sizes.
-- Validation messages for various actions such as adding a product to the bag, logging in/logging out, updating the bag quantity, removing an item from the bag, adding a new item andy many more. These messages can be closed manually or will disappear after 5 seconds.
+- Validation messages for various actions such as adding a product to the bag, logging in/logging out, updating the bag quantity, removing an item from the bag, adding a new item and many more. These messages can be closed manually or will disappear after 5 seconds.
 
 ### Header
+
 - The header contains the main logo, navigation links, and search product functionality.
 - The main logo works as a link to the home page.
 - The navigation links allow the shopper access to all sections to facilitate navigation across the website.
-- The shopping bag icon changes the color reflecting the current status. If no items are in cart the icon color is black; if items are in cart the icon color changes to green. Also, the current shopping amount is displayed for the shopper.
-- ![Header](assets/readme/nav_bar.png)
+- The shopping bag icon changes the color reflecting the current status. If no items are in the cart the icon color is black; if items are in the cart the icon color changes to green. Also, the current shopping amount is displayed for the shopper.
+
+![Header](assets/readme/nav_bar.png)
 
 ### Search Bar
+
 - The search bar allows the user to search the website for products using specific keywords.
-- ![Search Bar](assets/readme/search_bar.png)
+
+![Search Bar](assets/readme/search_bar.png)
 
 ### Footer
-- The footer contains contact details and business social media links, including Facebook Business page, Instagram, and Linkedin. It also includes links to the owner's Github page and the Privacy Policy.
+
+- The footer contains contact details and business social media links, including Facebook Business page, Instagram, and LinkedIn. It also includes links to the owner's GitHub page and the Privacy Policy.
 - A newsletter registration form has been located in the footer allowing the shopper to subscribe across the whole website.
-- ![Footer](assets/readme/footer.png)
+
+![Footer](assets/readme/footer.png)
 
 ### Home Page
+
 - Display the discount for free delivery on all orders. The text bar moves left to right and right to left to ensure users are aware of the offer.
 - Button that redirects to the "All Products" page, helping users easily navigate to the product pages. The background image visually represents the website's offerings.
-- ![Home Page](assets/readme/home_page.png)
+
+![Home Page](assets/readme/home_page.png)
 
 ### Products
 
 #### Products Page
+
 - Display all the products currently available or filtered on a specific category.
 - Display an image of the products as well as their main information such as name, price, rating, and whether they are added to the wishlist or not.
 - Users can see only 8 items per page and can navigate to the first page, last page, next, and previous pages.
@@ -559,41 +455,52 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 - Provides sorting functionality to sort products by price, rating, name, or category.
 - A back-to-the-top button is available so the shopper can easily return to the top of the page.
 - As a superuser, the admin can see the edit and delete buttons, allowing quick access to the product admin.
-- ![Products Page](assets/readme/products_page.png)
+
+![Products Page](assets/readme/products_page.png)
 
 #### Product Informations Page
+
 - The product navigation bar is present in case the shopper wants to go back to the products.
 - Provide a larger image of the product and display its detailed information.
 - A heart icon is available to easily add/remove the product to the shopper's wishlist.
 - Allow the user to select the quantity of products to be added to the shopping bag.
 - An "Add to Bag" button is available to add the desired quantity of the product to the shopping bag.
-- A reviews link is available, indicating how many reviews the product has received and to toggle the reviews.
+- Logged-in users can leave a rating and review for products, providing valuable feedback to other shoppers and the site owner.
+- Any shopper can view customer reviews, with the total number of reviews displayed. The reviews section can be toggled to show or hide customer feedback, helping shoppers make informed decisions.
 - All reviews the product has received are displayed in the reviews section at the bottom of the page.
-- The reviews and ratings can be updated by the user.
-- Edit and delete links are displayed only for admins to update or delete the product.
-- ![Product Informations Page](assets/readme/products_informations_page.png)
-- ![Product Informations Page](assets/readme/products_informations_page_with_review.png)
+- Only the user who left the review can update or delete their reviews and ratings.
+- Edit and delete buttons are displayed only for admins to update or delete the product.
+
+![Product Informations Page](assets/readme/products_informations_page.png)
+![Product Informations Page](assets/readme/products_informations_page_with_review.png)
 
 ### Products Admin
 
 #### Add Product
+
 - Provide a form for the site admin to add new products to the store.
-- ![Add Product](assets/readme/admin_add_product.png)
+
+![Add Product](assets/readme/admin_add_product.png)
 
 #### Edit Product
+
 - Provide a prefilled form for the site admin to update products in the store.
-- ![Edit Product](assets/readme/admin_edit_product.png)
+
+![Edit Product](assets/readme/admin_edit_product.png)
 
 ### Shopping Cart Page
+
 - A message alerts the user if the free delivery threshold has not been reached, displaying the amount left.
 - Display all products currently in the shopping cart and their information.
 - Allow the user to update the product quantity or remove the product from the shopping cart.
 - Display the current total cost including the cart total and delivery costs.
 - Provide a "Keep Shopping" link to go back to the products.
 - A button to checkout is provided for the shopper to complete the purchase.
-- ![Shopping Cart Page](assets/readme/shoping_cart.png)
+
+![Shopping Cart Page](assets/readme/shoping_cart.png)
 
 ### Checkout Page
+
 - Provide a checkout form for the shopper to complete the purchase and provide the necessary contact, shipping, and payment information.
 - Display an order summary listing all the products to be purchased and their total cost including the bag total and delivery costs.
 - Provide a button back to the shopping bag if the shopper would like to adjust the products in the shopping cart.
@@ -601,35 +508,46 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 - Descriptive error messages are displayed if there is any issue with the payment information provided.
 - A button is clearly available for the shopper to complete the order.
 - Stripe webhook handler is created in the backend to pass the order information if the browser crashes after checkout completion.
-- ![Checkout Page](assets/readme/checkout_page.png)
+
+![Checkout Page](assets/readme/checkout_page.png)
 
 ### Checkout Success Page
+
 - Display the order details and shopper information to allow the shopper to confirm that the information provided is correct.
 - Additionally, inform the shopper that an email has been sent to the email address provided with the same information.
 - A button to continue shopping is provided at the bottom of the page.
-- ![Checkout Success Page](assets/readme/checkout_success_page.png)
+
+![Checkout Success Page](assets/readme/checkout_success_page.png)
 
 ### Profile Page
+
 - Provide a form for the registered shopper to update their default information.
 - An order history section is present with all registered shopper's past orders information.
-- ![Profile Page](assets/readme/profile_page.png)
+
+![Profile Page](assets/readme/profile_page.png)
 
 ### Wishlist Page
-- Display the registered shopper's wishlist products and provide a picture, name and price for each product.
+
+- Display the registered shopper's wishlist products and provide a picture, name, and price for each product.
 - A remove button is present for the registered shopper to remove products they no longer want to keep on the list.
-- A confirmation will appear before removing the product from the wishlist.
-- ![Wishlist Page](assets/readme/wishlist_page.png)
+
+![Wishlist Page](assets/readme/wishlist_page.png)
 
 ### Contact Us Page
+
 - Provide a form where the user can get in touch with the business regarding different topics.
-- ![Contact Us Page](assets/readme/contact_page.png)
+
+![Contact Us Page](assets/readme/contact_page.png)
 
 ### About Us Page
+
 - Provides an overview of Cafitio Corner's mission, story, values, and ways to connect with us.
 - Includes an engaging image representing our coffee-centric focus.
-- ![About Us Page](assets/readme/about_page.png)
+
+![About Us Page](assets/readme/about_page.png)
 
 ### Accounts Pages
+
 | Page            | Purpose                                                                                 | Image                                      |
 |-----------------|-----------------------------------------------------------------------------------------|--------------------------------------------|
 | Sign Up         | Allow the shopper to sign up for an account on the website.                             | ![Sign Up](assets/readme/sign_up.png)      |
@@ -638,20 +556,23 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 | Reset Password  | Allow the registered shopper to reset their password.                                   | ![Reset Password](assets/readme/password_reset.png) |
 
 ### 404 Error Page
+
 - Provide information to the shopper if the address entered cannot be found.
 - A link to return to the products page is present.
-- ![404 Error Page](assets/readme/404_page.png)
 
+![404 Error Page](assets/readme/404_page.png)
 
 ## Technologies Used
 
 ### Languages Used
+
 - HTML5
 - CSS3
 - JavaScript
 - Python
 
 ### Libraries and Frameworks
+
 - Django: Utilized as the primary web framework.
 - Django Template: Employed as a templating language to render backend data into HTML.
 - Bootstrap 4: Implemented for styling and ensuring responsiveness across the website.
@@ -660,6 +581,7 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 - jQuery 3.6.0: Utilized as a JavaScript library to simplify code writing.
 
 ### Packages / Dependencies Installed
+
 - Django Allauth: Facilitated user authentication, registration, and account management.
 - Django Crispy Forms: Managed the rendering of forms.
 - Django Countries: Provided country choices for forms and country fields for models.
@@ -674,16 +596,20 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 - whitenoise: Simplified the serving of static files.
 
 ### Database Management
+
 - SQLite: Used as the single-file database during development.
 - Heroku Postgres: Database was used in production, as a service based on PostgreSQL provided by Heroku.
 
 ### Payment Service
+
 - Stripe: Managed all online payment transactions.
 
 ### Cloud Storage
+
 - Amazon Web Services (AWS) S3: Used to store all static and media files in the production environment.
 
 ### Tools and Programs
+
 - [Git](https://git-scm.com/): Employed for version control, using the Gitpod terminal to commit and push code to GitHub.
 - [GitPod](https://www.gitpod.io/): Used for code writing, committing, and pushing to GitHub.
 - [GitHub](https://github.com/): Hosted the project's code repository.
@@ -698,7 +624,8 @@ The Bussines Facebook [LIVE](https://www.facebook.com/p/Cafitio-Corner-615630151
 - [PEP8 CI](https://pep8ci.herokuapp.com/): Used to validate the site's Python code quality.
 
 ### Testing
-The testing documentation can be found [here](#)
+
+The testing documentation can be found [here](TESTING.md)
 
 ## Deployment to Heroku
 
@@ -982,7 +909,6 @@ That's it! Your project should now be successfully deployed to Heroku with stati
 
 ## Finished Product
 
-
 | Page               | Desktop                                                  | Mobile                                                   |
 |--------------------|----------------------------------------------------------|----------------------------------------------------------|
 | Home               | ![home_page_d](assets/readme/home_page_d.png)            | ![home_page_m](assets/readme/home_page_m.png)            |
@@ -990,7 +916,7 @@ That's it! Your project should now be successfully deployed to Heroku with stati
 | Product Details    | ![product_informations_d](assets/readme/product_informations_d.png) | ![product_informations_m](assets/readme/product_informations_m.png) |
 | Add Product        | ![add_product_d](assets/readme/add_product_d.png)        | ![add_product_m](assets/readme/add_product_m.png)        |
 | Edit Product       | ![edit_product_d](assets/readme/edit_product_d.png)      | ![edit_product_m](assets/readme/edit_product_m.png)      |
-| Shopping Bag       | ![shopping_bag_d](assets/readme/shoping_bag_d.png)      | ![shopping_bag_m](assets/readme/shoping_bag_m.png)      |
+| Shopping Bag       | ![shopping_bag_d](assets/readme/shoping_bag_d.png)       | ![shopping_bag_m](assets/readme/shoping_bag_m.png)       |
 | Checkout           | ![checkout_d](assets/readme/checkout_d.png)              | ![checkout_m](assets/readme/checkout_m.png)              |
 | Checkout Success   | ![checkout_success_d](assets/readme/checkout_success_d.png) | ![checkout_success_m](assets/readme/checkout_success_m.png) |
 | Profile            | ![profile_d](assets/readme/profile_d.png)                | ![profile_m](assets/readme/profile_m.png)                |
@@ -1001,7 +927,7 @@ That's it! Your project should now be successfully deployed to Heroku with stati
 | Sign In            | ![sign_in_d](assets/readme/sign_in_d.png)                | ![sign_in_m](assets/readme/sign_in_m.png)                |
 | Sign Out           | ![sign_out_d](assets/readme/sign_out_d.png)              | ![sign_out_m](assets/readme/sign_out_m.png)              |
 | Password Reset     | ![password_reset_d](assets/readme/password_reset_d.png)  | ![password_reset_m](assets/readme/password_reset_m.png)  |
-
+| 404 Page           | ![404_d](assets/readme/404_d.png)                        | ![404_m](assets/readme/404_m.png)                        |
 
 ## Credits
 
@@ -1027,10 +953,9 @@ The code in Code Institute's video on the Boutique Ado project was used as the m
 - Code Institute Template - This repository was created using the template provided by Code Institute.
 - W3Schools - Consulted regularly for inspiration and to better understand the implementation of various code snippets.
 
-
 ## Known Bugs
 
-There are 2 issues in the project that have been identified and need to be resolved. However, they remain unsolved due to a lack of my current skills and/or time. Both issues do not impact the functionality of the website:
+There are 2 issues in the project that have been identified and need to be resolved. However, they remain unsolved due to a lack of my current skills and time. Both issues do not impact the functionality of the website:
 
 1. Gitpod Configuration Warnings
    - Warning: `ms-toolsai.vscode-jupyter-cell-tags extension is not synced, but not added in .gitpod.yml`
@@ -1046,9 +971,13 @@ There are 2 issues in the project that have been identified and need to be resol
 
    Despite these issues, the website functions correctly, and these warnings and errors can be addressed as needed in the future.
 
-
 ## Acknowledgements
 
 I would like to thank my mentor, Marcel, the Slack community, and everyone at the Code Institute for their help and support.
 
 I also want to extend my gratitude to my wife for her unwavering support throughout this journey.
+
+
+
+
+

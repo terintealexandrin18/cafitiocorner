@@ -1,3 +1,7 @@
+# Testing Documentation
+
+This document provides a comprehensive overview of the testing procedures and outcomes for the Cafitio Corner project. It includes validation of user stories, code validation, accessibility testing, tools used, and manual testing for browser and device compatibility.
+
 ## Table of Contents
 
 1. [Testing User Stories](#testing-user-stories)
@@ -5,7 +9,6 @@
 3. [Accessibility](#accessibility)
 4. [Tools Testing](#tools-testing)
 5. [Manual Testing](#manual-testing)
-
 
 ## Testing User Stories
 
@@ -41,7 +44,6 @@ User stories are documented in the Cafitio Corner GitHub Projects Board. Each us
 | As a shopper, I want to view the order confirmation after the checkout so that I can review the items I ordered.   | Yes                      | Desktop, Tablet, Mobile     | Order confirmation is displayed after checkout, allowing users to review ordered items.           | Pass      |
 | As a site owner, I want to offer newsletter subscriptions to users so that we can ensure ongoing communication, sharing offers and inspiration, thereby encouraging their return visits. | Yes                      | Desktop, Tablet, Mobile     | Newsletter subscriptions can be offered to users, ensuring ongoing communication and engagement.  | Pass      |
 
-
 ## Code Validation 
 
 The following tools and websites were used to validate the code:
@@ -55,8 +57,7 @@ The following tools and websites were used to validate the code:
 - PEP8 Online Checker: Used to validate Python files for PEP8 compliance.
   - [PEP8 CI](https://pep8ci.herokuapp.com/)
 
-
-- About
+### About
 
 | File Name  | Type   | Validation Tool | Validation Result | Issues Found | Status | Screenshot |
 |------------|--------|-----------------|-------------------|--------------|--------|------------|
@@ -65,17 +66,17 @@ The following tools and websites were used to validate the code:
 | urls.py    | Python | PEP8            | No issues         | None         | Pass   | ![urls.py](assets/testing/about/urls.py.png) |
 | views.py   | Python | PEP8            | No issues         | None         | Pass   | ![views.py](assets/testing/about/views.py.png) |
 
-- Bag App
+### Bag App
 
 | File Name       | Type   | Validation Tool | Validation Result | Issues Found | Status | Screenshot |
 |-----------------|--------|-----------------|-------------------|--------------|--------|------------|
 | bag_tools.py    | Python | PEP8            | No issues         | None         | Pass   | ![bag_tools.py](assets/testing/bag/bag_tools.py.png) |
 | contexts.py     | Python | PEP8            | No issues         | None         | Pass   | ![contexts.py](assets/testing/bag/contexts.py.png) |
-| html.bag        | HTML   | W3C Validator   | No issues         | None         | Pass   | ![html.bag](assets/testing/bag/html.bag.png) |
+| bag.html        | HTML   | W3C Validator   | No issues         | None         | Pass   | ![html.bag](assets/testing/bag/html.bag.png) |
 | urls.py         | Python | PEP8            | No issues         | None         | Pass   | ![urls.py](assets/testing/bag/urls.py.png) |
 | view.py         | Python | PEP8            | No issues         | None         | Pass   | ![view.py](assets/testing/bag/view.py.png) |
 
-- Cafitio Corner Project
+### Cafitio Corner Project
 
 | File Name   | Type   | Validation Tool | Validation Result       | Issues Found                     | Status | Screenshot |
 |-------------|--------|-----------------|-------------------------|----------------------------------|--------|------------|
@@ -83,7 +84,7 @@ The following tools and websites were used to validate the code:
 | urls.py     | Python | PEP8            | No issues               | None                             | Pass   | ![urls.py](assets/testing/cafitio_corner/urls.py.png) |
 | views.py    | Python | PEP8            | No issues               | None                             | Pass   | ![views.py](assets/testing/cafitio_corner/views.py.png) |
 
-- Checkout App
+### Checkout App
 
 | File Name             | Type   | Validation Tool | Validation Result       | Issues Found                     | Status | Screenshot |
 |-----------------------|--------|-----------------|-------------------------|----------------------------------|--------|------------|
@@ -99,8 +100,7 @@ The following tools and websites were used to validate the code:
 | webhooks.py           | Python | PEP8            | No issues               | None                             | Pass   | ![webhooks.py](assets/testing/checkout/webhooks.py.png) |
 | webhook_handler.py    | Python | PEP8            | No issues               | None                             | Pass   | ![webhook_handler.py](assets/testing/checkout/webhook_handler.py.png) |
 
-
-- Contact App
+### Contact App
 
 | File Name        | Type   | Validation Tool | Validation Result | Issues Found | Status | Screenshot |
 |------------------|--------|-----------------|-------------------|--------------|--------|------------|
@@ -113,10 +113,7 @@ The following tools and websites were used to validate the code:
 | urls.py          | Python | PEP8            | No issues         | None         | Pass   | ![urls.py](assets/testing/contact/urls.py.png) |
 | views.py         | Python | PEP8            | No issues         | None         | Pass   | ![views.py](assets/testing/contact/views.py.png) |
 
-
-- Home
-
-Home App
+### Home
 
 | File Name  | Type   | Validation Tool | Validation Result | Issues Found | Status | Screenshot |
 |------------|--------|-----------------|-------------------|--------------|--------|------------|
@@ -124,8 +121,7 @@ Home App
 | urls.py    | Python | PEP8            | No issues         | None         | Pass   | ![urls.py](assets/testing/home/urls.py.png) |
 | views.py   | Python | PEP8            | No issues         | None         | Pass   | ![views.py](assets/testing/home/views.py.png) |
 
-
-- Products App
+### Products App
 
 | File Name                      | Type   | Validation Tool | Validation Result | Issues Found | Status | Screenshot |
 |--------------------------------|--------|-----------------|-------------------|--------------|--------|------------|
@@ -146,8 +142,7 @@ Home App
 | views.py                       | Python | PEP8            | No issues         | None         | Pass   | ![views.py](assets/testing/products/views.py.png) |
 | widgets.py                     | Python | PEP8            | No issues         | None         | Pass   | ![widgets.py](assets/testing/products/widgets.py.png) |
 
-
-- Profiles App
+### Profiles App
 
 | File Name        | Type   | Validation Tool | Validation Result | Issues Found | Status | Screenshot |
 |------------------|--------|-----------------|-------------------|--------------|--------|------------|
@@ -159,8 +154,7 @@ Home App
 | urls.py          | Python | PEP8            | No issues         | None         | Pass   | ![urls.py](assets/testing/profiles/urls.py.png) |
 | views.py         | Python | PEP8            | No issues         | None         | Pass   | ![views.py](assets/testing/profiles/views.py.png) |
 
-
-- Wishlist App
+### Wishlist App
 
 | File Name        | Type   | Validation Tool | Validation Result | Issues Found | Status | Screenshot |
 |------------------|--------|-----------------|-------------------|--------------|--------|------------|
@@ -170,15 +164,12 @@ Home App
 | urls.py          | Python | PEP8            | No issues         | None         | Pass   | ![urls.py](assets/testing/wishlit/urls.py.png) |
 | views.py         | Python | PEP8            | No issues         | None         | Pass   | ![views.py](assets/testing/wishlit/views.py.png) |
 
-
-- Base
+### Base
 
 | File Name  | Type   | Validation Tool | Validation Result | Issues Found | Status | Screenshot |
 |------------|--------|-----------------|-------------------|--------------|--------|------------|
 | base.css   | CSS    | W3C Validator   | No issues         | None         | Pass   | ![base.css](assets/testing/base/base.css.png) |
 | base.js    | JS     | JSHint          | No issues         | None         | Pass   | ![base.js](assets/testing/base/base.js.png) |
-
-
 
 ### Flake8 Issues
 
@@ -195,11 +186,9 @@ Additionally, I used Flake8 for Python code validation. The following issues wer
 
 The reason for not fixing some of these issues is because they are part of Django code, migrations, or code provided by Code Institute.
 
-
 ## Accessibility
 
 To ensure the website is easy to read and accessible, Lighthouse in Chrome DevTools was used to analyze the colors, fonts, and overall accessibility of the site. The reports for each page are shown in the table below:
-
 
 | Page                  | Screenshot |
 |-----------------------|------------|
@@ -216,11 +205,9 @@ To ensure the website is easy to read and accessible, Lighthouse in Chrome DevTo
 | Profile               | ![profile](assets/testing/lighthouse/profile.jpg) |
 | Wishlist              | ![wishlist](assets/testing/lighthouse/wishlist.jpg) |
 
-
 ### Notes
 
 The Lighthouse reports were generated after the deployment of the project. Due to time constraints, some issues identified in the reports have not yet been addressed. These issues primarily relate to performance optimizations such as image sizes and server response times. Despite these areas for improvement, the project demonstrates a strong adherence to accessibility standards, best practices, and SEO optimization.
-
 
 ## Tools Testing
 
@@ -229,7 +216,6 @@ Chrome DevTools was used extensively during the development process to test, exp
 
 ### Responsiveness
 Chrome DevTools was also utilized to test the responsiveness of the website on different screen sizes, ensuring that the site is accessible and functional across a variety of devices.
-
 
 ## Manual Testing
 
@@ -250,8 +236,17 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 | Samsung Galaxy Tab A7     | No issues with appearance, responsiveness, or functionality. | Pass      |
 | Microsoft Surface X       | Used to develop the project. No issues encountered.         | Pass      |
 
+### Email Functionality Testing
+
+| Test                          | Expected Outcome                                                                 | Pass/Fail |
+|-------------------------------|----------------------------------------------------------------------------------|-----------|
+| Sign-Up Email Confirmation    | Real emails are sent to users upon sign-up, containing a confirmation link.       | Pass      |
+| Password Reset Email          | Real emails are sent to users for password reset, containing a reset link.        | Pass      |
+| Order Confirmation Email      | Real emails are sent to users after placing an order, containing order details.   | Pass      |
 
 ## Testing
+
+### General
 
 | Test                           | Outcome                                                                              | Pass/Fail |
 |--------------------------------|--------------------------------------------------------------------------------------|-----------|
@@ -260,15 +255,17 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 | Forms                          | All forms submit data correctly and display appropriate success/error messages.      | Pass      |
 | Accessibility                  | All interactive elements are accessible via keyboard navigation.                     | Pass      |
 | Performance                    | The website loads quickly and performs well across devices and browsers.             | Pass      |
-| Subscribe and Unsubscribe      | Subscribe and unsubscribe functionality works correctly, with the modal appearing when attempting to unsubscribe. | Pass      |
+| Subscribe and Unsubscribe      | Subscribe and unsubscribe functionality works correctly, with the modal appearing when attempting to unsubscribe. Email is also visible in the admin panel. | Pass      |
 | Search Bar                     | Search bar works correctly, displaying the items if they are on the website. Clicking on a product opens the product information. | Pass      |
 | Links to Product Page          | All links redirect correctly to the product page.                                     | Pass      |
 | Links to About Page            | All links redirect correctly to the about page.                                       | Pass      |
 | Links to Contact Page          | All links redirect correctly to the contact page.                                     | Pass      |
 | Links to Bag                   | All links redirect correctly to the bag.                                              | Pass      |
-| User Links (Log In, Register, Log Out) | All user-related links function correctly for log in, register, and log out.   | Pass      |
+| User Links (Log In, Register, Log Out and Product Management) | All user-related links function correctly for log in, register, and log out.   | Pass      |
 | Product Management Links       | All links for product management work correctly.                                      | Pass      |
 | Footer Links                   | All footer links function correctly.                                                  | Pass      |
+| Confirmation/Information Messages | Confirmation/information messages are visible when adding items to the bag, updating quantity, editing products, adding new products, etc., and they automatically close after 5 seconds. | Pass      |
+| Modal Functionality            | The modal works correctly when trying to delete products and unsubscribe.             | Pass      |
 
 ### Individual Page Tests
 
@@ -281,13 +278,15 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 
 #### Products Page
 
-| Test               | Outcome                                              | Pass/Fail |
-|--------------------|------------------------------------------------------|-----------|
-| Product Listings   | All products are displayed with correct information. | Pass      |
-| Product Navigation Bar Links| Clicking any of the links will filter the products in that category. | Pass      |
-| Filter and Sort    | Filter and sort options work correctly.              | Pass      |
-| Wishlist           | Adding/removing items from the wishlist works correctly, changing from an empty heart to a full heart. | Pass      |
-| Admin Edit/Delete Buttons   | Edit and delete buttons for admin are displayed and working correctly. | Pass      |
+| Test                       | Outcome                                                                 | Pass/Fail |
+|----------------------------|-------------------------------------------------------------------------|-----------|
+| Product Listings           | All products are displayed with correct information.                    | Pass      |
+| Product Navigation Bar Links| Clicking any of the links will filter the products in that category.    | Pass      |
+| Filter and Sort            | Filter and sort options work correctly.                                 | Pass      |
+| Wishlist                   | Adding/removing items from the wishlist works correctly, changing from an empty heart to a full heart. | Pass      |
+| Admin Edit/Delete Buttons  | Edit and delete buttons for admin are displayed and working correctly.  | Pass      |
+| Product Count              | Product count is working and has been tested on all categories and individual categories. | Pass      |
+| Pagination Buttons         | Pagination buttons have been tested and are correctly changing the page. | Pass      |
 
 #### Product Details Page
 
@@ -295,14 +294,12 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 |----------------------------|--------------------------------------------------------------------------------------------|-----------|
 | Product Navigation Bar Links | Clicking any of the links redirects to the products page and filters the products in that category. | Pass      |
 | Heart Icon                  | Clicking the empty heart icon adds the product to the wishlist and fills the heart; clicking the filled heart icon removes the product from the wishlist and redirects to the wishlist. | Pass      |
-| Product Edit Link           | Clicking the link redirects to the edit product page.                                      | Pass      |
-| Product Delete Link         | Clicking the link deletes the product from the database.                                   | Pass      |
+| Product Edit Button         | Clicking the button redirects to the edit product page.                                    | Pass      |
+| Product Delete Button       | Clicking the button deletes the product from the database.                                 | Pass      |
 | Decrease Quantity Button    | Clicking the button decreases the quantity on the input form.                              | Pass      |
 | Increase Quantity Button    | Clicking the button increases the quantity on the input form.                              | Pass      |
 | Cart Icon                   | Clicking the icon adds the specified quantity of the product to the shopping cart.         | Pass      |
 | Rating and Reviews          | Both are working well. Only the same user can edit and delete the review and rating left.  | Pass      |
-
-
 
 #### Add Product Page
 
@@ -311,6 +308,7 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 | Add Product Form       | Upon form submission, the product is successfully added to the database.  | Pass      |
 | Select Image Button    | Clicking this button allows the user to upload an image for the product.  | Pass      |
 | Cancel Button          | Clicking this button navigates back to the products page without saving.  | Pass      |
+| Mandatory Fields       | Product cannot be added if the mandatory fields are not filled in, preventing submission. | Pass      |
 
 #### Edit Product Page
 
@@ -320,7 +318,6 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 | Select Image Button    | Clicking this button allows the user to upload or change the product image. | Pass      |
 | Cancel Button          | Clicking this button navigates back to the products page without saving changes. | Pass      |
 
-
 #### Bag Page
 
 | Test                   | Expected Outcome                                                         | Pass/Fail |
@@ -328,9 +325,9 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 | Decrease Quantity Button | Reduces the quantity of the product in the shopping cart.                | Pass      |
 | Increase Quantity Button | Increases the quantity of the product in the shopping cart.              | Pass      |
 | Update Button            | Updates the product quantity in the shopping cart when clicked.           | Pass      |
-| Delete Button            | Removes the product from the shopping cart when clicked.                  | Pass      |
-| Continue Shopping Link | Redirects the user to the products page.                                  | Pass      |
-| Secure Checkout Button | Redirects the user to the checkout page to complete the purchase.         | Pass      |
+| Remove Button            | Removes the product from the shopping cart when clicked.                  | Pass      |
+| Keep Shoping Button      | Redirects the user to the products page.                                  | Pass      |
+| Secure Checkout Button   | Redirects the user to the checkout page to complete the purchase.         | Pass      |
 
 #### Checkout Page
 
@@ -339,7 +336,9 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 | Form Fields              | Order is submitted successfully, and confirmation is displayed.                              | Pass      |
 | Payment Integration      | Payment is processed correctly.                                                              | Pass      |
 | Save Information Checkbox| When checked, updates the user's profile information during the checkout process.            | Pass      |
-| Adjust Bag Button          | Clicking the link redirects to the shopping bag page.                                        | Pass      |
+| Adjust Bag Button          | Clicking the button redirects to the shopping bag page.                                        | Pass      |
+| Mandatory Fields         | Payment cannot be processed if all the mandatory fields are not filled in, preventing submission. | Pass      |
+| Payment Alert Message    | Payment alert message works correctly if the card payment details are entered incorrectly.   | Pass      |
 
 #### Checkout Success Page
 
@@ -353,8 +352,7 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 |--------------------|------------------------------------------------------|-----------|
 | Profile Information| Profile information is displayed correctly.          | Pass      |
 | Edit Profile       | Profile information is updated successfully.         | Pass      |
-| Order Link             | Clicking the link redirects to the order view.                                              | Pass      |
-
+| Order Link             | Clicking the link redirects to the order view.     | Pass      |
 
 #### Wishlist Page
 
@@ -370,9 +368,16 @@ Chrome DevTools was also utilized to test the responsiveness of the website on d
 |--------------------|------------------------------------------------------|-----------|
 | Contact Form       | Form submits successfully, and confirmation is displayed. | Pass      |
 | Form Validation    | Validation messages are displayed correctly.         | Pass      |
+| Mandatory Fields   | Form cannot be submitted if the mandatory fields are not filled in, preventing submission. | Pass      |
 
 #### About Page
 
 | Element                | Expected Outcome                                                         | Pass/Fail |
 |------------------------|---------------------------------------------------------------------------|-----------|
 | Page Content           | All about page content is displayed correctly.                            | Pass      |
+
+### 404 Page
+
+| Test               | Outcome                                                                             | Pass/Fail |
+|--------------------|--------------------------------------------------------------------------------------|-----------|
+| 404 Page Display   | 404 page is displayed correctly when a non-existent link is entered.                 | Pass      |
