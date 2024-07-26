@@ -17,8 +17,8 @@ def all_products(request):
     )
     query = None
     categories = None
-    sort = None
-    direction = None
+    sort = 'name'
+    direction = 'asc'
 
     if request.GET:
         if 'sort' in request.GET:
@@ -29,6 +29,8 @@ def all_products(request):
                 products = products.annotate(lower_name=Lower('name'))
             if sortkey == 'category':
                 sortkey = 'category__name'
+            if sortkey == 'rating':
+                sortkey = 'avg_rating'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -55,7 +57,8 @@ def all_products(request):
             )
             products = products.filter(queries)
 
-    products = products.order_by('name')
+    if not request.GET.get('sort'):
+        products = products.order_by('name')
 
     for product in products:
         reviews = product.reviews.all()
